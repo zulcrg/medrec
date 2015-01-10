@@ -11,5 +11,5 @@ package com.jtk.medicalrecord.util;
  * @author Zulkhair Abdullah D
  */
 public enum CardLayoutEnum {
-    LOGIN, REGISTRASI_AKUN
+    LOGIN, LOGIN2, REGISTRASI_AKUN, MAIN_MENU
 }

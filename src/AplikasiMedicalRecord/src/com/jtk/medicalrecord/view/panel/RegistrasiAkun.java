@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
+
+import com.jtk.medicalrecord.model.ConfigModel;
+import com.jtk.medicalrecord.util.ConfigHelper;
+import com.zlib.util.ZHash;
+import java.util.UUID;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,16 +36,16 @@ public class RegistrasiAkun extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNama = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtAlamat = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtTempatPraktek = new javax.swing.JTextField();
+        txtNoTelp = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtPassword = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -64,11 +69,11 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         add(jLabel2, gridBagConstraints);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(300, 25));
+        txtNama.setPreferredSize(new java.awt.Dimension(300, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(jTextField1, gridBagConstraints);
+        add(txtNama, gridBagConstraints);
 
         jLabel3.setText("Alamat");
         jLabel3.setPreferredSize(new java.awt.Dimension(100, 25));
@@ -79,11 +84,11 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         add(jLabel3, gridBagConstraints);
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(300, 25));
+        txtAlamat.setPreferredSize(new java.awt.Dimension(300, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(jTextField2, gridBagConstraints);
+        add(txtAlamat, gridBagConstraints);
 
         jLabel4.setText("Tempat Praktek");
         jLabel4.setPreferredSize(new java.awt.Dimension(100, 25));
@@ -94,18 +99,18 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         add(jLabel4, gridBagConstraints);
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(300, 25));
+        txtTempatPraktek.setPreferredSize(new java.awt.Dimension(300, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(jTextField3, gridBagConstraints);
+        add(txtTempatPraktek, gridBagConstraints);
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(300, 25));
+        txtNoTelp.setPreferredSize(new java.awt.Dimension(300, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(jTextField4, gridBagConstraints);
+        add(txtNoTelp, gridBagConstraints);
 
         jLabel5.setText("No Telepon");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 25));
@@ -117,7 +122,7 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         add(jLabel5, gridBagConstraints);
 
-        jLabel6.setText("Tempat Praktek");
+        jLabel6.setText("Password");
         jLabel6.setPreferredSize(new java.awt.Dimension(100, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 5;
@@ -125,16 +130,16 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         add(jLabel6, gridBagConstraints);
 
-        jTextField5.setPreferredSize(new java.awt.Dimension(300, 25));
+        txtPassword.setPreferredSize(new java.awt.Dimension(300, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(jTextField5, gridBagConstraints);
+        add(txtPassword, gridBagConstraints);
 
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -145,26 +150,47 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
         gridBagConstraints.weighty = 3.7;
         gridBagConstraints.insets = new java.awt.Insets(21, 0, 21, 0);
-        add(jButton1, gridBagConstraints);
+        add(btnSubmit, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        if (txtNama.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Harap Isi Nama");
+        } else if (txtAlamat.getText().isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Harap isi Alamat");
+        } else if (txtTempatPraktek.getText().isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Harap isi Tempat Praktek");
+        } else if (txtNoTelp.getText().isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Harap isi No Telp");
+        } else if (txtPassword.getText().isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Harap isi Password");
+        } else {
+            ConfigModel cm = new ConfigModel();
+            cm.setId(UUID.randomUUID().toString().replace("-", ""));
+            cm.setAlamat(txtAlamat.getText());
+            cm.setNamaDokter(txtNama.getText());
+            cm.setNoTelp(txtNoTelp.getText());
+            cm.setPassword(txtPassword.getText());
+            cm.setTempatPraktek(ZHash.hashMD5(txtTempatPraktek.getText()));
+            
+            ConfigHelper.creaeteConfig(cm);
+        }
+
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtAlamat;
+    private javax.swing.JTextField txtNama;
+    private javax.swing.JTextField txtNoTelp;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtTempatPraktek;
     // End of variables declaration//GEN-END:variables
 }

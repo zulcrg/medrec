@@ -6,9 +6,13 @@
 package com.jtk.medicalrecord.view;
 
 import com.jtk.medicalrecord.util.CardLayoutEnum;
+import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.view.panel.LoginPanel;
+import com.jtk.medicalrecord.view.panel.LoginPanel2;
+import com.jtk.medicalrecord.view.panel.MainMenu;
 import com.jtk.medicalrecord.view.panel.RegistrasiAkun;
 import java.awt.CardLayout;
+import javax.swing.UIManager;
 
 /**
  *
@@ -26,6 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         addCardLayout();
         setInstance();
+        setLocationRelativeTo(null);
     }
 
     private void setInstance() {
@@ -34,18 +39,38 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void addCardLayout() {
         LoginPanel loginPanel = new LoginPanel();
+        LoginPanel2 loginPanel2 = new LoginPanel2();
         RegistrasiAkun registrasiAkun = new RegistrasiAkun();
+        MainMenu mainMenu = new MainMenu();
 
         cardPanel.setLayout(cardLayout);
         cardPanel.add(loginPanel, CardLayoutEnum.LOGIN.toString());
+        cardPanel.add(loginPanel2, CardLayoutEnum.LOGIN2.toString());
         cardPanel.add(registrasiAkun, CardLayoutEnum.REGISTRASI_AKUN.toString());
+        cardPanel.add(mainMenu, CardLayoutEnum.MAIN_MENU.toString());
 
-        cardLayout.show(cardPanel, CardLayoutEnum.LOGIN.toString());
+        if (ConfigHelper.readConfig() == null) {
+            showLoginPanel();
+        } else {
+            showLoginPanel2();
+        }
 
     }
 
     public void showRegistrasiAkun() {
-        cardLayout.show(cardPanel, CardLayoutEnum.REGISTRASI_AKUN .toString());
+        cardLayout.show(cardPanel, CardLayoutEnum.REGISTRASI_AKUN.toString());
+    }
+
+    public void showLoginPanel() {
+        cardLayout.show(cardPanel, CardLayoutEnum.LOGIN.toString());
+    }
+
+    public void showLoginPanel2() {
+        cardLayout.show(cardPanel, CardLayoutEnum.LOGIN2.toString());
+    }
+    
+    public void showMainMenu() {
+        cardLayout.show(cardPanel, CardLayoutEnum.MAIN_MENU.toString());
     }
 
     /**
@@ -97,12 +122,13 @@ public class MainFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

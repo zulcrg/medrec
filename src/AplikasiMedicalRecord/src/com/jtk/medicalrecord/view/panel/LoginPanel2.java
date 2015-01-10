@@ -6,6 +6,10 @@
 
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.util.ConfigHelper;
+import com.jtk.medicalrecord.view.MainFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author M Haska Ash Shiddiq
@@ -32,8 +36,8 @@ public class LoginPanel2 extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        btnMasuk = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -65,10 +69,10 @@ public class LoginPanel2 extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
         add(jLabel4, gridBagConstraints);
 
-        jButton1.setText("Masuk");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnMasuk.setText("Masuk");
+        btnMasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnMasukActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -76,27 +80,35 @@ public class LoginPanel2 extends javax.swing.JPanel {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 39.4;
-        add(jButton1, gridBagConstraints);
+        add(btnMasuk, gridBagConstraints);
 
-        jPasswordField1.setText("jPasswordField1");
+        txtPassword.setPreferredSize(new java.awt.Dimension(180, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
-        add(jPasswordField1, gridBagConstraints);
+        add(txtPassword, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+        if(txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Harap isi password");
+        }else{
+            if(txtPassword.getText().equals(ConfigHelper.readConfig().getPassword())){
+                MainFrame.instance.showMainMenu();
+            }else{
+                JOptionPane.showMessageDialog(null, "Password Salah");
+            }
+        }
+    }//GEN-LAST:event_btnMasukActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnMasuk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
