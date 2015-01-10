@@ -171,7 +171,7 @@ public class RegistrasiAkun extends javax.swing.JPanel {
             cm.setNamaDokter(txtNama.getText());
             cm.setNoTelp(txtNoTelp.getText());
             cm.setPassword(txtPassword.getText());
-            cm.setTempatPraktek(ZHash.hashMD5(txtTempatPraktek.getText()));
+            cm.setTempatPraktek(txtTempatPraktek.getText());
             
             ConfigHelper.creaeteConfig(cm);
         }
