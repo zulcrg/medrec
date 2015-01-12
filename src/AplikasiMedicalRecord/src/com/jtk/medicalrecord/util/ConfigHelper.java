@@ -6,6 +6,7 @@
 package com.jtk.medicalrecord.util;
 
 import com.jtk.medicalrecord.model.ConfigModel;
+import com.zlib.util.ZHash;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -34,7 +35,7 @@ public class ConfigHelper {
             prop.setProperty("alamat", config.getAlamat());
             prop.setProperty("tempatPraktek", config.getTempatPraktek());
             prop.setProperty("noTelp", config.getNoTelp());
-            prop.setProperty("password", config.getPassword());
+            prop.setProperty("password", ZHash.hashSHA256(config.getPassword()));
 
             // save properties to project root folder
             prop.store(output, null);

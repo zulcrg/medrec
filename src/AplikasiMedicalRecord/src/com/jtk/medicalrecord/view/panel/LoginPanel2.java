@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.model.ConfigModel;
 import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.view.MainFrame;
+import com.zlib.util.ZHash;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,13 @@ public class LoginPanel2 extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void preparation() {
+        ConfigModel config = ConfigHelper.readConfig();
+        if (config != null) {
+            lblWelcome.setText("Welcome " + config.getNamaDokter());
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +43,7 @@ public class LoginPanel2 extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblWelcome = new javax.swing.JLabel();
         btnMasuk = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
 
@@ -59,15 +67,15 @@ public class LoginPanel2 extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(7, 0, 7, 0);
         add(jLabel3, gridBagConstraints);
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
-        jLabel4.setText("Welcome Dr. Seno");
+        lblWelcome.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        lblWelcome.setText("Welcome Dr. Seno");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 6.4;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
-        add(jLabel4, gridBagConstraints);
+        add(lblWelcome, gridBagConstraints);
 
         btnMasuk.setText("Masuk");
         btnMasuk.addActionListener(new java.awt.event.ActionListener() {
@@ -92,12 +100,12 @@ public class LoginPanel2 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
-        if(txtPassword.getText().isEmpty()){
+        if (txtPassword.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Harap isi password");
-        }else{
-            if(txtPassword.getText().equals(ConfigHelper.readConfig().getPassword())){
+        } else {
+            if (ZHash.hashSHA256(txtPassword.getText()).equals(ConfigHelper.readConfig().getPassword())) {
                 MainFrame.instance.showMainMenu();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Password Salah");
             }
         }
@@ -108,7 +116,7 @@ public class LoginPanel2 extends javax.swing.JPanel {
     private javax.swing.JButton btnMasuk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

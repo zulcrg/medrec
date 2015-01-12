@@ -7,7 +7,7 @@ package com.jtk.medicalrecord.view.panel;
 
 import com.jtk.medicalrecord.model.ConfigModel;
 import com.jtk.medicalrecord.util.ConfigHelper;
-import com.zlib.util.ZHash;
+import com.jtk.medicalrecord.view.MainFrame;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 
@@ -22,6 +22,11 @@ public class RegistrasiAkun extends javax.swing.JPanel {
      */
     public RegistrasiAkun() {
         initComponents();
+        
+    }
+
+    public void preparation() {
+
     }
 
     /**
@@ -44,8 +49,8 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         txtNoTelp = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -130,12 +135,6 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         add(jLabel6, gridBagConstraints);
 
-        txtPassword.setPreferredSize(new java.awt.Dimension(300, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        add(txtPassword, gridBagConstraints);
-
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +150,12 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         gridBagConstraints.weighty = 3.7;
         gridBagConstraints.insets = new java.awt.Insets(21, 0, 21, 0);
         add(btnSubmit, gridBagConstraints);
+
+        txtPassword.setPreferredSize(new java.awt.Dimension(300, 25));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        add(txtPassword, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -172,8 +177,10 @@ public class RegistrasiAkun extends javax.swing.JPanel {
             cm.setNoTelp(txtNoTelp.getText());
             cm.setPassword(txtPassword.getText());
             cm.setTempatPraktek(txtTempatPraktek.getText());
-            
+
             ConfigHelper.creaeteConfig(cm);
+            JOptionPane.showMessageDialog(null, "Registrasi Berhasil");
+            MainFrame.instance.showLoginPanel2();
         }
 
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -190,7 +197,7 @@ public class RegistrasiAkun extends javax.swing.JPanel {
     private javax.swing.JTextField txtAlamat;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNoTelp;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtTempatPraktek;
     // End of variables declaration//GEN-END:variables
 }
