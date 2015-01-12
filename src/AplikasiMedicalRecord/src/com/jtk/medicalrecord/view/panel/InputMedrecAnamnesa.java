@@ -29,8 +29,6 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,10 +43,6 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
-
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -57,12 +51,14 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("Keluhan Utama");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jLabel2, gridBagConstraints);
 
         jTextArea1.setColumns(20);
@@ -73,12 +69,14 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jScrollPane1, gridBagConstraints);
 
         jLabel3.setText("Anamnesa Khusus");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jLabel3, gridBagConstraints);
 
         jTextArea2.setColumns(20);
@@ -89,12 +87,14 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jScrollPane2, gridBagConstraints);
 
         jLabel4.setText("Riwayat Penyakit Dahulu");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jLabel4, gridBagConstraints);
 
         jTextArea3.setColumns(20);
@@ -105,12 +105,14 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jScrollPane3, gridBagConstraints);
 
         jLabel5.setText("Riwayat Penyakit Keluarga");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jLabel5, gridBagConstraints);
 
         jTextArea5.setColumns(20);
@@ -122,6 +124,7 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jScrollPane5, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,12 +138,10 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
     // End of variables declaration//GEN-END:variables
 }

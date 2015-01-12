@@ -29,7 +29,6 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jTextField4 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -45,8 +44,6 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
-        jTextField4.setText("jTextField4");
-
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -55,6 +52,7 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("Kesadaran");
@@ -62,7 +60,7 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 4, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 5, 4, 5);
         add(jLabel2, gridBagConstraints);
 
         jTextField1.setPreferredSize(new java.awt.Dimension(182, 20));
@@ -74,65 +72,70 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jTextField1, gridBagConstraints);
 
         jLabel3.setText("Laju Nafas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 4, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 5, 4, 5);
         add(jLabel3, gridBagConstraints);
 
         jTextField2.setPreferredSize(new java.awt.Dimension(182, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jTextField2, gridBagConstraints);
 
         jLabel4.setText("Suhu Tubuh");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 0);
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         add(jLabel4, gridBagConstraints);
 
         jTextField3.setPreferredSize(new java.awt.Dimension(182, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jTextField3, gridBagConstraints);
 
         jLabel5.setText("Laju Nadi");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 0);
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         add(jLabel5, gridBagConstraints);
 
         jTextField5.setPreferredSize(new java.awt.Dimension(182, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jTextField5, gridBagConstraints);
 
         jLabel6.setText("Tekanan Darah");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 0);
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         add(jLabel6, gridBagConstraints);
 
         jTextField6.setPreferredSize(new java.awt.Dimension(182, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jTextField6, gridBagConstraints);
 
         jLabel7.setText("Lain - Lain");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 0, 3, 0);
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         add(jLabel7, gridBagConstraints);
 
         jTextArea1.setColumns(20);
@@ -143,7 +146,9 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weighty = 0.2;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jScrollPane1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,7 +170,6 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
