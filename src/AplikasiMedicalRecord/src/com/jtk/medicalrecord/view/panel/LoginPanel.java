@@ -19,6 +19,10 @@ public class LoginPanel extends javax.swing.JPanel {
     public LoginPanel() {
         initComponents();
     }
+    
+    public void preparation(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -22,6 +22,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public static final CardLayout cardLayout = new CardLayout();
     public static MainFrame instance;
+    private LoginPanel loginPanel = new LoginPanel();
+    private LoginPanel2 loginPanel2 = new LoginPanel2();
+    private RegistrasiAkun registrasiAkun = new RegistrasiAkun();
+    private MainMenu mainMenu = new MainMenu();
 
     /**
      * Creates new form MainFrame
@@ -31,6 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
         addCardLayout();
         setInstance();
         setLocationRelativeTo(null);
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     private void setInstance() {
@@ -38,10 +43,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void addCardLayout() {
-        LoginPanel loginPanel = new LoginPanel();
-        LoginPanel2 loginPanel2 = new LoginPanel2();
-        RegistrasiAkun registrasiAkun = new RegistrasiAkun();
-        MainMenu mainMenu = new MainMenu();
+        loginPanel.preparation();
+        loginPanel2.preparation();
+        registrasiAkun.preparation();
+        mainMenu.preparation();
 
         cardPanel.setLayout(cardLayout);
         cardPanel.add(loginPanel, CardLayoutEnum.LOGIN.toString());
@@ -58,18 +63,22 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void showRegistrasiAkun() {
+        registrasiAkun.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.REGISTRASI_AKUN.toString());
     }
 
     public void showLoginPanel() {
+        loginPanel.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.LOGIN.toString());
     }
 
     public void showLoginPanel2() {
+        loginPanel2.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.LOGIN2.toString());
     }
-    
+
     public void showMainMenu() {
+        mainMenu.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.MAIN_MENU.toString());
     }
 
