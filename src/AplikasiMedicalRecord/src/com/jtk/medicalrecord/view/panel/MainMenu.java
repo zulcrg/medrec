@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
+
+import com.jtk.medicalrecord.view.MainFrame;
 
 /**
  *
@@ -18,9 +19,9 @@ public class MainMenu extends javax.swing.JPanel {
     public MainMenu() {
         initComponents();
     }
-    
-    public void preparation(){
-        
+
+    public void preparation() {
+
     }
 
     /**
@@ -42,7 +43,7 @@ public class MainMenu extends javax.swing.JPanel {
         settingButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
-        setMinimumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(1026, 768));
         setPreferredSize(new java.awt.Dimension(1024, 768));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -59,9 +60,19 @@ public class MainMenu extends javax.swing.JPanel {
 
         synchronizeButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         synchronizeButton.setText("Sinkronisasi rekam medis dengan mobile");
+        synchronizeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                synchronizeButtonActionPerformed(evt);
+            }
+        });
 
         writeButton.setBackground(new java.awt.Color(204, 204, 255));
         writeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/write2.png"))); // NOI18N
+        writeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                writeButtonActionPerformed(evt);
+            }
+        });
 
         findButton.setBackground(new java.awt.Color(204, 204, 255));
         findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/search2.png"))); // NOI18N
@@ -73,6 +84,11 @@ public class MainMenu extends javax.swing.JPanel {
 
         settingButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         settingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/settings2.png"))); // NOI18N
+        settingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -127,8 +143,20 @@ public class MainMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-        // TODO add your handling code here:
+        MainFrame.instance.showLihatMedrec();
     }//GEN-LAST:event_findButtonActionPerformed
+
+    private void writeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_writeButtonActionPerformed
+        MainFrame.instance.showInputMedrec();
+    }//GEN-LAST:event_writeButtonActionPerformed
+
+    private void settingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingButtonActionPerformed
+        MainFrame.instance.showPengaturan();
+    }//GEN-LAST:event_settingButtonActionPerformed
+
+    private void synchronizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_synchronizeButtonActionPerformed
+        MainFrame.instance.showSync();
+    }//GEN-LAST:event_synchronizeButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

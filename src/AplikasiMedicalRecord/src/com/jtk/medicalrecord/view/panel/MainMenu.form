@@ -6,7 +6,7 @@
       <Color blue="ff" green="cc" red="cc" type="rgb"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1024, 768]"/>
+      <Dimension value="[1026, 768]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1024, 768]"/>
@@ -126,6 +126,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Sinkronisasi rekam medis dengan mobile"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="synchronizeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="writeButton">
       <Properties>
@@ -136,6 +139,9 @@
           <Image iconType="3" name="/com/jtk/medicalrecord/view/panel/write2.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="writeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="findButton">
       <Properties>
@@ -159,6 +165,9 @@
           <Image iconType="3" name="/com/jtk/medicalrecord/view/panel/settings2.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
