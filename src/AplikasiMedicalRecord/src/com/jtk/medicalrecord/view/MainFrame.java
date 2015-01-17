@@ -161,7 +161,6 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikasi Medical Record");
         setMinimumSize(new java.awt.Dimension(1024, 768));
-        setPreferredSize(new java.awt.Dimension(1024, 788));
 
         cardPanel.setMinimumSize(new java.awt.Dimension(1024, 768));
         cardPanel.setPreferredSize(new java.awt.Dimension(1024, 768));
