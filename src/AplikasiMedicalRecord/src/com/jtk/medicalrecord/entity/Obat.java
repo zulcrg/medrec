@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Obat.findAll", query = "SELECT o FROM Obat o"),
     @NamedQuery(name = "Obat.findByObatId", query = "SELECT o FROM Obat o WHERE o.obatId = :obatId"),
+    @NamedQuery(name = "Obat.findByObatIdOrNamaOrJenis", query = "SELECT o FROM Obat o WHERE o.obatId LIKE :obatId OR o.obatNama LIKE :obatNama OR o.obatJenis LIKE :obatJenis"),
     @NamedQuery(name = "Obat.findByObatJenis", query = "SELECT o FROM Obat o WHERE o.obatJenis = :obatJenis"),
     @NamedQuery(name = "Obat.findByObatNama", query = "SELECT o FROM Obat o WHERE o.obatNama = :obatNama")})
 public class Obat implements Serializable {

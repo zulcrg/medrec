@@ -6,6 +6,9 @@
 
 package com.jtk.medicalrecord.view.panel;
 
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author M Haska Ash Shiddiq
@@ -19,6 +22,30 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTextField getTxtKesadaran() {
+        return txtKesadaran;
+    }
+
+    public JTextArea getTxtLain() {
+        return txtLain;
+    }
+
+    public JTextField getTxtLajuNadi() {
+        return txtLajuNadi;
+    }
+
+    public JTextField getTxtLajuNafas() {
+        return txtLajuNafas;
+    }
+
+    public JTextField getTxtSuhuTubuh() {
+        return txtSuhuTubuh;
+    }
+
+    public JTextField getTxtTekananDarah() {
+        return txtTekananDarah;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,18 +57,18 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtKesadaran = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtLajuNafas = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtSuhuTubuh = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtLajuNadi = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtTekananDarah = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtLain = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -56,36 +83,36 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
 
         jLabel2.setText("Kesadaran");
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(182, 20));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtKesadaran.setPreferredSize(new java.awt.Dimension(182, 20));
+        txtKesadaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtKesadaranActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Laju Nafas");
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(182, 20));
+        txtLajuNafas.setPreferredSize(new java.awt.Dimension(182, 20));
 
         jLabel4.setText("Suhu Tubuh");
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(182, 20));
+        txtSuhuTubuh.setPreferredSize(new java.awt.Dimension(182, 20));
 
         jLabel5.setText("Laju Nadi");
 
-        jTextField5.setPreferredSize(new java.awt.Dimension(182, 20));
+        txtLajuNadi.setPreferredSize(new java.awt.Dimension(182, 20));
 
         jLabel6.setText("Tekanan Darah");
 
-        jTextField6.setPreferredSize(new java.awt.Dimension(182, 20));
+        txtTekananDarah.setPreferredSize(new java.awt.Dimension(182, 20));
 
         jLabel7.setText("Lain - Lain");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setMinimumSize(new java.awt.Dimension(53, 30));
-        jTextArea1.setPreferredSize(new java.awt.Dimension(53, 30));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtLain.setColumns(20);
+        txtLain.setRows(5);
+        txtLain.setMinimumSize(new java.awt.Dimension(53, 30));
+        txtLain.setPreferredSize(new java.awt.Dimension(53, 30));
+        jScrollPane1.setViewportView(txtLain);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,11 +130,11 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(0, 148, Short.MAX_VALUE))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtKesadaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtLajuNafas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtSuhuTubuh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtLajuNadi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTekananDarah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -122,23 +149,23 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtKesadaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLajuNafas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSuhuTubuh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLajuNadi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTekananDarah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -147,9 +174,9 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtKesadaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKesadaranActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtKesadaranActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -161,11 +188,11 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtKesadaran;
+    private javax.swing.JTextArea txtLain;
+    private javax.swing.JTextField txtLajuNadi;
+    private javax.swing.JTextField txtLajuNafas;
+    private javax.swing.JTextField txtSuhuTubuh;
+    private javax.swing.JTextField txtTekananDarah;
     // End of variables declaration//GEN-END:variables
 }

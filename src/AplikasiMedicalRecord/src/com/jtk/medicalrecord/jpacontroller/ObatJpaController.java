@@ -28,6 +28,9 @@ import javax.persistence.Persistence;
  */
 public class ObatJpaController implements Serializable {
 
+    public ObatJpaController() {
+    }
+
     public ObatJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
@@ -206,6 +209,15 @@ public class ObatJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    public List<Obat> findObatEntitiesByIdOrNamaOrJenis(String search){
+        Query query = getEntityManager().createNamedQuery("Obat.findByObatIdOrNamaOrJenis");
+        query.setParameter(":obatId", "%"+search+"%");
+        query.setParameter(":obatNama", "%"+search+"%");
+        query.setParameter(":obatJenis", "%"+search+"%");
+        
+        return query.getResultList();
     }
     
 }

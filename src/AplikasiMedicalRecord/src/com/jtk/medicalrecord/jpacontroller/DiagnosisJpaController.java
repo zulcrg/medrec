@@ -30,6 +30,9 @@ import javax.persistence.Persistence;
  */
 public class DiagnosisJpaController implements Serializable {
 
+    public DiagnosisJpaController() {
+    }
+
     public DiagnosisJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }

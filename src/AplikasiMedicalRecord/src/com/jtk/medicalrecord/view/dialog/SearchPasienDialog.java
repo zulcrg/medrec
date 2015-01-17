@@ -92,14 +92,22 @@ public class SearchPasienDialog extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnPilih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/check.png"))); // NOI18N
         btnPilih.setText("Pilih");
+        btnPilih.setMaximumSize(new java.awt.Dimension(93, 25));
+        btnPilih.setMinimumSize(new java.awt.Dimension(93, 25));
+        btnPilih.setPreferredSize(new java.awt.Dimension(93, 25));
         btnPilih.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPilihActionPerformed(evt);
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/plus.png"))); // NOI18N
         jButton1.setText("Tambah Pasien");
+        jButton1.setMaximumSize(new java.awt.Dimension(140, 25));
+        jButton1.setMinimumSize(new java.awt.Dimension(140, 25));
+        jButton1.setPreferredSize(new java.awt.Dimension(140, 25));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -158,7 +166,10 @@ public class SearchPasienDialog extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 990, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(840, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -166,14 +177,16 @@ public class SearchPasienDialog extends javax.swing.JDialog {
                         .addComponent(textSearch)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addGap(743, 743, 743)
+                            .addGap(0, 0, Short.MAX_VALUE)
                             .addComponent(btnPilih, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(400, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -181,9 +194,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnPilih)
-                        .addComponent(jButton1))
+                    .addComponent(btnPilih, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 

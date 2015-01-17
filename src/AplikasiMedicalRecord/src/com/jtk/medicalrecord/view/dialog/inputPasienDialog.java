@@ -214,7 +214,11 @@ public class inputPasienDialog extends javax.swing.JDialog {
         jLabel3.setText("Tempat Lahir*");
 
         btnDaftar.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnDaftar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/check.png"))); // NOI18N
         btnDaftar.setText("Daftar");
+        btnDaftar.setMaximumSize(new java.awt.Dimension(93, 25));
+        btnDaftar.setMinimumSize(new java.awt.Dimension(93, 25));
+        btnDaftar.setPreferredSize(new java.awt.Dimension(93, 25));
         btnDaftar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDaftarActionPerformed(evt);
@@ -252,7 +256,7 @@ public class inputPasienDialog extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel18)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDaftar))
+                            .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -313,7 +317,7 @@ public class inputPasienDialog extends javax.swing.JDialog {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
+            .addGap(0, 576, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -369,7 +373,7 @@ public class inputPasienDialog extends javax.swing.JDialog {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDaftar)
+                        .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel18))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );

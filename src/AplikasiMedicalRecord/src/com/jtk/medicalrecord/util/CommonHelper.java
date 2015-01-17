@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.util;
 
+import com.google.gson.Gson;
 import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -16,6 +16,7 @@ import javax.swing.table.TableColumnModel;
  * @author Zulkhair Abdullah D
  */
 public class CommonHelper {
+
     public static void resizeColumnWidth(JTable table) {
         final TableColumnModel columnModel = table.getColumnModel();
         for (int column = 0; column < table.getColumnCount(); column++) {
@@ -27,5 +28,10 @@ public class CommonHelper {
             }
             columnModel.getColumn(column).setPreferredWidth(width);
         }
+    }
+
+    public static void printToJson(Object object) {
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(object));
     }
 }

@@ -39,6 +39,10 @@ public class MedicalRecordJpaController implements Serializable {
     }
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");;
 
+    public MedicalRecordJpaController() {
+        
+    }
+
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }

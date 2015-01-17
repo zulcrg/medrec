@@ -6,6 +6,8 @@
 
 package com.jtk.medicalrecord.view.panel;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author M Haska Ash Shiddiq
@@ -17,6 +19,22 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
      */
     public InputMedrecAnamnesa() {
         initComponents();
+    }
+
+    public JTextArea getTxtAnamnesaKhusus() {
+        return txtAnamnesaKhusus;
+    }
+
+    public JTextArea getTxtKeluhanUtama() {
+        return txtKeluhanUtama;
+    }
+
+    public JTextArea getTxtRiwayatPenyakitDahulu() {
+        return txtRiwayatPenyakitDahulu;
+    }
+
+    public JTextArea getTxtRiwayatPenyakitKeluarga() {
+        return txtRiwayatPenyakitKeluarga;
     }
 
     /**
@@ -31,16 +49,16 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtKeluhanUtama = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtAnamnesaKhusus = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txtRiwayatPenyakitDahulu = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        txtRiwayatPenyakitKeluarga = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -53,38 +71,38 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Keluhan Utama");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setMinimumSize(new java.awt.Dimension(53, 20));
-        jTextArea1.setPreferredSize(new java.awt.Dimension(53, 20));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtKeluhanUtama.setColumns(20);
+        txtKeluhanUtama.setRows(5);
+        txtKeluhanUtama.setMinimumSize(new java.awt.Dimension(53, 20));
+        txtKeluhanUtama.setPreferredSize(new java.awt.Dimension(53, 20));
+        jScrollPane1.setViewportView(txtKeluhanUtama);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Anamnesa Khusus");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setMinimumSize(new java.awt.Dimension(53, 20));
-        jTextArea2.setPreferredSize(new java.awt.Dimension(53, 20));
-        jScrollPane2.setViewportView(jTextArea2);
+        txtAnamnesaKhusus.setColumns(20);
+        txtAnamnesaKhusus.setRows(5);
+        txtAnamnesaKhusus.setMinimumSize(new java.awt.Dimension(53, 20));
+        txtAnamnesaKhusus.setPreferredSize(new java.awt.Dimension(53, 20));
+        jScrollPane2.setViewportView(txtAnamnesaKhusus);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Riwayat Penyakit Dahulu");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jTextArea3.setMinimumSize(new java.awt.Dimension(53, 20));
-        jTextArea3.setPreferredSize(new java.awt.Dimension(53, 20));
-        jScrollPane3.setViewportView(jTextArea3);
+        txtRiwayatPenyakitDahulu.setColumns(20);
+        txtRiwayatPenyakitDahulu.setRows(5);
+        txtRiwayatPenyakitDahulu.setMinimumSize(new java.awt.Dimension(53, 20));
+        txtRiwayatPenyakitDahulu.setPreferredSize(new java.awt.Dimension(53, 20));
+        jScrollPane3.setViewportView(txtRiwayatPenyakitDahulu);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setText("Riwayat Penyakit Keluarga");
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jTextArea5.setMinimumSize(new java.awt.Dimension(53, 20));
-        jTextArea5.setPreferredSize(new java.awt.Dimension(53, 20));
-        jScrollPane5.setViewportView(jTextArea5);
+        txtRiwayatPenyakitKeluarga.setColumns(20);
+        txtRiwayatPenyakitKeluarga.setRows(5);
+        txtRiwayatPenyakitKeluarga.setMinimumSize(new java.awt.Dimension(53, 20));
+        txtRiwayatPenyakitKeluarga.setPreferredSize(new java.awt.Dimension(53, 20));
+        jScrollPane5.setViewportView(txtRiwayatPenyakitKeluarga);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -147,9 +165,9 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea txtAnamnesaKhusus;
+    private javax.swing.JTextArea txtKeluhanUtama;
+    private javax.swing.JTextArea txtRiwayatPenyakitDahulu;
+    private javax.swing.JTextArea txtRiwayatPenyakitKeluarga;
     // End of variables declaration//GEN-END:variables
 }

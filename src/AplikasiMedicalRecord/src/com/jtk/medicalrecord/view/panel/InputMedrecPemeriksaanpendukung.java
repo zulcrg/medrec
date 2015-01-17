@@ -3,8 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
+
+import com.jtk.medicalrecord.entity.MedicalRecord;
+import com.jtk.medicalrecord.entity.Obat;
+import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
+import com.jtk.medicalrecord.util.CommonHelper;
+import com.jtk.medicalrecord.util.MessageHelper;
+import com.zlib.util.ZClass;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -12,11 +33,42 @@ package com.jtk.medicalrecord.view.panel;
  */
 public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
 
+    private final List<PemeriksaanPendukung> pemeriksaanPendukungs = new ArrayList<>();
+    private MedicalRecord medicalRecord = null;
+
     /**
      * Creates new form InputMedrecPemeriksaanpendukung
      */
     public InputMedrecPemeriksaanpendukung() {
         initComponents();
+    }
+
+    public void preparation(MedicalRecord medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
+
+    private void createTableValue() {
+        Object[] columnsName = {"Nama File", "Tipe File"};
+
+        DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        for (PemeriksaanPendukung p : pemeriksaanPendukungs) {
+            Object[] o = new Object[2];
+            o[0] = p.getPemNmFile();
+            o[1] = p.getPemTipeFile();
+
+            dtm.addRow(o);
+        }
+        tblFile.setModel(dtm);
+        CommonHelper.resizeColumnWidth(tblFile);
+    }
+
+    public List<PemeriksaanPendukung> getPemeriksaanPendukungs() {
+        return pemeriksaanPendukungs;
     }
 
     /**
@@ -30,10 +82,10 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnTambah = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblFile = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -46,33 +98,40 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("File");
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(200, 200));
+        btnTambah.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/plus.png"))); // NOI18N
+        btnTambah.setText("Tambah");
+        btnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btnHapus.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/trash.png"))); // NOI18N
+        btnHapus.setText("Hapus");
+        btnHapus.setMaximumSize(new java.awt.Dimension(93, 25));
+        btnHapus.setMinimumSize(new java.awt.Dimension(93, 25));
+        btnHapus.setPreferredSize(new java.awt.Dimension(93, 25));
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        jScrollPane3.setMaximumSize(new java.awt.Dimension(164, 32767));
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(164, 23));
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(164, 100));
+
+        tblFile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nama File"
+                "Nama File", "Tipe File"
             }
         ));
-        jTable1.setPreferredSize(new java.awt.Dimension(200, 200));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/plus.png"))); // NOI18N
-        jButton1.setText("Tambah");
-        jButton1.setMaximumSize(new java.awt.Dimension(93, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(93, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(93, 25));
-
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/trash.png"))); // NOI18N
-        jButton2.setText("Hapus");
-        jButton2.setMaximumSize(new java.awt.Dimension(93, 25));
-        jButton2.setMinimumSize(new java.awt.Dimension(93, 25));
-        jButton2.setPreferredSize(new java.awt.Dimension(93, 25));
+        jScrollPane3.setViewportView(tblFile);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,16 +140,16 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTambah))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addGap(0, 6, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,22 +159,61 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTambah)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(352, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            String url = fileChooser.getSelectedFile().getAbsolutePath();
+            try {
+                InputStream is = new FileInputStream(new File(url));
+                String tipeFile = FilenameUtils.getExtension(url);
+                String namaFile = FilenameUtils.getBaseName(url);
+
+                PemeriksaanPendukung pp = new PemeriksaanPendukung();
+                pp.setPemId(UUID.randomUUID().toString().replace("-", ""));
+                pp.setPemNmFile(namaFile);
+                pp.setPemTipeFile(tipeFile);
+                pp.setPemFile(IOUtils.toByteArray(is));
+                pp.setMedicalRecord(medicalRecord);
+
+                pemeriksaanPendukungs.add(pp);
+
+                createTableValue();
+            } catch (FileNotFoundException ex) {
+                MessageHelper.addErrorMessage("Error add file", ex.getMessage());
+                Logger.getLogger(InputMedrecPemeriksaanpendukung.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                MessageHelper.addErrorMessage("Error add file", ex.getMessage());
+                Logger.getLogger(InputMedrecPemeriksaanpendukung.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnTambahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        if (tblFile.isRowSelected(tblFile.getSelectedRow())) {
+            pemeriksaanPendukungs.remove(tblFile.getSelectedRow());
+            createTableValue();
+        } else {
+            MessageHelper.addWarnMessage("Perhatian", "Harap pilih file terlebih dahulu");
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnTambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tblFile;
     // End of variables declaration//GEN-END:variables
 }

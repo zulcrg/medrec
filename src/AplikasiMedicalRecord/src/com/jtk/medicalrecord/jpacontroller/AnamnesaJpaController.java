@@ -29,6 +29,9 @@ import javax.persistence.Persistence;
  */
 public class AnamnesaJpaController implements Serializable {
 
+    public AnamnesaJpaController() {
+    }
+
     public AnamnesaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }

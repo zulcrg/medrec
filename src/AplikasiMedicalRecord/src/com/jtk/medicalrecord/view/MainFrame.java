@@ -8,7 +8,6 @@ package com.jtk.medicalrecord.view;
 import com.jtk.medicalrecord.util.CardLayoutEnum;
 import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.view.panel.InputMedrec;
-import com.jtk.medicalrecord.view.panel.InputMedrecAnamnesa;
 import com.jtk.medicalrecord.view.panel.LihatMedrec;
 import com.jtk.medicalrecord.view.panel.LoginPanel;
 import com.jtk.medicalrecord.view.panel.LoginPanel2;
@@ -112,36 +111,43 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void showInputMedrec() {
         mainMenu.preparation();
+        inputMedrec.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.INPUT_MEDREC.toString());
     }
 
     public void showLihatMedrec() {
         mainMenu.preparation();
+        lihatMedrec.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.LIHAT_MEDREC.toString());
     }
 
     public void showPengaturan() {
         mainMenu.preparation();
+        pengaturan.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN.toString());
     }
 
     public void showPengaturanAkun() {
         mainMenu.preparation();
+        pengaturanAkun.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN_AKUN.toString());
     }
 
     public void showPengaturanBr() {
         mainMenu.preparation();
+        pengaturanBR.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN_BR.toString());
     }
 
     public void showPengaturanWaktu() {
         mainMenu.preparation();
+        pengaturanWaktu.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN_WAKTU.toString());
     }
 
     public void showSync() {
         mainMenu.preparation();
+        synchronizeLoading.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.SYNC.toString());
         synchronizeLoading.synch();
     }
