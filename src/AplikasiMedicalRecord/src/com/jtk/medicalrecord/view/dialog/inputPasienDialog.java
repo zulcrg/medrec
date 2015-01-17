@@ -141,24 +141,34 @@ public class inputPasienDialog extends javax.swing.JDialog {
         radCewe = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Silahkan masukan data pasien : ");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Nama*");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Tempat Lahir*");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Tanggal Lahir*");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setText("Alamat*");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel6.setText("Gol Darah*");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel7.setText("Pekerjaan*");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel8.setText("Jenis Kelamin*");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel9.setText("Lain-lain");
 
         jLabel10.setText(":");
@@ -183,10 +193,13 @@ public class inputPasienDialog extends javax.swing.JDialog {
 
         txtPekerjaan.setPreferredSize(new java.awt.Dimension(400, 20));
 
+        jScrollPane1.setBackground(new java.awt.Color(204, 204, 255));
+
         txtAlamat.setColumns(20);
         txtAlamat.setRows(5);
         jScrollPane1.setViewportView(txtAlamat);
 
+        btnDaftar.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnDaftar.setText("Daftar");
         btnDaftar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,23 +207,28 @@ public class inputPasienDialog extends javax.swing.JDialog {
             }
         });
 
+        cboGloDar.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         cboGloDar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "AB", "O" }));
 
         txtLain.setColumns(20);
         txtLain.setRows(5);
         jScrollPane2.setViewportView(txtLain);
 
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel18.setText("* : Wajib diisi");
 
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel19.setText("NIK*");
         jLabel19.setPreferredSize(new java.awt.Dimension(33, 14));
 
         jLabel20.setText(":");
 
         buttonGroup1.add(radLaki);
+        radLaki.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         radLaki.setText("Laki-laki");
 
         buttonGroup1.add(radCewe);
+        radCewe.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         radCewe.setText("Perempuan");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -341,7 +359,7 @@ public class inputPasienDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDaftar)
                     .addComponent(jLabel18))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
