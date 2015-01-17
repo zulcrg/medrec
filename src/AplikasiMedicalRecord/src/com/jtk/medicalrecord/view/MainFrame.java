@@ -50,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         addCardLayout();
         setInstance();
         setLocationRelativeTo(null);
-        setExtendedState(MAXIMIZED_BOTH);
+        //setExtendedState(MAXIMIZED_BOTH);
     }
 
     private void setInstance() {

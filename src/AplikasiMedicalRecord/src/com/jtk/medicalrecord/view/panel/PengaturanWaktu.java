@@ -83,7 +83,8 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         jButton2.setText("Submit");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.weighty = 0.4;
+        gridBagConstraints.weighty = 0.9;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 8, 0);
         add(jButton2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
