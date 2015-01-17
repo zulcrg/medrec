@@ -126,24 +126,24 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Sinkronisasi rekam medis dengan mobile"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="synchronizeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="writeButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\write2.png"/>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="writeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="findButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\search2.png"/>
         </Property>
       </Properties>
       <Events>
@@ -155,10 +155,10 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="11" style="0"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\settings2.png"/>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
