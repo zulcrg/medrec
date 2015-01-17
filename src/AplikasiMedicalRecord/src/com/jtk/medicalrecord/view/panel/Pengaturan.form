@@ -136,7 +136,7 @@
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\settings - account2.png"/>
+          <Image iconType="3" name="/com/jtk/medicalrecord/view/panel/settings - account2.png"/>
         </Property>
       </Properties>
       <Events>
@@ -146,7 +146,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\settings - time2.png"/>
+          <Image iconType="3" name="/com/jtk/medicalrecord/view/panel/settings - time2.png"/>
         </Property>
       </Properties>
       <Events>
@@ -156,7 +156,7 @@
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\setting - backuprestore2.png"/>
+          <Image iconType="3" name="/com/jtk/medicalrecord/view/panel/setting - backuprestore2.png"/>
         </Property>
       </Properties>
       <Events>

@@ -42,7 +42,7 @@ public class MainMenu extends javax.swing.JPanel {
         settingButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
-        setMinimumSize(new java.awt.Dimension(1026, 768));
+        setMinimumSize(new java.awt.Dimension(1024, 768));
         setPreferredSize(new java.awt.Dimension(1024, 768));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -61,10 +61,10 @@ public class MainMenu extends javax.swing.JPanel {
         synchronizeButton.setText("Sinkronisasi rekam medis dengan mobile");
 
         writeButton.setBackground(new java.awt.Color(204, 204, 255));
-        writeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\M Haska Ash Shiddiq\\medrec\\src\\AplikasiMedicalRecord\\src\\com\\jtk\\medicalrecord\\image\\write2.png")); // NOI18N
+        writeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/write2.png"))); // NOI18N
 
         findButton.setBackground(new java.awt.Color(204, 204, 255));
-        findButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\M Haska Ash Shiddiq\\medrec\\src\\AplikasiMedicalRecord\\src\\com\\jtk\\medicalrecord\\image\\search2.png")); // NOI18N
+        findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/search2.png"))); // NOI18N
         findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findButtonActionPerformed(evt);
@@ -72,7 +72,7 @@ public class MainMenu extends javax.swing.JPanel {
         });
 
         settingButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        settingButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\M Haska Ash Shiddiq\\medrec\\src\\AplikasiMedicalRecord\\src\\com\\jtk\\medicalrecord\\image\\settings2.png")); // NOI18N
+        settingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/settings2.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
