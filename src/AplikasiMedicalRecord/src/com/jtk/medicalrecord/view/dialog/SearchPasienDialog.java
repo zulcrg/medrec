@@ -53,7 +53,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
             }
         };
         for (Pasien p : pasiens) {
-            Object[] o = new Object[2];
+            Object[] o = new Object[5];
             o[0] = p.getPasId();
             o[1] = p.getPasNama();
             o[2] = p.getPasTmpLhr();
@@ -206,7 +206,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         inputPasienDialog dialog = new inputPasienDialog(null, true);
         dialog.show();
-        pasiens = pasienJpaController.findPasienByNikOrName(textSearch.getText());
+        pasiens = pasienJpaController.findPasienEntities();
         createTableValue();
     }//GEN-LAST:event_jButton1ActionPerformed
 

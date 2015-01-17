@@ -91,6 +91,8 @@ public class inputPasienDialog extends javax.swing.JDialog {
             pasien.setPasLainLain(txtLain.getText());
 
             pasienJpaController.create(pasien);
+            MessageHelper.addInfoMessage("Informasi", "Data pasien berhasil ditambahkan");
+            this.dispose();
         } catch (Exception ex) {
             MessageHelper.addErrorMessage("Error create pasien", ex.getMessage());
             Logger.getLogger(inputPasienDialog.class.getName()).log(Level.SEVERE, null, ex);
@@ -226,6 +228,7 @@ public class inputPasienDialog extends javax.swing.JDialog {
 
         buttonGroup1.add(radLaki);
         radLaki.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        radLaki.setSelected(true);
         radLaki.setText("Laki-laki");
 
         buttonGroup1.add(radCewe);
