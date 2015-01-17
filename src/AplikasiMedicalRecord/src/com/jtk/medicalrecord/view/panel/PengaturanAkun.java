@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
+
+import com.jtk.medicalrecord.view.MainFrame;
 
 /**
  *
@@ -17,6 +18,10 @@ public class PengaturanAkun extends javax.swing.JPanel {
      */
     public PengaturanAkun() {
         initComponents();
+    }
+
+    public void preparation() {
+
     }
 
     /**
@@ -132,6 +137,11 @@ public class PengaturanAkun extends javax.swing.JPanel {
         add(jTextField6, gridBagConstraints);
 
         jButton1.setText("Kembali");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -162,6 +172,10 @@ public class PengaturanAkun extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainFrame.instance.showPengaturan();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

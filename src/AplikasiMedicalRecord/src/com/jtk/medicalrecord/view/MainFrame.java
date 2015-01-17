@@ -7,10 +7,18 @@ package com.jtk.medicalrecord.view;
 
 import com.jtk.medicalrecord.util.CardLayoutEnum;
 import com.jtk.medicalrecord.util.ConfigHelper;
+import com.jtk.medicalrecord.view.panel.InputMedrec;
+import com.jtk.medicalrecord.view.panel.InputMedrecAnamnesa;
+import com.jtk.medicalrecord.view.panel.LihatMedrec;
 import com.jtk.medicalrecord.view.panel.LoginPanel;
 import com.jtk.medicalrecord.view.panel.LoginPanel2;
 import com.jtk.medicalrecord.view.panel.MainMenu;
+import com.jtk.medicalrecord.view.panel.Pengaturan;
+import com.jtk.medicalrecord.view.panel.PengaturanAkun;
+import com.jtk.medicalrecord.view.panel.PengaturanBR;
+import com.jtk.medicalrecord.view.panel.PengaturanWaktu;
 import com.jtk.medicalrecord.view.panel.RegistrasiAkun;
+import com.jtk.medicalrecord.view.panel.SynchronizeLoading;
 import java.awt.CardLayout;
 import javax.swing.UIManager;
 
@@ -22,10 +30,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     public static final CardLayout cardLayout = new CardLayout();
     public static MainFrame instance;
-    private LoginPanel loginPanel = new LoginPanel();
-    private LoginPanel2 loginPanel2 = new LoginPanel2();
-    private RegistrasiAkun registrasiAkun = new RegistrasiAkun();
-    private MainMenu mainMenu = new MainMenu();
+    private final LoginPanel loginPanel = new LoginPanel();
+    private final LoginPanel2 loginPanel2 = new LoginPanel2();
+    private final RegistrasiAkun registrasiAkun = new RegistrasiAkun();
+    private final MainMenu mainMenu = new MainMenu();
+    private final InputMedrec inputMedrec = new InputMedrec();
+    private final LihatMedrec lihatMedrec = new LihatMedrec();
+    private final Pengaturan pengaturan = new Pengaturan();
+    private final PengaturanAkun pengaturanAkun = new PengaturanAkun();
+    private final PengaturanBR pengaturanBR = new PengaturanBR();
+    private final PengaturanWaktu pengaturanWaktu = new PengaturanWaktu();
+    private final SynchronizeLoading synchronizeLoading = new SynchronizeLoading();
 
     /**
      * Creates new form MainFrame
@@ -46,13 +61,26 @@ public class MainFrame extends javax.swing.JFrame {
         loginPanel.preparation();
         loginPanel2.preparation();
         registrasiAkun.preparation();
-        mainMenu.preparation();
+        inputMedrec.preparation();
+        lihatMedrec.preparation();
+        pengaturan.preparation();
+        pengaturanAkun.preparation();
+        pengaturanBR.preparation();
+        pengaturanWaktu.preparation();
+        synchronizeLoading.preparation();
 
         cardPanel.setLayout(cardLayout);
         cardPanel.add(loginPanel, CardLayoutEnum.LOGIN.toString());
         cardPanel.add(loginPanel2, CardLayoutEnum.LOGIN2.toString());
         cardPanel.add(registrasiAkun, CardLayoutEnum.REGISTRASI_AKUN.toString());
         cardPanel.add(mainMenu, CardLayoutEnum.MAIN_MENU.toString());
+        cardPanel.add(inputMedrec, CardLayoutEnum.INPUT_MEDREC.toString());
+        cardPanel.add(lihatMedrec, CardLayoutEnum.LIHAT_MEDREC.toString());
+        cardPanel.add(pengaturan, CardLayoutEnum.PENGATURAN.toString());
+        cardPanel.add(pengaturanAkun, CardLayoutEnum.PENGATURAN_AKUN.toString());
+        cardPanel.add(pengaturanBR, CardLayoutEnum.PENGATURAN_BR.toString());
+        cardPanel.add(pengaturanWaktu, CardLayoutEnum.PENGATURAN_WAKTU.toString());
+        cardPanel.add(synchronizeLoading, CardLayoutEnum.SYNC.toString());
 
         if (ConfigHelper.readConfig() == null) {
             showLoginPanel();
@@ -80,6 +108,41 @@ public class MainFrame extends javax.swing.JFrame {
     public void showMainMenu() {
         mainMenu.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.MAIN_MENU.toString());
+    }
+
+    public void showInputMedrec() {
+        mainMenu.preparation();
+        cardLayout.show(cardPanel, CardLayoutEnum.INPUT_MEDREC.toString());
+    }
+
+    public void showLihatMedrec() {
+        mainMenu.preparation();
+        cardLayout.show(cardPanel, CardLayoutEnum.LIHAT_MEDREC.toString());
+    }
+
+    public void showPengaturan() {
+        mainMenu.preparation();
+        cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN.toString());
+    }
+
+    public void showPengaturanAkun() {
+        mainMenu.preparation();
+        cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN_AKUN.toString());
+    }
+
+    public void showPengaturanBr() {
+        mainMenu.preparation();
+        cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN_BR.toString());
+    }
+
+    public void showPengaturanWaktu() {
+        mainMenu.preparation();
+        cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN_WAKTU.toString());
+    }
+
+    public void showSync() {
+        mainMenu.preparation();
+        cardLayout.show(cardPanel, CardLayoutEnum.SYNC.toString());
     }
 
     /**

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
 
 /**
@@ -17,6 +16,10 @@ public class SynchronizeLoading extends javax.swing.JPanel {
      */
     public SynchronizeLoading() {
         initComponents();
+    }
+
+    public void preparation() {
+
     }
 
     /**

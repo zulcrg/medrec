@@ -74,9 +74,9 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="settingButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="findButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="settingButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="writeButton" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -133,24 +133,24 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Sinkronisasi rekam medis dengan mobile"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="synchronizeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="writeButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\write2.png"/>
-        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="writeButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="findButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\M Haska Ash Shiddiq\medrec\src\AplikasiMedicalRecord\src\com\jtk\medicalrecord\image\search2.png"/>
         </Property>
       </Properties>
       <Events>
@@ -161,6 +161,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton7"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

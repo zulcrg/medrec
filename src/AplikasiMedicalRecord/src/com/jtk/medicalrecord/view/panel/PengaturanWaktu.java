@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
+
+import com.jtk.medicalrecord.view.MainFrame;
 
 /**
  *
@@ -17,6 +18,10 @@ public class PengaturanWaktu extends javax.swing.JPanel {
      */
     public PengaturanWaktu() {
         initComponents();
+    }
+
+    public void preparation() {
+
     }
 
     /**
@@ -83,7 +88,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        MainFrame.instance.showPengaturan();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
