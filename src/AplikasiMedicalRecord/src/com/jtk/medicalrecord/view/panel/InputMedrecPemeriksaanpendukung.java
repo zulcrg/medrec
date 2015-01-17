@@ -5,12 +5,9 @@
  */
 package com.jtk.medicalrecord.view.panel;
 
-import com.jtk.medicalrecord.entity.MedicalRecord;
-import com.jtk.medicalrecord.entity.Obat;
 import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
 import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
-import com.zlib.util.ZClass;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,7 +19,6 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -34,17 +30,12 @@ import org.apache.commons.io.IOUtils;
 public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
 
     private final List<PemeriksaanPendukung> pemeriksaanPendukungs = new ArrayList<>();
-    private MedicalRecord medicalRecord = null;
 
     /**
      * Creates new form InputMedrecPemeriksaanpendukung
      */
     public InputMedrecPemeriksaanpendukung() {
         initComponents();
-    }
-
-    public void preparation(MedicalRecord medicalRecord) {
-        this.medicalRecord = medicalRecord;
     }
 
     private void createTableValue() {
@@ -183,7 +174,6 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
                 pp.setPemNmFile(namaFile);
                 pp.setPemTipeFile(tipeFile);
                 pp.setPemFile(IOUtils.toByteArray(is));
-                pp.setMedicalRecord(medicalRecord);
 
                 pemeriksaanPendukungs.add(pp);
 

@@ -9,15 +9,19 @@ import com.jtk.medicalrecord.entity.Anamnesa;
 import com.jtk.medicalrecord.entity.AnamnesaPK;
 import com.jtk.medicalrecord.entity.Diagnosis;
 import com.jtk.medicalrecord.entity.DiagnosisPK;
+import com.jtk.medicalrecord.entity.Dosis;
 import com.jtk.medicalrecord.entity.MedicalRecord;
 import com.jtk.medicalrecord.entity.MedicalRecordPK;
 import com.jtk.medicalrecord.entity.Pasien;
 import com.jtk.medicalrecord.entity.PemeriksaanFisik;
 import com.jtk.medicalrecord.entity.PemeriksaanFisikPK;
+import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
 import com.jtk.medicalrecord.jpacontroller.AnamnesaJpaController;
 import com.jtk.medicalrecord.jpacontroller.DiagnosisJpaController;
+import com.jtk.medicalrecord.jpacontroller.DosisJpaController;
 import com.jtk.medicalrecord.jpacontroller.MedicalRecordJpaController;
 import com.jtk.medicalrecord.jpacontroller.PemeriksaanFisikJpaController;
+import com.jtk.medicalrecord.jpacontroller.PemeriksaanPendukungJpaController;
 import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
@@ -36,6 +40,8 @@ public class InputMedrec extends javax.swing.JPanel {
     private final AnamnesaJpaController anamnesaJpaController = new AnamnesaJpaController();
     private final PemeriksaanFisikJpaController pemeriksaanFisikJpaController = new PemeriksaanFisikJpaController();
     private final DiagnosisJpaController diagnosisJpaController = new DiagnosisJpaController();
+    private final PemeriksaanPendukungJpaController pemeriksaanPendukungJpaController = new PemeriksaanPendukungJpaController();
+    private final DosisJpaController dosisJpaController = new DosisJpaController();
     private Pasien pasien;
     private final MedicalRecord medicalRecord = new MedicalRecord();
     private final Diagnosis diagnosis = new Diagnosis();
@@ -50,10 +56,10 @@ public class InputMedrec extends javax.swing.JPanel {
     }
 
     public void preparation() {
-        pnlAnamnesa = new InputMedrecAnamnesa();
-        pnlDiagnosa = new InputMedrecDiagnosa();
-        pnlPemeriksaanFisik = new InputMedrecPemeriksaanfisik();
-        pnlPemeriksaanPendukung = new InputMedrecPemeriksaanpendukung();
+//        pnlAnamnesa = new InputMedrecAnamnesa();
+//        pnlDiagnosa = new InputMedrecDiagnosa();
+//        pnlPemeriksaanFisik = new InputMedrecPemeriksaanfisik();
+//        pnlPemeriksaanPendukung = new InputMedrecPemeriksaanpendukung();
         pasien = null;
         txtPasien.setText("");
     }
@@ -69,13 +75,9 @@ public class InputMedrec extends javax.swing.JPanel {
                 medicalRecord.setMedicalRecordPK(medicalRecordPK);
 
                 constructAnamnesa();
-                CommonHelper.printToJson(anamnesa);
                 constructPemFisik();
-                CommonHelper.printToJson(pemeriksaanFisik);
                 constructDiagnosis();
-                CommonHelper.printToJson(diagnosis);
 
-                medicalRecord.setPemeriksaanPendukungList(pnlPemeriksaanPendukung.getPemeriksaanPendukungs());
                 medicalRecord.setMedTanggal(new Date(medicalRecordPK.getMedId()));
                 medicalRecord.setPasien(pasien);
 
@@ -83,6 +85,16 @@ public class InputMedrec extends javax.swing.JPanel {
                 anamnesaJpaController.create(anamnesa);
                 pemeriksaanFisikJpaController.create(pemeriksaanFisik);
                 diagnosisJpaController.create(diagnosis);
+                for (PemeriksaanPendukung object : pnlPemeriksaanPendukung.getPemeriksaanPendukungs()) {
+                    object.setMedicalRecord(medicalRecord);
+                    pemeriksaanPendukungJpaController.create(object);
+                }
+                for (Dosis object : pnlDiagnosa.getDosises()) {
+                    object.getDosisPK().setMedId(medicalRecordPK.getMedId());
+                    object.getDosisPK().setPasId(pasien.getPasId());
+                    object.setDiagnosis(diagnosis);
+                    dosisJpaController.create(object);
+                }
                 MessageHelper.addInfoMessage("Informasi", "Data medical record berhasil ditambahkan");
             } catch (Exception ex) {
                 MessageHelper.addErrorMessage("Error create Medrec", ex.getMessage());
@@ -129,7 +141,6 @@ public class InputMedrec extends javax.swing.JPanel {
         diagnosis.setDgKerja(pnlDiagnosa.getTxtDiagnosisBanding().getText());
         diagnosis.setDgPengobatan(pnlDiagnosa.getTxtDiagnosisBanding().getText());
         diagnosis.setDgPrognosis(pnlDiagnosa.getTxtDiagnosisBanding().getText());
-        diagnosis.setDosisList(pnlDiagnosa.getDosises());
         diagnosis.setMedicalRecord(medicalRecord);
         diagnosis.setDiagnosisPK(diagnosisPK);
     }

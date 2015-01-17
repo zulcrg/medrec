@@ -28,6 +28,9 @@ import javax.persistence.Persistence;
  */
 public class DosisJpaController implements Serializable {
 
+    public DosisJpaController() {
+    }
+
     public DosisJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }

@@ -26,6 +26,9 @@ import javax.persistence.Persistence;
  */
 public class PemeriksaanPendukungJpaController implements Serializable {
 
+    public PemeriksaanPendukungJpaController() {
+    }
+
     public PemeriksaanPendukungJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
