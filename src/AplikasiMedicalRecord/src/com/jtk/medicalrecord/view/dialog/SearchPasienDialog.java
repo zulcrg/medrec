@@ -39,6 +39,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
         this.pasien = pasien;
         pasiens = pasienJpaController.findPasienEntities();
         createTableValue();
+        setLocationRelativeTo(null);
     }
 
     private void createTableValue() {
@@ -205,6 +206,8 @@ public class SearchPasienDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         inputPasienDialog dialog = new inputPasienDialog(null, true);
         dialog.show();
+        pasiens = pasienJpaController.findPasienByNikOrName(textSearch.getText());
+        createTableValue();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
