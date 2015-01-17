@@ -42,7 +42,7 @@ public class Pengaturan extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1024, 768));
         setPreferredSize(new java.awt.Dimension(1024, 768));
 

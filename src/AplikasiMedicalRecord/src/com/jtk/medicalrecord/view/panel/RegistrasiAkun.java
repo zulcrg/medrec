@@ -52,7 +52,7 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

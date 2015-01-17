@@ -37,7 +37,7 @@ public class SynchronizeLoading extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

@@ -40,7 +40,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

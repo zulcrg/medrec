@@ -42,7 +42,7 @@ public class MainMenu extends javax.swing.JPanel {
         findButton = new javax.swing.JButton();
         settingButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1026, 768));
         setPreferredSize(new java.awt.Dimension(1024, 768));
 
@@ -66,7 +66,8 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
-        writeButton.setBackground(new java.awt.Color(204, 204, 255));
+        writeButton.setBackground(new java.awt.Color(255, 255, 255));
+        writeButton.setForeground(new java.awt.Color(255, 255, 255));
         writeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/write2.png"))); // NOI18N
         writeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +75,8 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
-        findButton.setBackground(new java.awt.Color(204, 204, 255));
+        findButton.setBackground(new java.awt.Color(255, 255, 255));
+        findButton.setForeground(new java.awt.Color(255, 255, 255));
         findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/search2.png"))); // NOI18N
         findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +84,9 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
+        settingButton.setBackground(new java.awt.Color(255, 255, 255));
         settingButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        settingButton.setForeground(new java.awt.Color(255, 255, 255));
         settingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/settings2.png"))); // NOI18N
         settingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
