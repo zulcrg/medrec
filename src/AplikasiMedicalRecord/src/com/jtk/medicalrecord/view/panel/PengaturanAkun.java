@@ -5,7 +5,11 @@
  */
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.model.ConfigModel;
+import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.view.MainFrame;
+import java.util.UUID;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -171,13 +175,23 @@ public class PengaturanAkun extends javax.swing.JPanel {
                 .addGap(184, 184, 184))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /*
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
-
+    */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        ConfigModel cm = new ConfigModel();
+            cm.setId(UUID.randomUUID().toString().replace("-", ""));
+            cm.setAlamat(jTextField1.getText());
+            cm.setNamaDokter(jTextField2.getText());
+            cm.setNoTelp(jTextField3.getText());
+            cm.setPassword(jTextField4.getText());
+            cm.setTempatPraktek(jTextField5.getText());
+
+            ConfigHelper.creaeteConfig(cm);
+            JOptionPane.showMessageDialog(null, "Update Berhasil");
+            MainFrame.instance.showPengaturan();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
