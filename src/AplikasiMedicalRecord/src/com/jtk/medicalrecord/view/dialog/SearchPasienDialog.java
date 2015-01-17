@@ -7,6 +7,7 @@ package com.jtk.medicalrecord.view.dialog;
 
 import com.jtk.medicalrecord.entity.Pasien;
 import com.jtk.medicalrecord.jpacontroller.PasienJpaController;
+import com.jtk.medicalrecord.util.CommonHelper;
 import com.zlib.util.ZClass;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
@@ -61,6 +62,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
             dtm.addRow(o);
         }
         tblPasien.setModel(dtm);
+        CommonHelper.resizeColumnWidth(tblPasien);
     }
 
     private void select() {
