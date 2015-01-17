@@ -35,9 +35,10 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Waktu Penghapusan");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -47,6 +48,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 90, 30, 90);
         add(jLabel1, gridBagConstraints);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Berapa lama rekam medis akan disimpan didalam aplikasi");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 2;
@@ -60,6 +62,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.9;
         add(jSpinner1, gridBagConstraints);
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton1.setText("Kembali");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +74,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         gridBagConstraints.weightx = 0.1;
         add(jButton1, gridBagConstraints);
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton2.setText("Submit");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 4;

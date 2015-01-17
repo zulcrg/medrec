@@ -34,9 +34,10 @@ public class SynchronizeLoading extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Aplikasi Medical Record");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -46,6 +47,7 @@ public class SynchronizeLoading extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(9, 66, 9, 67);
         add(jLabel1, gridBagConstraints);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Sedang Menyinkronkan akun desktop dengan akun mobile");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
@@ -53,6 +55,7 @@ public class SynchronizeLoading extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(8, 0, 8, 0);
         add(jLabel2, gridBagConstraints);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Mohon tunggu untuk beberapa saat");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 2;
