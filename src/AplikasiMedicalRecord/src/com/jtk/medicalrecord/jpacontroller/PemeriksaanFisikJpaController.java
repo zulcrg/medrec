@@ -6,21 +6,22 @@
 
 package com.jtk.medicalrecord.jpacontroller;
 
+import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import com.jtk.medicalrecord.entity.MedicalRecord;
 import com.jtk.medicalrecord.entity.PemeriksaanFisik;
 import com.jtk.medicalrecord.entity.PemeriksaanFisikPK;
 import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
 import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
 import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
-import java.io.Serializable;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -31,7 +32,7 @@ public class PemeriksaanFisikJpaController implements Serializable {
     public PemeriksaanFisikJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -41,8 +42,8 @@ public class PemeriksaanFisikJpaController implements Serializable {
         if (pemeriksaanFisik.getPemeriksaanFisikPK() == null) {
             pemeriksaanFisik.setPemeriksaanFisikPK(new PemeriksaanFisikPK());
         }
-        pemeriksaanFisik.getPemeriksaanFisikPK().setMedId(pemeriksaanFisik.getMedicalRecord().getMedicalRecordPK().getMedId());
         pemeriksaanFisik.getPemeriksaanFisikPK().setPasId(pemeriksaanFisik.getMedicalRecord().getMedicalRecordPK().getPasId());
+        pemeriksaanFisik.getPemeriksaanFisikPK().setMedId(pemeriksaanFisik.getMedicalRecord().getMedicalRecordPK().getMedId());
         List<String> illegalOrphanMessages = null;
         MedicalRecord medicalRecordOrphanCheck = pemeriksaanFisik.getMedicalRecord();
         if (medicalRecordOrphanCheck != null) {
@@ -85,8 +86,8 @@ public class PemeriksaanFisikJpaController implements Serializable {
     }
 
     public void edit(PemeriksaanFisik pemeriksaanFisik) throws IllegalOrphanException, NonexistentEntityException, Exception {
-        pemeriksaanFisik.getPemeriksaanFisikPK().setMedId(pemeriksaanFisik.getMedicalRecord().getMedicalRecordPK().getMedId());
         pemeriksaanFisik.getPemeriksaanFisikPK().setPasId(pemeriksaanFisik.getMedicalRecord().getMedicalRecordPK().getPasId());
+        pemeriksaanFisik.getPemeriksaanFisikPK().setMedId(pemeriksaanFisik.getMedicalRecord().getMedicalRecordPK().getMedId());
         EntityManager em = null;
         try {
             em = getEntityManager();

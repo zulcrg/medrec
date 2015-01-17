@@ -6,25 +6,24 @@
 
 package com.jtk.medicalrecord.jpacontroller;
 
-import com.jtk.medicalrecord.entity.Anamnesa;
-import com.jtk.medicalrecord.entity.Diagnosis;
-import com.jtk.medicalrecord.entity.FollowUp;
-import com.jtk.medicalrecord.entity.MedicalRecord;
-import com.jtk.medicalrecord.entity.MedicalRecordPK;
-import com.jtk.medicalrecord.entity.Pasien;
-import com.jtk.medicalrecord.entity.PemeriksaanFisik;
-import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
-import com.jtk.medicalrecord.entity.Ruang;
-import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.jtk.medicalrecord.entity.Diagnosis;
+import com.jtk.medicalrecord.entity.PemeriksaanFisik;
+import com.jtk.medicalrecord.entity.Anamnesa;
+import com.jtk.medicalrecord.entity.Pasien;
+import com.jtk.medicalrecord.entity.FollowUp;
+import com.jtk.medicalrecord.entity.MedicalRecord;
+import com.jtk.medicalrecord.entity.MedicalRecordPK;
 import java.util.ArrayList;
 import java.util.List;
+import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
+import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -50,9 +49,6 @@ public class MedicalRecordJpaController implements Serializable {
         }
         if (medicalRecord.getFollowUpList() == null) {
             medicalRecord.setFollowUpList(new ArrayList<FollowUp>());
-        }
-        if (medicalRecord.getRuangList() == null) {
-            medicalRecord.setRuangList(new ArrayList<Ruang>());
         }
         if (medicalRecord.getPemeriksaanPendukungList() == null) {
             medicalRecord.setPemeriksaanPendukungList(new ArrayList<PemeriksaanPendukung>());
@@ -88,12 +84,6 @@ public class MedicalRecordJpaController implements Serializable {
                 attachedFollowUpList.add(followUpListFollowUpToAttach);
             }
             medicalRecord.setFollowUpList(attachedFollowUpList);
-            List<Ruang> attachedRuangList = new ArrayList<Ruang>();
-            for (Ruang ruangListRuangToAttach : medicalRecord.getRuangList()) {
-                ruangListRuangToAttach = em.getReference(ruangListRuangToAttach.getClass(), ruangListRuangToAttach.getRuangId());
-                attachedRuangList.add(ruangListRuangToAttach);
-            }
-            medicalRecord.setRuangList(attachedRuangList);
             List<PemeriksaanPendukung> attachedPemeriksaanPendukungList = new ArrayList<PemeriksaanPendukung>();
             for (PemeriksaanPendukung pemeriksaanPendukungListPemeriksaanPendukungToAttach : medicalRecord.getPemeriksaanPendukungList()) {
                 pemeriksaanPendukungListPemeriksaanPendukungToAttach = em.getReference(pemeriksaanPendukungListPemeriksaanPendukungToAttach.getClass(), pemeriksaanPendukungListPemeriksaanPendukungToAttach.getPemId());
@@ -141,15 +131,6 @@ public class MedicalRecordJpaController implements Serializable {
                     oldMedicalRecordOfFollowUpListFollowUp = em.merge(oldMedicalRecordOfFollowUpListFollowUp);
                 }
             }
-            for (Ruang ruangListRuang : medicalRecord.getRuangList()) {
-                MedicalRecord oldMedicalRecordOfRuangListRuang = ruangListRuang.getMedicalRecord();
-                ruangListRuang.setMedicalRecord(medicalRecord);
-                ruangListRuang = em.merge(ruangListRuang);
-                if (oldMedicalRecordOfRuangListRuang != null) {
-                    oldMedicalRecordOfRuangListRuang.getRuangList().remove(ruangListRuang);
-                    oldMedicalRecordOfRuangListRuang = em.merge(oldMedicalRecordOfRuangListRuang);
-                }
-            }
             for (PemeriksaanPendukung pemeriksaanPendukungListPemeriksaanPendukung : medicalRecord.getPemeriksaanPendukungList()) {
                 MedicalRecord oldMedicalRecordOfPemeriksaanPendukungListPemeriksaanPendukung = pemeriksaanPendukungListPemeriksaanPendukung.getMedicalRecord();
                 pemeriksaanPendukungListPemeriksaanPendukung.setMedicalRecord(medicalRecord);
@@ -189,8 +170,6 @@ public class MedicalRecordJpaController implements Serializable {
             Pasien pasienNew = medicalRecord.getPasien();
             List<FollowUp> followUpListOld = persistentMedicalRecord.getFollowUpList();
             List<FollowUp> followUpListNew = medicalRecord.getFollowUpList();
-            List<Ruang> ruangListOld = persistentMedicalRecord.getRuangList();
-            List<Ruang> ruangListNew = medicalRecord.getRuangList();
             List<PemeriksaanPendukung> pemeriksaanPendukungListOld = persistentMedicalRecord.getPemeriksaanPendukungList();
             List<PemeriksaanPendukung> pemeriksaanPendukungListNew = medicalRecord.getPemeriksaanPendukungList();
             List<String> illegalOrphanMessages = null;
@@ -211,14 +190,6 @@ public class MedicalRecordJpaController implements Serializable {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("You must retain Anamnesa " + anamnesaOld + " since its medicalRecord field is not nullable.");
-            }
-            for (Ruang ruangListOldRuang : ruangListOld) {
-                if (!ruangListNew.contains(ruangListOldRuang)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Ruang " + ruangListOldRuang + " since its medicalRecord field is not nullable.");
-                }
             }
             for (PemeriksaanPendukung pemeriksaanPendukungListOldPemeriksaanPendukung : pemeriksaanPendukungListOld) {
                 if (!pemeriksaanPendukungListNew.contains(pemeriksaanPendukungListOldPemeriksaanPendukung)) {
@@ -254,13 +225,6 @@ public class MedicalRecordJpaController implements Serializable {
             }
             followUpListNew = attachedFollowUpListNew;
             medicalRecord.setFollowUpList(followUpListNew);
-            List<Ruang> attachedRuangListNew = new ArrayList<Ruang>();
-            for (Ruang ruangListNewRuangToAttach : ruangListNew) {
-                ruangListNewRuangToAttach = em.getReference(ruangListNewRuangToAttach.getClass(), ruangListNewRuangToAttach.getRuangId());
-                attachedRuangListNew.add(ruangListNewRuangToAttach);
-            }
-            ruangListNew = attachedRuangListNew;
-            medicalRecord.setRuangList(ruangListNew);
             List<PemeriksaanPendukung> attachedPemeriksaanPendukungListNew = new ArrayList<PemeriksaanPendukung>();
             for (PemeriksaanPendukung pemeriksaanPendukungListNewPemeriksaanPendukungToAttach : pemeriksaanPendukungListNew) {
                 pemeriksaanPendukungListNewPemeriksaanPendukungToAttach = em.getReference(pemeriksaanPendukungListNewPemeriksaanPendukungToAttach.getClass(), pemeriksaanPendukungListNewPemeriksaanPendukungToAttach.getPemId());
@@ -318,17 +282,6 @@ public class MedicalRecordJpaController implements Serializable {
                     if (oldMedicalRecordOfFollowUpListNewFollowUp != null && !oldMedicalRecordOfFollowUpListNewFollowUp.equals(medicalRecord)) {
                         oldMedicalRecordOfFollowUpListNewFollowUp.getFollowUpList().remove(followUpListNewFollowUp);
                         oldMedicalRecordOfFollowUpListNewFollowUp = em.merge(oldMedicalRecordOfFollowUpListNewFollowUp);
-                    }
-                }
-            }
-            for (Ruang ruangListNewRuang : ruangListNew) {
-                if (!ruangListOld.contains(ruangListNewRuang)) {
-                    MedicalRecord oldMedicalRecordOfRuangListNewRuang = ruangListNewRuang.getMedicalRecord();
-                    ruangListNewRuang.setMedicalRecord(medicalRecord);
-                    ruangListNewRuang = em.merge(ruangListNewRuang);
-                    if (oldMedicalRecordOfRuangListNewRuang != null && !oldMedicalRecordOfRuangListNewRuang.equals(medicalRecord)) {
-                        oldMedicalRecordOfRuangListNewRuang.getRuangList().remove(ruangListNewRuang);
-                        oldMedicalRecordOfRuangListNewRuang = em.merge(oldMedicalRecordOfRuangListNewRuang);
                     }
                 }
             }
@@ -393,13 +346,6 @@ public class MedicalRecordJpaController implements Serializable {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This MedicalRecord (" + medicalRecord + ") cannot be destroyed since the Anamnesa " + anamnesaOrphanCheck + " in its anamnesa field has a non-nullable medicalRecord field.");
-            }
-            List<Ruang> ruangListOrphanCheck = medicalRecord.getRuangList();
-            for (Ruang ruangListOrphanCheckRuang : ruangListOrphanCheck) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("This MedicalRecord (" + medicalRecord + ") cannot be destroyed since the Ruang " + ruangListOrphanCheckRuang + " in its ruangList field has a non-nullable medicalRecord field.");
             }
             List<PemeriksaanPendukung> pemeriksaanPendukungListOrphanCheck = medicalRecord.getPemeriksaanPendukungList();
             for (PemeriksaanPendukung pemeriksaanPendukungListOrphanCheckPemeriksaanPendukung : pemeriksaanPendukungListOrphanCheck) {

@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FollowUp.findAll", query = "SELECT f FROM FollowUp f"),
     @NamedQuery(name = "FollowUp.findByFuWaktu", query = "SELECT f FROM FollowUp f WHERE f.fuWaktu = :fuWaktu"),
     @NamedQuery(name = "FollowUp.findByFuDiagnosis", query = "SELECT f FROM FollowUp f WHERE f.fuDiagnosis = :fuDiagnosis"),
-    @NamedQuery(name = "FollowUp.findByFuTindakan", query = "SELECT f FROM FollowUp f WHERE f.fuTindakan = :fuTindakan")})
+    @NamedQuery(name = "FollowUp.findByFuTindakan", query = "SELECT f FROM FollowUp f WHERE f.fuTindakan = :fuTindakan"),
+    @NamedQuery(name = "FollowUp.findByFuRuangan", query = "SELECT f FROM FollowUp f WHERE f.fuRuangan = :fuRuangan")})
 public class FollowUp implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,6 +49,9 @@ public class FollowUp implements Serializable {
     @Basic(optional = false)
     @Column(name = "FU_TINDAKAN", nullable = false, length = 255)
     private String fuTindakan;
+    @Basic(optional = false)
+    @Column(name = "FU_RUANGAN", nullable = false, length = 20)
+    private String fuRuangan;
     @JoinColumns({
         @JoinColumn(name = "PAS_ID", referencedColumnName = "PAS_ID"),
         @JoinColumn(name = "MED_ID", referencedColumnName = "MED_ID")})
@@ -61,10 +65,11 @@ public class FollowUp implements Serializable {
         this.fuWaktu = fuWaktu;
     }
 
-    public FollowUp(Date fuWaktu, String fuDiagnosis, String fuTindakan) {
+    public FollowUp(Date fuWaktu, String fuDiagnosis, String fuTindakan, String fuRuangan) {
         this.fuWaktu = fuWaktu;
         this.fuDiagnosis = fuDiagnosis;
         this.fuTindakan = fuTindakan;
+        this.fuRuangan = fuRuangan;
     }
 
     public Date getFuWaktu() {
@@ -89,6 +94,14 @@ public class FollowUp implements Serializable {
 
     public void setFuTindakan(String fuTindakan) {
         this.fuTindakan = fuTindakan;
+    }
+
+    public String getFuRuangan() {
+        return fuRuangan;
+    }
+
+    public void setFuRuangan(String fuRuangan) {
+        this.fuRuangan = fuRuangan;
     }
 
     public MedicalRecord getMedicalRecord() {

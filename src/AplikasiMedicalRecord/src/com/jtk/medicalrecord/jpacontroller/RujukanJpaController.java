@@ -6,18 +6,19 @@
 
 package com.jtk.medicalrecord.jpacontroller;
 
-import com.jtk.medicalrecord.entity.Pasien;
-import com.jtk.medicalrecord.entity.Rujukan;
-import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.jtk.medicalrecord.entity.Pasien;
+import com.jtk.medicalrecord.entity.Rujukan;
+import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -28,7 +29,7 @@ public class RujukanJpaController implements Serializable {
     public RujukanJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();

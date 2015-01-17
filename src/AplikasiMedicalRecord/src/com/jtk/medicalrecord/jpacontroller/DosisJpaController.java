@@ -6,21 +6,21 @@
 
 package com.jtk.medicalrecord.jpacontroller;
 
+import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import com.jtk.medicalrecord.entity.Obat;
 import com.jtk.medicalrecord.entity.Diagnosis;
 import com.jtk.medicalrecord.entity.Dosis;
 import com.jtk.medicalrecord.entity.DosisPK;
-import com.jtk.medicalrecord.entity.Obat;
 import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
 import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *
@@ -41,9 +41,9 @@ public class DosisJpaController implements Serializable {
         if (dosis.getDosisPK() == null) {
             dosis.setDosisPK(new DosisPK());
         }
-        dosis.getDosisPK().setPasId(dosis.getDiagnosis().getDiagnosisPK().getPasId());
-        dosis.getDosisPK().setObatId(dosis.getObat().getObatId());
         dosis.getDosisPK().setMedId(dosis.getDiagnosis().getDiagnosisPK().getMedId());
+        dosis.getDosisPK().setObatId(dosis.getObat().getObatId());
+        dosis.getDosisPK().setPasId(dosis.getDiagnosis().getDiagnosisPK().getPasId());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -81,9 +81,9 @@ public class DosisJpaController implements Serializable {
     }
 
     public void edit(Dosis dosis) throws NonexistentEntityException, Exception {
-        dosis.getDosisPK().setPasId(dosis.getDiagnosis().getDiagnosisPK().getPasId());
-        dosis.getDosisPK().setObatId(dosis.getObat().getObatId());
         dosis.getDosisPK().setMedId(dosis.getDiagnosis().getDiagnosisPK().getMedId());
+        dosis.getDosisPK().setObatId(dosis.getObat().getObatId());
+        dosis.getDosisPK().setPasId(dosis.getDiagnosis().getDiagnosisPK().getPasId());
         EntityManager em = null;
         try {
             em = getEntityManager();

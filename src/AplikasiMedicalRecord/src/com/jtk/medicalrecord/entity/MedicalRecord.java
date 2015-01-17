@@ -55,8 +55,6 @@ public class MedicalRecord implements Serializable {
     private PemeriksaanFisik pemeriksaanFisik;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "medicalRecord", fetch = FetchType.LAZY)
     private Anamnesa anamnesa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalRecord", fetch = FetchType.LAZY)
-    private List<Ruang> ruangList;
     @JoinColumn(name = "PAS_ID", referencedColumnName = "PAS_ID", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Pasien pasien;
@@ -126,15 +124,6 @@ public class MedicalRecord implements Serializable {
 
     public void setAnamnesa(Anamnesa anamnesa) {
         this.anamnesa = anamnesa;
-    }
-
-    @XmlTransient
-    public List<Ruang> getRuangList() {
-        return ruangList;
-    }
-
-    public void setRuangList(List<Ruang> ruangList) {
-        this.ruangList = ruangList;
     }
 
     public Pasien getPasien() {

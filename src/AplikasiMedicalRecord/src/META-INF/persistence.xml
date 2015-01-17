@@ -13,6 +13,7 @@
     <class>com.jtk.medicalrecord.entity.Ruang</class>
     <class>com.jtk.medicalrecord.entity.Pasien</class>
     <class>com.jtk.medicalrecord.entity.PemeriksaanFisik</class>
+    <class>com.jtk.medicalrecord.entity.Log</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/medical_record?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value=""/>

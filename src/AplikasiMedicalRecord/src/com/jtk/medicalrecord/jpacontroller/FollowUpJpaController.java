@@ -7,19 +7,19 @@
 package com.jtk.medicalrecord.jpacontroller;
 
 import com.jtk.medicalrecord.entity.FollowUp;
+import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import com.jtk.medicalrecord.entity.MedicalRecord;
 import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
 import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 /**
  *

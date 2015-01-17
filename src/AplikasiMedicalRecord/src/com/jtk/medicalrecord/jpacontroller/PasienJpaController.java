@@ -6,19 +6,19 @@
 
 package com.jtk.medicalrecord.jpacontroller;
 
-import com.jtk.medicalrecord.entity.MedicalRecord;
-import com.jtk.medicalrecord.entity.Pasien;
-import com.jtk.medicalrecord.entity.Rujukan;
-import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.jtk.medicalrecord.entity.Rujukan;
 import java.util.ArrayList;
 import java.util.List;
+import com.jtk.medicalrecord.entity.MedicalRecord;
+import com.jtk.medicalrecord.entity.Pasien;
+import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -28,6 +28,9 @@ import javax.persistence.Persistence;
  * @author Zulkhair Abdullah D
  */
 public class PasienJpaController implements Serializable {
+
+    public PasienJpaController() {
+    }
 
     public PasienJpaController(EntityManagerFactory emf) {
         this.emf = emf;

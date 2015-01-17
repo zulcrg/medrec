@@ -6,16 +6,16 @@
 
 package com.jtk.medicalrecord.jpacontroller;
 
-import com.jtk.medicalrecord.entity.Dosis;
-import com.jtk.medicalrecord.entity.Obat;
-import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.jtk.medicalrecord.entity.Dosis;
+import com.jtk.medicalrecord.entity.Obat;
+import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;

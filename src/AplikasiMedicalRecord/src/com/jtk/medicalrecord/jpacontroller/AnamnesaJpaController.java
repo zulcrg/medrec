@@ -8,15 +8,15 @@ package com.jtk.medicalrecord.jpacontroller;
 
 import com.jtk.medicalrecord.entity.Anamnesa;
 import com.jtk.medicalrecord.entity.AnamnesaPK;
-import com.jtk.medicalrecord.entity.MedicalRecord;
-import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.jtk.medicalrecord.entity.MedicalRecord;
+import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -32,7 +32,7 @@ public class AnamnesaJpaController implements Serializable {
     public AnamnesaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -42,8 +42,8 @@ public class AnamnesaJpaController implements Serializable {
         if (anamnesa.getAnamnesaPK() == null) {
             anamnesa.setAnamnesaPK(new AnamnesaPK());
         }
-        anamnesa.getAnamnesaPK().setPasId(anamnesa.getMedicalRecord().getMedicalRecordPK().getPasId());
         anamnesa.getAnamnesaPK().setMedId(anamnesa.getMedicalRecord().getMedicalRecordPK().getMedId());
+        anamnesa.getAnamnesaPK().setPasId(anamnesa.getMedicalRecord().getMedicalRecordPK().getPasId());
         List<String> illegalOrphanMessages = null;
         MedicalRecord medicalRecordOrphanCheck = anamnesa.getMedicalRecord();
         if (medicalRecordOrphanCheck != null) {
@@ -86,8 +86,8 @@ public class AnamnesaJpaController implements Serializable {
     }
 
     public void edit(Anamnesa anamnesa) throws IllegalOrphanException, NonexistentEntityException, Exception {
-        anamnesa.getAnamnesaPK().setPasId(anamnesa.getMedicalRecord().getMedicalRecordPK().getPasId());
         anamnesa.getAnamnesaPK().setMedId(anamnesa.getMedicalRecord().getMedicalRecordPK().getMedId());
+        anamnesa.getAnamnesaPK().setPasId(anamnesa.getMedicalRecord().getMedicalRecordPK().getPasId());
         EntityManager em = null;
         try {
             em = getEntityManager();
