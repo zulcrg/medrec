@@ -50,31 +50,38 @@ public class InputMedrec extends javax.swing.JPanel {
 
         jButton1.setText("Kembali");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.7;
+        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.insets = new java.awt.Insets(7, 16, 5, 12);
         add(jButton1, gridBagConstraints);
 
         jLabel2.setText("Pasien");
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 4, 0);
+        gridBagConstraints.weighty = 20.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 2, 4);
         add(jLabel2, gridBagConstraints);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(110, 20));
+        jTextField1.setPreferredSize(new java.awt.Dimension(200, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 7, 0, 7);
         add(jTextField1, gridBagConstraints);
 
         jButton2.setText("Browse");
+        jButton2.setPreferredSize(new java.awt.Dimension(67, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 29, 0, 29);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 493);
         add(jButton2, gridBagConstraints);
 
         jButton3.setText("Submit");
@@ -82,7 +89,7 @@ public class InputMedrec extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 8, 6, 8);
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 6, 10);
         add(jButton3, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -72,7 +72,7 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         add(jLabel2, gridBagConstraints);
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(250, 100));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(400, 300));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);

@@ -44,7 +44,7 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         add(jLabel1, gridBagConstraints);
@@ -53,8 +53,8 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 16, 0, 39);
         add(jLabel2, gridBagConstraints);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -80,11 +80,18 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
         jButton1.setText("Tambah");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 15.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 18, 1, 0);
         add(jButton1, gridBagConstraints);
 
         jButton2.setText("Hapus");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weightx = 0.3;
+        gridBagConstraints.weighty = 15.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 47, 0, 3);
         add(jButton2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
