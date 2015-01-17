@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jtk.medicalrecord.view.panel;
 
-import com.jtk.medicalrecord.view.MainFrame;
+package com.jtk.medicalrecord.view.panel;
 
 /**
  *
@@ -19,9 +18,9 @@ public class MainMenu extends javax.swing.JPanel {
     public MainMenu() {
         initComponents();
     }
-
-    public void preparation() {
-
+    
+    public void preparation(){
+        
     }
 
     /**
@@ -60,49 +59,33 @@ public class MainMenu extends javax.swing.JPanel {
 
         synchronizeButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         synchronizeButton.setText("Sinkronisasi rekam medis dengan mobile");
-        synchronizeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                synchronizeButtonActionPerformed(evt);
-            }
-        });
 
         writeButton.setBackground(new java.awt.Color(204, 204, 255));
-        writeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                writeButtonActionPerformed(evt);
-            }
-        });
+        writeButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\M Haska Ash Shiddiq\\medrec\\src\\AplikasiMedicalRecord\\src\\com\\jtk\\medicalrecord\\image\\write2.png")); // NOI18N
 
         findButton.setBackground(new java.awt.Color(204, 204, 255));
+        findButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\M Haska Ash Shiddiq\\medrec\\src\\AplikasiMedicalRecord\\src\\com\\jtk\\medicalrecord\\image\\search2.png")); // NOI18N
         findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findButtonActionPerformed(evt);
             }
         });
 
-        settingButton.setText("jButton7");
-        settingButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                settingButtonActionPerformed(evt);
-            }
-        });
+        settingButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        settingButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\M Haska Ash Shiddiq\\medrec\\src\\AplikasiMedicalRecord\\src\\com\\jtk\\medicalrecord\\image\\settings2.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(213, 213, 213)
                 .addComponent(jLabel6)
-                .addGap(154, 154, 154)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(settingButton)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7)))
-                .addGap(243, 243, 243))
+                .addGap(250, 250, 250)
+                .addComponent(jLabel7)
+                .addGap(160, 160, 160))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -111,13 +94,14 @@ public class MainMenu extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(writeButton)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(synchronizeButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(137, 137, 137)
-                                .addComponent(findButton)))))
+                        .addGap(137, 137, 137)
+                        .addComponent(findButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(settingButton)))
+                .addGap(97, 97, 97))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(390, 390, 390)
+                .addComponent(synchronizeButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,8 +112,8 @@ public class MainMenu extends javax.swing.JPanel {
                 .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(findButton)
-                        .addComponent(settingButton))
+                        .addComponent(settingButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(findButton))
                     .addComponent(writeButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,20 +127,8 @@ public class MainMenu extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-        MainFrame.instance.showLihatMedrec();
+        // TODO add your handling code here:
     }//GEN-LAST:event_findButtonActionPerformed
-
-    private void writeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_writeButtonActionPerformed
-        MainFrame.instance.showInputMedrec();
-    }//GEN-LAST:event_writeButtonActionPerformed
-
-    private void settingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingButtonActionPerformed
-        MainFrame.instance.showPengaturan();
-    }//GEN-LAST:event_settingButtonActionPerformed
-
-    private void synchronizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_synchronizeButtonActionPerformed
-        MainFrame.instance.showSync();
-    }//GEN-LAST:event_synchronizeButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
