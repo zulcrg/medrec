@@ -27,7 +27,7 @@ public class LoginPanel2 extends javax.swing.JPanel {
     public void preparation() {
         ConfigModel config = ConfigHelper.readConfig();
         if (config != null) {
-            lblWelcome.setText("Welcome " + config.getNamaDokter());
+            lblWelcome.setText("Selamat datang " + config.getNamaDokter());
         }
     }
 
@@ -41,45 +41,39 @@ public class LoginPanel2 extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblWelcome = new javax.swing.JLabel();
         btnMasuk = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Aplikasi Medical Record");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.insets = new java.awt.Insets(14, 1, 14, 1);
-        add(jLabel1, gridBagConstraints);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel3.setText("Masukkan Password Anda");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(7, 0, 7, 0);
         add(jLabel3, gridBagConstraints);
 
-        lblWelcome.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        lblWelcome.setText("Welcome Dr. Seno");
+        lblWelcome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblWelcome.setText("Selamat datang Dr. Seno");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weighty = 6.4;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
         add(lblWelcome, gridBagConstraints);
 
         btnMasuk.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        btnMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/login.png"))); // NOI18N
         btnMasuk.setText("Masuk");
+        btnMasuk.setMaximumSize(new java.awt.Dimension(100, 35));
+        btnMasuk.setMinimumSize(new java.awt.Dimension(100, 35));
+        btnMasuk.setPreferredSize(new java.awt.Dimension(100, 35));
         btnMasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMasukActionPerformed(evt);
@@ -87,18 +81,25 @@ public class LoginPanel2 extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 39.4;
         add(btnMasuk, gridBagConstraints);
 
-        txtPassword.setPreferredSize(new java.awt.Dimension(180, 20));
+        txtPassword.setPreferredSize(new java.awt.Dimension(180, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
         gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         add(txtPassword, gridBagConstraints);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/medrec.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(80, 0, 80, 0);
+        add(jLabel2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
@@ -116,7 +117,7 @@ public class LoginPanel2 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMasuk;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JPasswordField txtPassword;

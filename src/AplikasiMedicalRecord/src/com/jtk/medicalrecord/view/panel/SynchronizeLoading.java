@@ -5,6 +5,9 @@
  */
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.util.MessageHelper;
+import com.jtk.medicalrecord.view.MainFrame;
+
 /**
  *
  * @author M Haska Ash Shiddiq
@@ -22,6 +25,11 @@ public class SynchronizeLoading extends javax.swing.JPanel {
 
     }
 
+    public void synch() {
+        MessageHelper.addErrorMessage("Error", "Gagal menghubungkan dengan perangkat mobile");
+        MainFrame.instance.showMainMenu();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +40,6 @@ public class SynchronizeLoading extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -40,33 +47,23 @@ public class SynchronizeLoading extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Aplikasi Medical Record");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weighty = 1.5;
-        gridBagConstraints.insets = new java.awt.Insets(9, 66, 9, 67);
-        add(jLabel1, gridBagConstraints);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel2.setText("Sedang Menyinkronkan akun desktop dengan akun mobile");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.insets = new java.awt.Insets(8, 0, 8, 0);
         add(jLabel2, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel3.setText("Mohon tunggu untuk beberapa saat");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 2.2;
         add(jLabel3, gridBagConstraints);
 
-        jLabel4.setText("(LOADING IMAGE)");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/circle-loading-animation.gif"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
@@ -76,7 +73,6 @@ public class SynchronizeLoading extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

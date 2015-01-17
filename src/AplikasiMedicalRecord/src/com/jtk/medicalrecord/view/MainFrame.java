@@ -143,6 +143,7 @@ public class MainFrame extends javax.swing.JFrame {
     public void showSync() {
         mainMenu.preparation();
         cardLayout.show(cardPanel, CardLayoutEnum.SYNC.toString());
+        synchronizeLoading.synch();
     }
 
     /**
