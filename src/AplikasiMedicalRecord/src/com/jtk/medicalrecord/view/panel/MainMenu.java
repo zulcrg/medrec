@@ -68,7 +68,7 @@ public class MainMenu extends javax.swing.JPanel {
 
         writeButton.setBackground(new java.awt.Color(255, 255, 255));
         writeButton.setForeground(new java.awt.Color(255, 255, 255));
-        writeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/write2.png"))); // NOI18N
+        writeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/write-blue.png"))); // NOI18N
         writeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 writeButtonActionPerformed(evt);
@@ -77,7 +77,10 @@ public class MainMenu extends javax.swing.JPanel {
 
         findButton.setBackground(new java.awt.Color(255, 255, 255));
         findButton.setForeground(new java.awt.Color(255, 255, 255));
-        findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/search2.png"))); // NOI18N
+        findButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/search-blue.png"))); // NOI18N
+        findButton.setMaximumSize(new java.awt.Dimension(183, 159));
+        findButton.setMinimumSize(new java.awt.Dimension(183, 159));
+        findButton.setPreferredSize(new java.awt.Dimension(183, 159));
         findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findButtonActionPerformed(evt);
@@ -87,7 +90,7 @@ public class MainMenu extends javax.swing.JPanel {
         settingButton.setBackground(new java.awt.Color(255, 255, 255));
         settingButton.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         settingButton.setForeground(new java.awt.Color(255, 255, 255));
-        settingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/view/panel/settings2.png"))); // NOI18N
+        settingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/settings-blue.png"))); // NOI18N
         settingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 settingButtonActionPerformed(evt);
@@ -99,51 +102,49 @@ public class MainMenu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(128, 128, 128)
+                .addGap(125, 125, 125)
                 .addComponent(jLabel5)
-                .addGap(205, 205, 205)
+                .addGap(199, 199, 199)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addGap(151, 151, 151))
+                .addGap(185, 185, 185))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(writeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123)
+                .addComponent(settingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(129, 129, 129))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(371, 371, 371)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(writeButton)
-                        .addGap(137, 137, 137)
-                        .addComponent(findButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                        .addComponent(settingButton)))
-                .addGap(97, 97, 97))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(390, 390, 390)
-                .addComponent(synchronizeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(390, 390, 390)
+                        .addComponent(synchronizeButton)))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(settingButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(findButton))
-                    .addComponent(writeButton))
+                .addGap(126, 126, 126)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(writeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(settingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel7)))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
                 .addGap(158, 158, 158)
                 .addComponent(synchronizeButton)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
