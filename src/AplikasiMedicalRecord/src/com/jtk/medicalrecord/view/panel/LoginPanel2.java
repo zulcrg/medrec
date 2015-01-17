@@ -47,9 +47,10 @@ public class LoginPanel2 extends javax.swing.JPanel {
         btnMasuk = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Aplikasi Medical Record");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -58,7 +59,7 @@ public class LoginPanel2 extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(14, 1, 14, 1);
         add(jLabel1, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel3.setText("Masukkan Password Anda");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -67,7 +68,7 @@ public class LoginPanel2 extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(7, 0, 7, 0);
         add(jLabel3, gridBagConstraints);
 
-        lblWelcome.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        lblWelcome.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblWelcome.setText("Welcome Dr. Seno");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -77,6 +78,7 @@ public class LoginPanel2 extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
         add(lblWelcome, gridBagConstraints);
 
+        btnMasuk.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnMasuk.setText("Masuk");
         btnMasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

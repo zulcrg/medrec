@@ -40,9 +40,10 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Aplikasi Medical Record");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -52,7 +53,7 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(38, 0, 38, 0);
         add(jLabel1, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 2, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 11)); // NOI18N
         jLabel2.setText("(Jika sudah pernah membuat akun di aplikasi mobile)");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -60,6 +61,7 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         add(jLabel2, gridBagConstraints);
 
+        btnBuatAkun.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnBuatAkun.setText("Buat Akun");
         btnBuatAkun.setPreferredSize(new java.awt.Dimension(100, 40));
         btnBuatAkun.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +76,7 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         add(btnBuatAkun, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 2, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 11)); // NOI18N
         jLabel3.setText("(Jika belum pernah membuat akun di device manapun)");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -82,6 +84,7 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         add(jLabel3, gridBagConstraints);
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton2.setText("Sinkronisasi");
         jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();

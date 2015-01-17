@@ -34,13 +34,13 @@ public class MainMenu extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        synchronizeButton = new javax.swing.JButton();
+        writeButton = new javax.swing.JButton();
+        findButton = new javax.swing.JButton();
+        settingButton = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -53,25 +53,6 @@ public class MainMenu extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weighty = 0.3;
         add(jLabel1, gridBagConstraints);
-
-        jLabel2.setText("(INPUT IMAGE)");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 27, 0, 27);
-        add(jLabel2, gridBagConstraints);
-
-        jLabel3.setText("(SEARCH IMAGE)");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 27, 0, 27);
-        add(jLabel3, gridBagConstraints);
-
-        jLabel4.setText("(SETTING IMAGE)");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 27, 0, 27);
-        add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("Input Rekam Medis");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -92,22 +73,37 @@ public class MainMenu extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         add(jLabel7, gridBagConstraints);
 
-        jButton1.setText("Sinkronisasi rekam medis dengan mobile");
+        synchronizeButton.setText("Sinkronisasi rekam medis dengan mobile");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        add(jButton1, gridBagConstraints);
+        add(synchronizeButton, gridBagConstraints);
+
+        writeButton.setText("jButton5");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 1;
+        add(writeButton, gridBagConstraints);
+
+        findButton.setText("jButton6");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 1;
+        add(findButton, gridBagConstraints);
+
+        settingButton.setText("jButton7");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 1;
+        add(settingButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton findButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton settingButton;
+    private javax.swing.JButton synchronizeButton;
+    private javax.swing.JButton writeButton;
     // End of variables declaration//GEN-END:variables
 }
