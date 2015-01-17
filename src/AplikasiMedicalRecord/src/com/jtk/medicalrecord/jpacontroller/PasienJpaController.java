@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.jpacontroller;
 
 import java.io.Serializable;
@@ -35,7 +34,9 @@ public class PasienJpaController implements Serializable {
     public PasienJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");
+
+    ;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -264,5 +265,13 @@ public class PasienJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public List<Pasien> findPasienByNikOrName(String search) {
+        Query query = getEntityManager().createNamedQuery("Pasien.findByPasIdOrNama");
+        query.setParameter("pasId", "%" + search + "%");
+        query.setParameter("pasNama", "%" + search + "%");
+
+        return query.getResultList();
+    }
+
 }
