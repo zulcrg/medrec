@@ -5,7 +5,6 @@
  */
 package com.jtk.medicalrecord.util;
 
-import com.google.gson.Gson;
 import java.awt.Component;
 import java.nio.charset.Charset;
 import javax.swing.JTable;
@@ -29,20 +28,6 @@ public class CommonHelper {
             }
             columnModel.getColumn(column).setPreferredWidth(width);
         }
-    }
-
-    public static void printToJson(Object object) {
-        Gson gson = new Gson();
-        System.out.println(gson.toJson(object));
-    }
-
-    public static byte[] classToByteJson(Object object) {
-        return stringToByte(classToStringJson(object));
-    }
-
-    public static String classToStringJson(Object object) {
-        Gson gson = new Gson();
-        return gson.toJson(object);
     }
 
     public static byte[] stringToByte(String s) {

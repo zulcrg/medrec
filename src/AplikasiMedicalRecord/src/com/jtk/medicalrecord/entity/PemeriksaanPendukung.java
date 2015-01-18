@@ -6,7 +6,6 @@
 
 package com.jtk.medicalrecord.entity;
 
-import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
