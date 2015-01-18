@@ -7,6 +7,7 @@ package com.jtk.medicalrecord.view.panel;
 
 import com.jtk.medicalrecord.model.ConfigModel;
 import com.jtk.medicalrecord.util.ConfigHelper;
+import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
 import java.util.UUID;
 import javax.swing.JOptionPane;
@@ -22,7 +23,7 @@ public class RegistrasiAkun extends javax.swing.JPanel {
      */
     public RegistrasiAkun() {
         initComponents();
-        
+
     }
 
     public void preparation() {
@@ -50,6 +51,8 @@ public class RegistrasiAkun extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        txtPassword1 = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1024, 768));
@@ -100,6 +103,12 @@ public class RegistrasiAkun extends javax.swing.JPanel {
 
         txtPassword.setPreferredSize(new java.awt.Dimension(300, 25));
 
+        txtPassword1.setPreferredSize(new java.awt.Dimension(300, 25));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel7.setText("Ulangi Password");
+        jLabel7.setPreferredSize(new java.awt.Dimension(100, 25));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,23 +118,29 @@ public class RegistrasiAkun extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(439, 439, 439))
             .addGroup(layout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(387, 387, 387)
+                        .addComponent(txtPassword1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(260, 260, 260)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                            .addComponent(txtAlamat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTempatPraktek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNoTelp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                    .addComponent(txtAlamat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtTempatPraktek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtNoTelp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(286, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -153,35 +168,43 @@ public class RegistrasiAkun extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(227, 227, 227))
+                .addGap(159, 159, 159))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         if (txtNama.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Harap Isi Nama");
+            MessageHelper.addWarnMessage("Perhatian", "Harap Isi Nama");
         } else if (txtAlamat.getText().isEmpty()) {
-            JOptionPane.showConfirmDialog(null, "Harap isi Alamat");
+            MessageHelper.addWarnMessage("Perhatian", "Harap isi Alamat");
         } else if (txtTempatPraktek.getText().isEmpty()) {
-            JOptionPane.showConfirmDialog(null, "Harap isi Tempat Praktek");
+            MessageHelper.addWarnMessage("Perhatian", "Harap isi Tempat Praktek");
         } else if (txtNoTelp.getText().isEmpty()) {
-            JOptionPane.showConfirmDialog(null, "Harap isi No Telp");
+            MessageHelper.addWarnMessage("Perhatian", "Harap isi No Telp");
         } else if (txtPassword.getText().isEmpty()) {
-            JOptionPane.showConfirmDialog(null, "Harap isi Password");
+            MessageHelper.addWarnMessage("Perhatian", "Harap isi Password");
         } else {
-            ConfigModel cm = new ConfigModel();
-            cm.setId(UUID.randomUUID().toString().replace("-", ""));
-            cm.setAlamat(txtAlamat.getText());
-            cm.setNamaDokter(txtNama.getText());
-            cm.setNoTelp(txtNoTelp.getText());
-            cm.setPassword(txtPassword.getText());
-            cm.setTempatPraktek(txtTempatPraktek.getText());
+            if (txtPassword1.getText().equals(txtPassword.getText())) {
+                ConfigModel cm = new ConfigModel();
+                cm.setId(UUID.randomUUID().toString().replace("-", ""));
+                cm.setAlamat(txtAlamat.getText());
+                cm.setNamaDokter(txtNama.getText());
+                cm.setNoTelp(txtNoTelp.getText());
+                cm.setPassword(txtPassword.getText());
+                cm.setTempatPraktek(txtTempatPraktek.getText());
 
-            ConfigHelper.creaeteConfig(cm);
-            JOptionPane.showMessageDialog(null, "Registrasi Berhasil");
-            MainFrame.instance.showLoginPanel2();
+                ConfigHelper.creaeteConfig(cm);
+                MessageHelper.addInfoMessage("Informasi", "Registrasi Berhasil");
+                MainFrame.instance.showLoginPanel2();
+            } else {
+                MessageHelper.addWarnMessage("Perhatian", "Password tidak cocok");
+            }
         }
 
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -195,10 +218,12 @@ public class RegistrasiAkun extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtAlamat;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNoTelp;
     private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JTextField txtTempatPraktek;
     // End of variables declaration//GEN-END:variables
 }

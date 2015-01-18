@@ -39,6 +39,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         jSpinner1 = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
@@ -53,17 +54,17 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 90, 30, 90);
         add(jLabel1, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel2.setText("Berapa lama rekam medis akan disimpan didalam aplikasi");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        jLabel2.setText("Berapa tahun rekam medis akan disimpan didalam aplikasi");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.weighty = 0.2;
         add(jLabel2, gridBagConstraints);
 
         jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jSpinner1.setPreferredSize(new java.awt.Dimension(50, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.weighty = 0.9;
         add(jSpinner1, gridBagConstraints);
 
@@ -89,16 +90,31 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         jButton2.setMaximumSize(new java.awt.Dimension(93, 25));
         jButton2.setMinimumSize(new java.awt.Dimension(93, 25));
         jButton2.setPreferredSize(new java.awt.Dimension(93, 25));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.weighty = 0.9;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 8, 0);
         add(jButton2, gridBagConstraints);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/time.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        add(jLabel3, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MainFrame.instance.showPengaturan();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -106,6 +122,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }

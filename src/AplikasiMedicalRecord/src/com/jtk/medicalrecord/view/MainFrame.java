@@ -170,21 +170,15 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         cardPanel = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikasi Medical Record");
         setMinimumSize(new java.awt.Dimension(1024, 768));
 
+        cardPanel.setMaximumSize(new java.awt.Dimension(1024, 768));
         cardPanel.setMinimumSize(new java.awt.Dimension(1024, 768));
         cardPanel.setPreferredSize(new java.awt.Dimension(1024, 768));
         cardPanel.setLayout(new java.awt.CardLayout());
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,7 +232,5 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cardPanel;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
