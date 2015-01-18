@@ -167,6 +167,7 @@ public class InputPasienDialog extends javax.swing.JDialog {
         jLabel10.setText(":");
 
         txtLain.setColumns(20);
+        txtLain.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtLain.setRows(5);
         jScrollPane2.setViewportView(txtLain);
 
@@ -207,6 +208,7 @@ public class InputPasienDialog extends javax.swing.JDialog {
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 255));
 
         txtAlamat.setColumns(20);
+        txtAlamat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAlamat.setRows(5);
         jScrollPane1.setViewportView(txtAlamat);
 

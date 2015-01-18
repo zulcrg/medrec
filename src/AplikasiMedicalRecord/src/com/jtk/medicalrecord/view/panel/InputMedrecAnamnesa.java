@@ -85,36 +85,36 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
         jLabel2.setText("Keluhan Utama");
 
         txtKeluhanUtama.setColumns(20);
+        txtKeluhanUtama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtKeluhanUtama.setRows(5);
         txtKeluhanUtama.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtKeluhanUtama.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane1.setViewportView(txtKeluhanUtama);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Anamnesa Khusus");
 
         txtAnamnesaKhusus.setColumns(20);
+        txtAnamnesaKhusus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAnamnesaKhusus.setRows(5);
         txtAnamnesaKhusus.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtAnamnesaKhusus.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane2.setViewportView(txtAnamnesaKhusus);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Riwayat Penyakit Dahulu");
 
         txtRiwayatPenyakitDahulu.setColumns(20);
+        txtRiwayatPenyakitDahulu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtRiwayatPenyakitDahulu.setRows(5);
         txtRiwayatPenyakitDahulu.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtRiwayatPenyakitDahulu.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane3.setViewportView(txtRiwayatPenyakitDahulu);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setText("Riwayat Penyakit Keluarga");
 
         txtRiwayatPenyakitKeluarga.setColumns(20);
+        txtRiwayatPenyakitKeluarga.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtRiwayatPenyakitKeluarga.setRows(5);
         txtRiwayatPenyakitKeluarga.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtRiwayatPenyakitKeluarga.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane5.setViewportView(txtRiwayatPenyakitKeluarga);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

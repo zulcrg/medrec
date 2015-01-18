@@ -58,6 +58,7 @@ public class ObatDialog extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnCari.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/search-mini.png"))); // NOI18N
         btnCari.setText("Cari");
         btnCari.setMaximumSize(new java.awt.Dimension(93, 25));
@@ -71,14 +72,18 @@ public class ObatDialog extends javax.swing.JDialog {
 
         txtObat.setEditable(false);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel1.setText("Obat");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Dosis");
 
         jLabel3.setText("x");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("/ Hari");
 
+        btnSubmit.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/check.png"))); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.setMaximumSize(new java.awt.Dimension(93, 25));

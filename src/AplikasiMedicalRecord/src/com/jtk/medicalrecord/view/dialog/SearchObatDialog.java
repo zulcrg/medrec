@@ -109,6 +109,7 @@ public class SearchObatDialog extends javax.swing.JDialog {
             }
         });
 
+        tblObat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tblObat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -124,6 +125,7 @@ public class SearchObatDialog extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblObat);
 
+        txtPilih.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         txtPilih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/check.png"))); // NOI18N
         txtPilih.setText("Pilih");
         txtPilih.setMaximumSize(new java.awt.Dimension(93, 25));

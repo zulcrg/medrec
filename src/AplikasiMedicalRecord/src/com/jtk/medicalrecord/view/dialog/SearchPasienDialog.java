@@ -98,6 +98,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnPilih.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnPilih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/check.png"))); // NOI18N
         btnPilih.setText("Pilih");
         btnPilih.setMaximumSize(new java.awt.Dimension(93, 25));
@@ -109,6 +110,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/plus.png"))); // NOI18N
         jButton1.setText("Tambah Pasien");
         jButton1.setMaximumSize(new java.awt.Dimension(140, 25));
@@ -122,6 +124,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
+        tblPasien.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tblPasien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

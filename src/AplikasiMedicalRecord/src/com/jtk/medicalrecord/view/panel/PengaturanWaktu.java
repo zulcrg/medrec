@@ -67,7 +67,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.2;
         add(jLabel2, gridBagConstraints);
 
-        spinTime.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        spinTime.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         spinTime.setPreferredSize(new java.awt.Dimension(50, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 4;

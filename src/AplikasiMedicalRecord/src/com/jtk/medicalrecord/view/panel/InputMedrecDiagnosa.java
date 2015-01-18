@@ -131,10 +131,10 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(53, 10));
 
         txtDiagnosisKerja.setColumns(20);
+        txtDiagnosisKerja.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDiagnosisKerja.setRows(5);
         txtDiagnosisKerja.setMaximumSize(new java.awt.Dimension(53, 20));
         txtDiagnosisKerja.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtDiagnosisKerja.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane1.setViewportView(txtDiagnosisKerja);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -143,10 +143,10 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         jScrollPane2.setPreferredSize(new java.awt.Dimension(250, 100));
 
         txtDiagnosisBanding.setColumns(20);
+        txtDiagnosisBanding.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDiagnosisBanding.setRows(5);
         txtDiagnosisBanding.setMaximumSize(new java.awt.Dimension(53, 20));
         txtDiagnosisBanding.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtDiagnosisBanding.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane2.setViewportView(txtDiagnosisBanding);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -156,10 +156,10 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         jScrollPane3.setPreferredSize(new java.awt.Dimension(53, 10));
 
         txtPengobatan.setColumns(20);
+        txtPengobatan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtPengobatan.setRows(5);
         txtPengobatan.setMaximumSize(new java.awt.Dimension(53, 20));
         txtPengobatan.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtPengobatan.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane3.setViewportView(txtPengobatan);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -169,10 +169,10 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         jScrollPane4.setPreferredSize(new java.awt.Dimension(53, 10));
 
         txtPrognosis.setColumns(20);
+        txtPrognosis.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtPrognosis.setRows(5);
         txtPrognosis.setMaximumSize(new java.awt.Dimension(53, 20));
         txtPrognosis.setMinimumSize(new java.awt.Dimension(53, 20));
-        txtPrognosis.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane4.setViewportView(txtPrognosis);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -204,6 +204,7 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         jScrollPane6.setMinimumSize(new java.awt.Dimension(53, 100));
         jScrollPane6.setPreferredSize(new java.awt.Dimension(53, 100));
 
+        tblObat.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tblObat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

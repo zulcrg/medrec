@@ -135,6 +135,7 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
         jScrollPane3.setMinimumSize(new java.awt.Dimension(164, 23));
         jScrollPane3.setPreferredSize(new java.awt.Dimension(164, 100));
 
+        tblFile.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tblFile.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

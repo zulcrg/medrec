@@ -99,6 +99,7 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
         jLabel1.setMinimumSize(new java.awt.Dimension(89, 25));
         jLabel1.setPreferredSize(new java.awt.Dimension(89, 25));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Kesadaran");
 
         txtKesadaran.setPreferredSize(new java.awt.Dimension(182, 20));
@@ -108,28 +109,33 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Laju Nafas");
 
         txtLajuNafas.setPreferredSize(new java.awt.Dimension(182, 20));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Suhu Tubuh");
 
         txtSuhuTubuh.setPreferredSize(new java.awt.Dimension(182, 20));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setText("Laju Nadi");
 
         txtLajuNadi.setPreferredSize(new java.awt.Dimension(182, 20));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel6.setText("Tekanan Darah");
 
         txtTekananDarah.setPreferredSize(new java.awt.Dimension(182, 20));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel7.setText("Lain - Lain");
 
         txtLain.setColumns(20);
+        txtLain.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtLain.setRows(5);
         txtLain.setMinimumSize(new java.awt.Dimension(53, 30));
-        txtLain.setPreferredSize(new java.awt.Dimension(53, 30));
         jScrollPane1.setViewportView(txtLain);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -147,7 +153,7 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
-                        .addGap(0, 148, Short.MAX_VALUE))
+                        .addGap(0, 144, Short.MAX_VALUE))
                     .addComponent(txtKesadaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtLajuNafas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtSuhuTubuh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,7 +194,7 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
