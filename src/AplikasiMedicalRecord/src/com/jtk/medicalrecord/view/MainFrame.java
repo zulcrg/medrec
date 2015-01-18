@@ -175,9 +175,9 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle("Aplikasi Medical Record");
         setMinimumSize(new java.awt.Dimension(1024, 768));
 
-        cardPanel.setMaximumSize(new java.awt.Dimension(1024, 768));
-        cardPanel.setMinimumSize(new java.awt.Dimension(1024, 768));
-        cardPanel.setPreferredSize(new java.awt.Dimension(1024, 768));
+        cardPanel.setMaximumSize(new java.awt.Dimension(1024, 700));
+        cardPanel.setMinimumSize(new java.awt.Dimension(1024, 700));
+        cardPanel.setPreferredSize(new java.awt.Dimension(1024, 700));
         cardPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

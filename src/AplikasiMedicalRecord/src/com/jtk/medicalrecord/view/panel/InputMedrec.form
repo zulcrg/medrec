@@ -34,19 +34,19 @@
                       <Component id="btnKembali" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
                       <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="pnlAnamnesa" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                      <Component id="pnlPemeriksaanFisik" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="pnlPemeriksaanPendukung" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="pnlDiagnosa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="pnlAnamnesa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="pnlPemeriksaanFisik" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pnlPemeriksaanPendukung" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pnlDiagnosa" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="lblPasien" min="-2" max="-2" attributes="0"/>
@@ -70,22 +70,22 @@
                   <Component id="btnKembali" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPasien" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPasien" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCari" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pnlPemeriksaanPendukung" min="-2" pref="626" max="-2" attributes="0"/>
-                  <Component id="pnlDiagnosa" min="-2" pref="626" max="-2" attributes="0"/>
-                  <Component id="pnlPemeriksaanFisik" min="-2" pref="626" max="-2" attributes="0"/>
-                  <Component id="pnlAnamnesa" min="-2" pref="626" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="pnlAnamnesa" max="32767" attributes="0"/>
+                  <Component id="pnlPemeriksaanFisik" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="pnlPemeriksaanPendukung" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="pnlDiagnosa" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
