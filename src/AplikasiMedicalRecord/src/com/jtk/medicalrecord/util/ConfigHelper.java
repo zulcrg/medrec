@@ -80,7 +80,7 @@ public class ConfigHelper {
             Logger.getLogger(ConfigHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void editConfigWaktu(ConfigModel config) {
         try {
             Properties prop = new Properties();
@@ -134,6 +134,29 @@ public class ConfigHelper {
                 }
                 return configModel;
             }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Config not found");
+        } catch (IOException ex) {
+            Logger.getLogger(ConfigHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static ConfigModel readConfig(InputStream input) {
+        try {
+            Properties prop = new Properties();
+            ConfigModel configModel;
+            prop.load(input);
+            configModel = new ConfigModel();
+            configModel.setId(prop.getProperty("id"));
+            configModel.setNamaDokter(prop.getProperty("nama"));
+            configModel.setAlamat(prop.getProperty("alamat"));
+            configModel.setTempatPraktek(prop.getProperty("tempatPraktek"));
+            configModel.setNoTelp(prop.getProperty("noTelp"));
+            configModel.setPassword(prop.getProperty("password"));
+            configModel.setWaktu(Integer.parseInt(prop.getProperty("waktu")));
+
+            return configModel;
         } catch (FileNotFoundException ex) {
             System.out.println("Config not found");
         } catch (IOException ex) {

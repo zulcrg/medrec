@@ -14,8 +14,6 @@ import com.jtk.medicalrecord.jpacontroller.DosisJpaController;
 import com.jtk.medicalrecord.jpacontroller.MedicalRecordJpaController;
 import com.jtk.medicalrecord.jpacontroller.PemeriksaanFisikJpaController;
 import com.jtk.medicalrecord.jpacontroller.PemeriksaanPendukungJpaController;
-import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
-import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
 import com.jtk.medicalrecord.model.ConfigModel;
 import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.CommonHelper;
@@ -29,8 +27,6 @@ import java.beans.PropertyChangeListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**

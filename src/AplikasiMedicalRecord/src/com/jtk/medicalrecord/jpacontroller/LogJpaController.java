@@ -25,6 +25,9 @@ import javax.persistence.criteria.Root;
  */
 public class LogJpaController implements Serializable {
 
+    public LogJpaController() {
+    }
+
     public LogJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }

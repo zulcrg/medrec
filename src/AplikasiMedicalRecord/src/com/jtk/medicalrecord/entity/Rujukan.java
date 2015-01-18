@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -50,6 +51,7 @@ public class Rujukan implements Serializable {
     private byte[] rujFile;
     @JoinColumn(name = "PAS_ID", referencedColumnName = "PAS_ID", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonIgnore
     private Pasien pasien;
 
     public Rujukan() {

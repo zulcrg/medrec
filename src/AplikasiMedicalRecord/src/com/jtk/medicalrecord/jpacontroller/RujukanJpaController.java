@@ -26,6 +26,9 @@ import javax.persistence.Persistence;
  */
 public class RujukanJpaController implements Serializable {
 
+    public RujukanJpaController() {
+    }
+
     public RujukanJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }

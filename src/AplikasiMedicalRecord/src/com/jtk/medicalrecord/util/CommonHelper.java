@@ -49,4 +49,9 @@ public class CommonHelper {
         byte[] b = s.getBytes(Charset.forName("UTF-8"));
         return b;
     }
+
+    public static String byteToString(byte[] b) {
+        String s = new String(b, Charset.forName("UTF-8"));
+        return s;
+    }
 }

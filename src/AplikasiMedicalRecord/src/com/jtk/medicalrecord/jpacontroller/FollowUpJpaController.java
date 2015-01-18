@@ -27,6 +27,9 @@ import javax.persistence.Persistence;
  */
 public class FollowUpJpaController implements Serializable {
 
+    public FollowUpJpaController() {
+    }
+
     public FollowUpJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }

@@ -5,15 +5,36 @@
  */
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.entity.Dosis;
+import com.jtk.medicalrecord.entity.FollowUp;
+import com.jtk.medicalrecord.entity.Log;
 import com.jtk.medicalrecord.entity.MedicalRecord;
+import com.jtk.medicalrecord.entity.Obat;
+import com.jtk.medicalrecord.entity.Pasien;
+import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
+import com.jtk.medicalrecord.entity.Rujukan;
+import com.jtk.medicalrecord.jpacontroller.AnamnesaJpaController;
+import com.jtk.medicalrecord.jpacontroller.DiagnosisJpaController;
+import com.jtk.medicalrecord.jpacontroller.DosisJpaController;
+import com.jtk.medicalrecord.jpacontroller.FollowUpJpaController;
+import com.jtk.medicalrecord.jpacontroller.LogJpaController;
 import com.jtk.medicalrecord.jpacontroller.MedicalRecordJpaController;
+import com.jtk.medicalrecord.jpacontroller.ObatJpaController;
+import com.jtk.medicalrecord.jpacontroller.PasienJpaController;
+import com.jtk.medicalrecord.jpacontroller.PemeriksaanFisikJpaController;
+import com.jtk.medicalrecord.jpacontroller.PemeriksaanPendukungJpaController;
+import com.jtk.medicalrecord.jpacontroller.RujukanJpaController;
+import com.jtk.medicalrecord.model.ConfigModel;
 import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.CommonHelper;
+import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
 import com.jtk.medicalrecord.view.dialog.LoadingDialog;
 import com.zlib.io.ZIo;
+import com.zlib.util.ZHash;
 import java.awt.HeadlessException;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,11 +46,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 /**
  *
@@ -38,6 +61,22 @@ import org.codehaus.jackson.map.ObjectMapper;
 public class PengaturanBR extends javax.swing.JPanel {
 
     private final MedicalRecordJpaController medicalRecordJpaController = new MedicalRecordJpaController();
+    private final PasienJpaController pasienJpaController = new PasienJpaController();
+    private final ObatJpaController obatJpaController = new ObatJpaController();
+    private final LogJpaController logJpaController = new LogJpaController();
+    private final RujukanJpaController rujukanJpaController = new RujukanJpaController();
+    private final AnamnesaJpaController anamnesaJpaController = new AnamnesaJpaController();
+    private final DiagnosisJpaController diagnosisJpaController = new DiagnosisJpaController();
+    private final PemeriksaanFisikJpaController pemeriksaanFisikJpaController = new PemeriksaanFisikJpaController();
+    private final PemeriksaanPendukungJpaController pemeriksaanPendukungJpaController = new PemeriksaanPendukungJpaController();
+    private final FollowUpJpaController followUpJpaController = new FollowUpJpaController();
+    private final DosisJpaController dosisJpaController = new DosisJpaController();
+    private ConfigModel configModel;
+    private List<Pasien> pasiens;
+    private List<MedicalRecord> medicalRecords;
+    private List<Obat> obats;
+    private List<Log> logs;
+    private String password;
 
     /**
      * Creates new form PengaturanBR
@@ -83,11 +122,133 @@ public class PengaturanBR extends javax.swing.JPanel {
             public void doInBackground() throws Exception {
                 addToZipFile("MED", zos);
                 List<MedicalRecord> medicalRecords = medicalRecordJpaController.findMedicalRecordEntities();
+                List<Pasien> pasiens = pasienJpaController.findPasienEntities();
+                List<Obat> obats = obatJpaController.findObatEntities();
+                List<Log> logs = logJpaController.findLogEntities();
 
                 ObjectMapper mapper = new ObjectMapper();
-                byte[] file = CommonHelper.stringToByte(mapper.writeValueAsString(medicalRecords));
-                addToZipFile("a", file, zos);
+                byte[] pasien = CommonHelper.stringToByte(mapper.writeValueAsString(pasiens));
+                byte[] medrec = CommonHelper.stringToByte(mapper.writeValueAsString(medicalRecords));
+                byte[] obat = CommonHelper.stringToByte(mapper.writeValueAsString(obats));
+                byte[] log = CommonHelper.stringToByte(mapper.writeValueAsString(logs));
+                addToZipFile("a", pasien, zos);
+                addToZipFile("b", medrec, zos);
+                addToZipFile("c", obat, zos);
+                addToZipFile("d", log, zos);
 
+            }
+        }, null, true);
+        dialog.start();
+    }
+
+    private boolean convertZipJson(File file) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try (FileInputStream fis = new FileInputStream(file); ZipInputStream zipInputStream = new ZipInputStream(fis)) {
+            ZipEntry zipEntry;
+            while ((zipEntry = zipInputStream.getNextEntry()) != null) {
+                try (ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+                    int data;
+                    while ((data = zipInputStream.read()) != - 1) {
+                        output.write(data);
+                    }
+                    switch (zipEntry.getName()) {
+                        case "MED":
+                            configModel = ConfigHelper.readConfig(new ByteArrayInputStream(output.toByteArray()));
+                            if (!ZHash.hashSHA256(password).equals(configModel.getPassword())) {
+                                return false;
+                            }
+                            break;
+                        case "a":
+                            pasiens = objectMapper.readValue(output.toByteArray(), new TypeReference<List<Pasien>>() {
+                            });
+                            break;
+                        case "b":
+                            medicalRecords = objectMapper.readValue(output.toByteArray(), new TypeReference<List<MedicalRecord>>() {
+                            });
+                            break;
+                        case "c":
+                            obats = objectMapper.readValue(output.toByteArray(), new TypeReference<List<Obat>>() {
+                            });
+                            break;
+                        case "d":
+                            logs = objectMapper.readValue(output.toByteArray(), new TypeReference<List<Log>>() {
+                            });
+                            break;
+                    }
+                }
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(PengaturanBR.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }
+
+    private void insertToDatabase() {
+        try {
+            for (Obat obat : obats) {
+                if (obatJpaController.findObat(obat.getObatId()) == null) {
+                    obatJpaController.create(obat);
+                } else {
+                    System.out.println("Obat dengan id " + obat.getObatId() + " sudah ada");
+                }
+            }
+            for (Pasien pasien : pasiens) {
+                if (pasienJpaController.findPasien(pasien.getPasId()) == null) {
+                    pasienJpaController.create(pasien);
+                    for (Rujukan rujukan : pasien.getRujukanList()) {
+                        if (rujukanJpaController.findRujukan(rujukan.getRujId()) == null) {
+                            rujukanJpaController.create(rujukan);
+                        } else {
+                            System.out.println("Rujukan dengan id " + rujukan.getRujId() + " sudah ada");
+                        }
+                    }
+                } else {
+                    System.out.println("Pasien dengan id " + pasien.getPasId() + " sudah ada");
+                }
+            }
+            for (MedicalRecord medicalRecord : medicalRecords) {
+                if (medicalRecordJpaController.findMedicalRecord(medicalRecord.getMedicalRecordPK()) == null) {
+                    medicalRecordJpaController.create(medicalRecord);
+                    anamnesaJpaController.create(medicalRecord.getAnamnesa());
+                    pemeriksaanFisikJpaController.create(medicalRecord.getPemeriksaanFisik());
+                    diagnosisJpaController.create(medicalRecord.getDiagnosis());
+                    for (PemeriksaanPendukung p : medicalRecord.getPemeriksaanPendukungList()) {
+                        pemeriksaanPendukungJpaController.create(p);
+                    }
+                    for (Dosis d : medicalRecord.getDiagnosis().getDosisList()) {
+                        dosisJpaController.create(d);
+                    }
+                    for (FollowUp f : medicalRecord.getFollowUpList()) {
+                        followUpJpaController.create(f);
+                    }
+                } else {
+                    System.out.println("Medrec dengan id " + medicalRecord.getMedicalRecordPK().getMedId() + " sudah ada");
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(PengaturanBR.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void processRestore(final File file) {
+        password = MessageHelper.addInputPasswordDialog("Pemeriksaan keamanan", "Masukan password ketika membackup file");
+        System.out.println(password);
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                if (convertZipJson(file)) {
+                    insertToDatabase();
+                } else {
+                    MessageHelper.addErrorMessage("Error", "Password yang anda masukan salah");
+                }
             }
         }, null, true);
         dialog.start();
@@ -145,6 +306,11 @@ public class PengaturanBR extends javax.swing.JPanel {
         jButton3.setMaximumSize(new java.awt.Dimension(183, 159));
         jButton3.setMinimumSize(new java.awt.Dimension(183, 159));
         jButton3.setPreferredSize(new java.awt.Dimension(183, 159));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -258,6 +424,21 @@ public class PengaturanBR extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        // tampilkan file xls saja
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Medrec Backup File", "mb");
+        chooser.setDialogTitle("Open Medrec Backup File");
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+        chooser.addChoosableFileFilter(filter);
+        chooser.setApproveButtonText("Open");
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            File f = chooser.getSelectedFile();
+            processRestore(f);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
