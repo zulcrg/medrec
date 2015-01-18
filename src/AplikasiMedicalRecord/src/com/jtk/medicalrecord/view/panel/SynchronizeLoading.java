@@ -14,6 +14,8 @@ import com.jtk.medicalrecord.view.MainFrame;
  */
 public class SynchronizeLoading extends javax.swing.JPanel {
 
+    private boolean login = false;
+
     /**
      * Creates new form SynchronizeLoading
      */
@@ -21,13 +23,17 @@ public class SynchronizeLoading extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void preparation() {
-
+    public void preparation(boolean login) {
+        this.login = login;
     }
 
     public void synch() {
         MessageHelper.addErrorMessage("Error", "Gagal menghubungkan dengan perangkat mobile");
-        MainFrame.instance.showMainMenu();
+        if (login) {
+            MainFrame.instance.showLoginPanel();
+        } else {
+            MainFrame.instance.showMainMenu();
+        }
     }
 
     /**

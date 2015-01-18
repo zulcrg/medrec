@@ -176,7 +176,7 @@ public class MainMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_settingButtonActionPerformed
 
     private void synchronizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_synchronizeButtonActionPerformed
-        MainFrame.instance.showSync();
+        MainFrame.instance.showSync(false);
     }//GEN-LAST:event_synchronizeButtonActionPerformed
 
 

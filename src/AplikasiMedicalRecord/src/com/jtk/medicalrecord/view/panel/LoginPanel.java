@@ -57,22 +57,25 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel2.setText("(Jika sudah pernah membuat akun di aplikasi mobile)");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 4.0;
         add(jLabel2, gridBagConstraints);
 
         btnBuatAkun.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        btnBuatAkun.setText("Buat Akun");
-        btnBuatAkun.setPreferredSize(new java.awt.Dimension(100, 40));
+        btnBuatAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/create-account.png"))); // NOI18N
+        btnBuatAkun.setMaximumSize(new java.awt.Dimension(183, 159));
+        btnBuatAkun.setMinimumSize(new java.awt.Dimension(183, 159));
+        btnBuatAkun.setPreferredSize(new java.awt.Dimension(183, 159));
         btnBuatAkun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuatAkunActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weighty = 2.8;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         add(btnBuatAkun, gridBagConstraints);
 
@@ -80,17 +83,24 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel3.setText("(Jika belum pernah membuat akun di device manapun)");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 2.8;
         add(jLabel3, gridBagConstraints);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jButton2.setText("Sinkronisasi");
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/synch-blue.png"))); // NOI18N
+        jButton2.setMaximumSize(new java.awt.Dimension(183, 159));
+        jButton2.setMinimumSize(new java.awt.Dimension(183, 159));
+        jButton2.setPreferredSize(new java.awt.Dimension(183, 159));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weighty = 4.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         add(jButton2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
@@ -98,6 +108,10 @@ public class LoginPanel extends javax.swing.JPanel {
     private void btnBuatAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuatAkunActionPerformed
         MainFrame.instance.showRegistrasiAkun();
     }//GEN-LAST:event_btnBuatAkunActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        MainFrame.instance.showSync(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

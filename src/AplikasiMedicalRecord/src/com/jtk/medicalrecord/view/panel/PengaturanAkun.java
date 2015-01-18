@@ -11,8 +11,6 @@ import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
 import com.zlib.util.ZClass;
 import com.zlib.util.ZHash;
-import java.util.UUID;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,9 +30,9 @@ public class PengaturanAkun extends javax.swing.JPanel {
     public void preparation() {
         configModel = ConfigHelper.readConfig();
         txtNamaDokter.setText(configModel.getNamaDokter());
-        txtAlamt.setText(configModel.getNamaDokter());
-        txtTmpPraktek.setText(configModel.getNamaDokter());
-        txtNoTelp.setText(configModel.getNamaDokter());
+        txtAlamt.setText(configModel.getAlamat());
+        txtTmpPraktek.setText(configModel.getTempatPraktek());
+        txtNoTelp.setText(configModel.getNoTelp());
         txtPassword.setText("");
         txtPassword1.setText("");
         txtPassword2.setText("");

@@ -66,7 +66,7 @@ public class MainFrame extends javax.swing.JFrame {
         pengaturan.preparation();
         pengaturanBR.preparation();
         pengaturanWaktu.preparation();
-        synchronizeLoading.preparation();
+        synchronizeLoading.preparation(false);
 
         cardPanel.setLayout(cardLayout);
         cardPanel.add(loginPanel, CardLayoutEnum.LOGIN.toString());
@@ -152,9 +152,9 @@ public class MainFrame extends javax.swing.JFrame {
         cardLayout.show(cardPanel, CardLayoutEnum.PENGATURAN_WAKTU.toString());
     }
 
-    public void showSync() {
+    public void showSync(boolean login) {
         mainMenu.preparation();
-        synchronizeLoading.preparation();
+        synchronizeLoading.preparation(login);
         cardLayout.show(cardPanel, CardLayoutEnum.SYNC.toString());
         synchronizeLoading.synch();
     }

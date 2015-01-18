@@ -8,6 +8,7 @@ package com.jtk.medicalrecord.view.dialog;
 import com.jtk.medicalrecord.entity.Obat;
 import com.jtk.medicalrecord.entity.Pasien;
 import com.jtk.medicalrecord.jpacontroller.PasienJpaController;
+import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.zlib.util.ZClass;
@@ -39,9 +40,20 @@ public class SearchPasienDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.pasien = pasien;
-        pasiens = pasienJpaController.findPasienEntities();
-        createTableValue();
-        setLocationRelativeTo(null);
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                pasiens = pasienJpaController.findPasienEntities();
+                createTableValue();
+                setLocationRelativeTo(null);
+            }
+        }, null, true);
+        dialog.start();
     }
 
     private void createTableValue() {
