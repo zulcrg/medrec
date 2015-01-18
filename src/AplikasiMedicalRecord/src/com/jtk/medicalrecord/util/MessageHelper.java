@@ -24,4 +24,9 @@ public class MessageHelper {
     public static void addErrorMessage(String title, String message) {
         JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
     }
+
+    public static boolean addConfimationMessage(String title, String message) {
+        int a = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+        return a == JOptionPane.YES_OPTION;
+    }
 }

@@ -5,19 +5,30 @@
  */
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.entity.Dosis;
 import com.jtk.medicalrecord.entity.MedicalRecord;
-import com.jtk.medicalrecord.entity.Pasien;
+import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
+import com.jtk.medicalrecord.jpacontroller.AnamnesaJpaController;
+import com.jtk.medicalrecord.jpacontroller.DiagnosisJpaController;
+import com.jtk.medicalrecord.jpacontroller.DosisJpaController;
 import com.jtk.medicalrecord.jpacontroller.MedicalRecordJpaController;
+import com.jtk.medicalrecord.jpacontroller.PemeriksaanFisikJpaController;
+import com.jtk.medicalrecord.jpacontroller.PemeriksaanPendukungJpaController;
+import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
+import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
+import com.jtk.medicalrecord.model.ConfigModel;
 import com.jtk.medicalrecord.util.CommonHelper;
+import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
-import com.zlib.util.ZClass;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,10 +36,16 @@ import javax.swing.table.DefaultTableModel;
  * @author M Haska Ash Shiddiq
  */
 public class LihatMedrec extends javax.swing.JPanel {
-    
+
+    private final ConfigModel configModel = ConfigHelper.readConfig();
     private boolean first = true;
     private List<MedicalRecord> medicalRecords = new ArrayList<>();
     private final MedicalRecordJpaController medicalRecordJpaController = new MedicalRecordJpaController();
+    private final AnamnesaJpaController anamnesaJpaController = new AnamnesaJpaController();
+    private final PemeriksaanFisikJpaController pemeriksaanFisikJpaController = new PemeriksaanFisikJpaController();
+    private final DiagnosisJpaController diagnosisJpaController = new DiagnosisJpaController();
+    private final PemeriksaanPendukungJpaController pemeriksaanPendukungJpaController = new PemeriksaanPendukungJpaController();
+    private final DosisJpaController dosisJpaController = new DosisJpaController();
 
     /**
      * Creates new form LihatMedrec
@@ -39,7 +56,7 @@ public class LihatMedrec extends javax.swing.JPanel {
         createTableValue();
         addDateListener();
     }
-    
+
     private void addDateListener() {
         dateDari.getDateEditor().addPropertyChangeListener(
                 new PropertyChangeListener() {
@@ -62,15 +79,15 @@ public class LihatMedrec extends javax.swing.JPanel {
                     }
                 });
     }
-    
+
     public void preparation() {
-        
+
     }
-    
+
     private void createTableValue() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         Object[] columnsName = {"Pasien", "Tanggal Periksa", "Keluhan Utama"};
-        
+
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -82,13 +99,13 @@ public class LihatMedrec extends javax.swing.JPanel {
             o[0] = p.getPasien().getPasNama();
             o[1] = sdf.format(p.getMedTanggal());
             o[2] = p.getAnamnesa().getAnKeluhan();
-            
+
             dtm.addRow(o);
         }
         tblPasien.setModel(dtm);
         CommonHelper.resizeColumnWidth(tblPasien);
     }
-    
+
     private void select() {
         if (tblPasien.isRowSelected(tblPasien.getSelectedRow())) {
             MainFrame.instance.showViewMedrec(medicalRecords.get(tblPasien.getSelectedRow()));
@@ -162,6 +179,11 @@ public class LihatMedrec extends javax.swing.JPanel {
         btnHapus.setMaximumSize(new java.awt.Dimension(93, 25));
         btnHapus.setMinimumSize(new java.awt.Dimension(93, 25));
         btnHapus.setPreferredSize(new java.awt.Dimension(93, 25));
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel2.setText("Dari");
@@ -316,6 +338,12 @@ public class LihatMedrec extends javax.swing.JPanel {
     private void tblPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPasienMouseClicked
         if (evt.getClickCount() == 2) {
             select();
+        } else {
+            if (medicalRecords.get(tblPasien.getSelectedRow()).getMedTanggal().getYear() - configModel.getWaktu() < 1 | configModel.getWaktu() == 0) {
+                btnHapus.setEnabled(true);
+            } else {
+                btnHapus.setEnabled(false);
+            }
         }
     }//GEN-LAST:event_tblPasienMouseClicked
 
@@ -327,6 +355,39 @@ public class LihatMedrec extends javax.swing.JPanel {
     private void btnLihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatActionPerformed
         select();
     }//GEN-LAST:event_btnLihatActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        if (MessageHelper.addConfimationMessage("Perhatian", "Apakah anda yakin akan menghapus data ini ?")) {
+            try {
+                MedicalRecord medicalRecord = medicalRecords.get(tblPasien.getSelectedRow());
+                if (medicalRecord.getDiagnosis() != null) {
+                    for (Dosis d : medicalRecord.getDiagnosis().getDosisList()) {
+                        dosisJpaController.destroy(d.getDosisPK());
+                    }
+                    diagnosisJpaController.destroy(medicalRecord.getDiagnosis().getDiagnosisPK());
+                }
+
+                for (PemeriksaanPendukung p : medicalRecord.getPemeriksaanPendukungList()) {
+                    pemeriksaanPendukungJpaController.destroy(p.getPemId());
+                }
+
+                if (medicalRecord.getPemeriksaanFisik() != null) {
+                    pemeriksaanFisikJpaController.destroy(medicalRecord.getPemeriksaanFisik().getPemeriksaanFisikPK());
+                }
+                if (medicalRecord.getAnamnesa() != null) {
+                    anamnesaJpaController.destroy(medicalRecord.getAnamnesa().getAnamnesaPK());
+                }
+                medicalRecordJpaController.destroy(medicalRecord.getMedicalRecordPK());
+
+                medicalRecords.remove(medicalRecord);
+                createTableValue();
+                MessageHelper.addInfoMessage("Informasi", "Data berhasil di hapus");
+            } catch (IllegalOrphanException | NonexistentEntityException ex) {
+                MessageHelper.addErrorMessage("Error", ex.getMessage());
+                Logger.getLogger(LihatMedrec.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
