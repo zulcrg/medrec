@@ -199,6 +199,7 @@ public class RegistrasiAkun extends javax.swing.JPanel {
                 cm.setNoTelp(txtNoTelp.getText());
                 cm.setPassword(txtPassword.getText());
                 cm.setTempatPraktek(txtTempatPraktek.getText());
+                cm.setWaktu(0);
 
                 ConfigHelper.creaeteConfig(cm);
                 MessageHelper.addInfoMessage("Informasi", "Registrasi Berhasil");

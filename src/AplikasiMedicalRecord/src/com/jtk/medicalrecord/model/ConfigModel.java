@@ -17,6 +17,7 @@ public class ConfigModel {
     private String tempatPraktek;
     private String noTelp;
     private String password;
+    private int waktu;
 
     public String getId() {
         return id;
@@ -64,6 +65,14 @@ public class ConfigModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getWaktu() {
+        return waktu;
+    }
+
+    public void setWaktu(int waktu) {
+        this.waktu = waktu;
     }
 
 }

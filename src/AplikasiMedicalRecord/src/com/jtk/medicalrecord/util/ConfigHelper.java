@@ -36,6 +36,7 @@ public class ConfigHelper {
                 prop.setProperty("tempatPraktek", config.getTempatPraktek());
                 prop.setProperty("noTelp", config.getNoTelp());
                 prop.setProperty("password", ZHash.hashSHA256(config.getPassword()));
+                prop.setProperty("waktu", String.valueOf(config.getWaktu()));
 
                 // save properties to project root folder
                 prop.store(output, null);
@@ -67,6 +68,38 @@ public class ConfigHelper {
                 prop.setProperty("tempatPraktek", config.getTempatPraktek());
                 prop.setProperty("noTelp", config.getNoTelp());
                 prop.setProperty("password", ZHash.hashSHA256(config.getPassword()));
+                prop.setProperty("waktu", String.valueOf(config.getWaktu()));
+
+                // save properties to project root folder
+                prop.store(output, null);
+            }
+            Runtime.getRuntime().exec("attrib +H MED");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ConfigHelper.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ConfigHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void editConfigWaktu(ConfigModel config) {
+        try {
+            Properties prop = new Properties();
+            File file = new File("MED");
+            if (file.delete()) {
+                System.out.println(file.getName() + " is deleted!");
+            } else {
+                System.out.println("Delete operation is failed.");
+            }
+            // set the properties value
+            try (OutputStream output = new FileOutputStream("MED")) {
+                // set the properties value
+                prop.setProperty("id", config.getId());
+                prop.setProperty("nama", config.getNamaDokter());
+                prop.setProperty("alamat", config.getAlamat());
+                prop.setProperty("tempatPraktek", config.getTempatPraktek());
+                prop.setProperty("noTelp", config.getNoTelp());
+                prop.setProperty("password", config.getPassword());
+                prop.setProperty("waktu", String.valueOf(config.getWaktu()));
 
                 // save properties to project root folder
                 prop.store(output, null);
@@ -97,6 +130,7 @@ public class ConfigHelper {
                     configModel.setTempatPraktek(prop.getProperty("tempatPraktek"));
                     configModel.setNoTelp(prop.getProperty("noTelp"));
                     configModel.setPassword(prop.getProperty("password"));
+                    configModel.setWaktu(Integer.parseInt(prop.getProperty("waktu")));
                 }
                 return configModel;
             }

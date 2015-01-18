@@ -5,13 +5,19 @@
  */
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.model.ConfigModel;
+import com.jtk.medicalrecord.util.ConfigHelper;
+import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
+import com.zlib.util.ZClass;
 
 /**
  *
  * @author M Haska Ash Shiddiq
  */
 public class PengaturanWaktu extends javax.swing.JPanel {
+
+    private ConfigModel configModel;
 
     /**
      * Creates new form PengaturanWaktu
@@ -21,7 +27,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
     }
 
     public void preparation() {
-
+        configModel = ConfigHelper.readConfig();
     }
 
     /**
@@ -36,7 +42,7 @@ public class PengaturanWaktu extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spinTime = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -61,12 +67,12 @@ public class PengaturanWaktu extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.2;
         add(jLabel2, gridBagConstraints);
 
-        jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jSpinner1.setPreferredSize(new java.awt.Dimension(50, 40));
+        spinTime.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        spinTime.setPreferredSize(new java.awt.Dimension(50, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 4;
         gridBagConstraints.weighty = 0.9;
-        add(jSpinner1, gridBagConstraints);
+        add(spinTime, gridBagConstraints);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/back-blue.png"))); // NOI18N
@@ -113,7 +119,18 @@ public class PengaturanWaktu extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        try {
+            int waktu = Integer.parseInt(spinTime.getValue().toString());
+            ConfigModel cm = new ConfigModel();
+            ZClass.copyClass(configModel, cm);
+            cm.setWaktu(waktu);
+
+            ConfigHelper.editConfigWaktu(cm);
+            MessageHelper.addInfoMessage("Informasi", "Berhasil mengubah data");
+            MainFrame.instance.showPengaturan();
+        } catch (Exception ex) {
+            MessageHelper.addWarnMessage("Perhatian", "Value yang dimasukan salah");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -123,6 +140,6 @@ public class PengaturanWaktu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner spinTime;
     // End of variables declaration//GEN-END:variables
 }

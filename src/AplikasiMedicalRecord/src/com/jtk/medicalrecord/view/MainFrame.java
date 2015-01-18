@@ -64,7 +64,6 @@ public class MainFrame extends javax.swing.JFrame {
         inputMedrec.preparation();
         lihatMedrec.preparation();
         pengaturan.preparation();
-        pengaturanAkun.preparation();
         pengaturanBR.preparation();
         pengaturanWaktu.preparation();
         synchronizeLoading.preparation();

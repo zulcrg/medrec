@@ -235,7 +235,6 @@ public class PengaturanAkun extends javax.swing.JPanel {
                 if (txtPassword1.getText().equals(txtPassword2.getText())) {
                     ConfigModel cm = new ConfigModel();
                     ZClass.copyClass(configModel, cm);
-                    cm.setId(UUID.randomUUID().toString().replace("-", ""));
                     cm.setAlamat(txtAlamt.getText());
                     cm.setNamaDokter(txtAlamt.getText());
                     cm.setNoTelp(txtNoTelp.getText());
