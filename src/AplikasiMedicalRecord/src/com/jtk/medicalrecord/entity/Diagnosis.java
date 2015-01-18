@@ -6,6 +6,7 @@
 
 package com.jtk.medicalrecord.entity;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -22,6 +23,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -54,6 +56,7 @@ public class Diagnosis implements Serializable {
         @JoinColumn(name = "PAS_ID", referencedColumnName = "PAS_ID", nullable = false, insertable = false, updatable = false),
         @JoinColumn(name = "MED_ID", referencedColumnName = "MED_ID", nullable = false, insertable = false, updatable = false)})
     @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @JsonIgnore
     private MedicalRecord medicalRecord;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "diagnosis", fetch = FetchType.LAZY)
     private List<Dosis> dosisList;

@@ -6,6 +6,7 @@
 
 package com.jtk.medicalrecord.entity;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -76,6 +78,7 @@ public class Pasien implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pasien", fetch = FetchType.LAZY)
     private List<Rujukan> rujukanList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pasien", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<MedicalRecord> medicalRecordList;
 
     public Pasien() {

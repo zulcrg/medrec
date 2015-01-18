@@ -6,6 +6,7 @@
 
 package com.jtk.medicalrecord.entity;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -22,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -56,6 +58,7 @@ public class FollowUp implements Serializable {
         @JoinColumn(name = "PAS_ID", referencedColumnName = "PAS_ID"),
         @JoinColumn(name = "MED_ID", referencedColumnName = "MED_ID")})
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private MedicalRecord medicalRecord;
 
     public FollowUp() {

@@ -5,13 +5,39 @@
  */
 package com.jtk.medicalrecord.view.panel;
 
+import com.jtk.medicalrecord.entity.MedicalRecord;
+import com.jtk.medicalrecord.jpacontroller.MedicalRecordJpaController;
+import com.jtk.medicalrecord.util.AsyncProgress;
+import com.jtk.medicalrecord.util.CommonHelper;
+import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
+import com.jtk.medicalrecord.view.dialog.LoadingDialog;
+import com.zlib.io.ZIo;
+import java.awt.HeadlessException;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import org.codehaus.jackson.map.ObjectMapper;
 
 /**
  *
  * @author M Haska Ash Shiddiq
  */
 public class PengaturanBR extends javax.swing.JPanel {
+
+    private final MedicalRecordJpaController medicalRecordJpaController = new MedicalRecordJpaController();
 
     /**
      * Creates new form PengaturanBR
@@ -22,6 +48,49 @@ public class PengaturanBR extends javax.swing.JPanel {
 
     public void preparation() {
 
+    }
+
+    private static void addToZipFile(String fileName, ZipOutputStream zos) throws FileNotFoundException, IOException {
+        File file = new File(fileName);
+        try (FileInputStream fis = new FileInputStream(file)) {
+            ZipEntry zipEntry = new ZipEntry(fileName);
+            zos.putNextEntry(zipEntry);
+
+            byte[] bytes = new byte[1024];
+            int length;
+            while ((length = fis.read(bytes)) >= 0) {
+                zos.write(bytes, 0, length);
+            }
+
+            zos.closeEntry();
+        }
+    }
+
+    private static void addToZipFile(String fileName, byte[] file, ZipOutputStream zos) throws FileNotFoundException, IOException {
+        ZipEntry zipEntry = new ZipEntry(fileName);
+        zos.putNextEntry(zipEntry);
+        zos.write(file, 0, file.length);
+        zos.closeEntry();
+    }
+
+    private void processBackup(final ZipOutputStream zos) {
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                addToZipFile("MED", zos);
+                List<MedicalRecord> medicalRecords = medicalRecordJpaController.findMedicalRecordEntities();
+
+                ObjectMapper mapper = new ObjectMapper();
+                byte[] file = CommonHelper.stringToByte(mapper.writeValueAsString(medicalRecords));
+                addToZipFile("a", file, zos);
+
+            }
+        }, null, true);
+        dialog.start();
     }
 
     /**
@@ -66,6 +135,11 @@ public class PengaturanBR extends javax.swing.JPanel {
         jLabel5.setText("Restore");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/settings - backup-blue.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/jtk/medicalrecord/image/settings - restore-blue.png"))); // NOI18N
         jButton3.setMaximumSize(new java.awt.Dimension(183, 159));
@@ -123,6 +197,67 @@ public class PengaturanBR extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MainFrame.instance.showPengaturan();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        // tampilkan file xls saja
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Medrec Backup File", "mb");
+        chooser.setDialogTitle("Save Medrec Backup File");
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+        chooser.addChoosableFileFilter(filter);
+        chooser.setApproveButtonText("Save");
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            try {
+                OutputStream os = null;
+
+                //jika save dengan nama file di akhiri .xls
+                if (chooser.getSelectedFile().getPath().substring(chooser.getSelectedFile().getPath().length() - 3).equalsIgnoreCase(".mb")) {
+                    File file = new File(chooser.getSelectedFile().getPath());
+                    if (file.exists()) {
+                        int result = JOptionPane.showConfirmDialog(chooser, "File sudah ada, apakah anda ingin menimpanya ?", "Perhatian", JOptionPane.YES_NO_OPTION);
+                        if (result == JOptionPane.YES_OPTION) {
+                            os = new FileOutputStream(file);
+                            try (ZipOutputStream zos = new ZipOutputStream(os)) {
+                                processBackup(zos);
+                            }
+                        }
+                    } else {
+                        os = new FileOutputStream(file);
+                        try (ZipOutputStream zos = new ZipOutputStream(os)) {
+                            processBackup(zos);
+                        }
+                    }
+                } else {
+                    File file = new File(chooser.getSelectedFile().getPath() + ".mb");
+                    if (file.exists()) {
+                        int result = JOptionPane.showConfirmDialog(chooser, "File sudah ada, apakah anda ingin menimpanya ?", "Perhatian", JOptionPane.YES_NO_OPTION);
+                        if (result == JOptionPane.YES_OPTION) {
+                            os = new FileOutputStream(file);
+                            try (ZipOutputStream zos = new ZipOutputStream(os)) {
+                                processBackup(zos);
+                            }
+                        }
+                    } else {
+                        os = new FileOutputStream(file);
+                        try (ZipOutputStream zos = new ZipOutputStream(os)) {
+                            processBackup(zos);
+                        }
+                    }
+                }
+                if (os != null) {
+                    os.close();
+                }
+                MessageHelper.addInfoMessage("Informasi", "Backup data berhasil");
+            } catch (HeadlessException | FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(chooser, "Periksa kembali file, Mungkin file sedang digunakan oleh aplikasi lain");
+                Logger.getLogger(ZIo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(chooser, "Periksa kembali file, Mungkin file sedang digunakan oleh aplikasi lain");
+                Logger.getLogger(ZIo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
