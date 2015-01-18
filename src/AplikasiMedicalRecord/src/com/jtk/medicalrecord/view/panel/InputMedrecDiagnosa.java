@@ -35,7 +35,7 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         txtPengobatan.setEditable(false);
         txtPrognosis.setEditable(false);
         btnHapus.setVisible(false);
-        btnTambah.setText("Download");
+        btnTambah.setVisible(false);
     }
     
     public void clear(){
@@ -132,6 +132,7 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
 
         txtDiagnosisKerja.setColumns(20);
         txtDiagnosisKerja.setRows(5);
+        txtDiagnosisKerja.setMaximumSize(new java.awt.Dimension(53, 20));
         txtDiagnosisKerja.setMinimumSize(new java.awt.Dimension(53, 20));
         txtDiagnosisKerja.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane1.setViewportView(txtDiagnosisKerja);
@@ -143,8 +144,9 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
 
         txtDiagnosisBanding.setColumns(20);
         txtDiagnosisBanding.setRows(5);
-        txtDiagnosisBanding.setMinimumSize(new java.awt.Dimension(53, 10));
-        txtDiagnosisBanding.setPreferredSize(new java.awt.Dimension(53, 10));
+        txtDiagnosisBanding.setMaximumSize(new java.awt.Dimension(53, 20));
+        txtDiagnosisBanding.setMinimumSize(new java.awt.Dimension(53, 20));
+        txtDiagnosisBanding.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane2.setViewportView(txtDiagnosisBanding);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -155,8 +157,9 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
 
         txtPengobatan.setColumns(20);
         txtPengobatan.setRows(5);
-        txtPengobatan.setMinimumSize(new java.awt.Dimension(53, 10));
-        txtPengobatan.setPreferredSize(new java.awt.Dimension(53, 10));
+        txtPengobatan.setMaximumSize(new java.awt.Dimension(53, 20));
+        txtPengobatan.setMinimumSize(new java.awt.Dimension(53, 20));
+        txtPengobatan.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane3.setViewportView(txtPengobatan);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -167,8 +170,9 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
 
         txtPrognosis.setColumns(20);
         txtPrognosis.setRows(5);
-        txtPrognosis.setMinimumSize(new java.awt.Dimension(53, 10));
-        txtPrognosis.setPreferredSize(new java.awt.Dimension(53, 10));
+        txtPrognosis.setMaximumSize(new java.awt.Dimension(53, 20));
+        txtPrognosis.setMinimumSize(new java.awt.Dimension(53, 20));
+        txtPrognosis.setPreferredSize(new java.awt.Dimension(53, 20));
         jScrollPane4.setViewportView(txtPrognosis);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -196,8 +200,8 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         });
 
         jScrollPane6.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane6.setMaximumSize(new java.awt.Dimension(53, 32767));
-        jScrollPane6.setMinimumSize(new java.awt.Dimension(53, 27));
+        jScrollPane6.setMaximumSize(new java.awt.Dimension(53, 100));
+        jScrollPane6.setMinimumSize(new java.awt.Dimension(53, 100));
         jScrollPane6.setPreferredSize(new java.awt.Dimension(53, 100));
 
         tblObat.setModel(new javax.swing.table.DefaultTableModel(
@@ -220,7 +224,7 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
                 .addGap(81, 81, 81))
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
@@ -235,7 +239,7 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -5,9 +5,11 @@
  */
 package com.jtk.medicalrecord.view.dialog;
 
+import com.jtk.medicalrecord.entity.Obat;
 import com.jtk.medicalrecord.entity.Pasien;
 import com.jtk.medicalrecord.jpacontroller.PasienJpaController;
 import com.jtk.medicalrecord.util.CommonHelper;
+import com.jtk.medicalrecord.util.MessageHelper;
 import com.zlib.util.ZClass;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
@@ -67,9 +69,13 @@ public class SearchPasienDialog extends javax.swing.JDialog {
     }
 
     private void select() {
-        Pasien p = pasiens.get(tblPasien.getSelectedRow());
-        ZClass.copyClass(p, pasien);
-        this.dispose();
+        if (tblPasien.isRowSelected(tblPasien.getSelectedRow())) {
+            Pasien p = pasiens.get(tblPasien.getSelectedRow());
+            ZClass.copyClass(p, pasien);
+            this.dispose();
+        } else {
+            MessageHelper.addWarnMessage("Perhatian", "Harap pilih pasien terlebih dahulu");
+        }
     }
 
     /**

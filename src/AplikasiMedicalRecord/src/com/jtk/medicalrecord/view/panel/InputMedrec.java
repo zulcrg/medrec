@@ -22,7 +22,6 @@ import com.jtk.medicalrecord.jpacontroller.DosisJpaController;
 import com.jtk.medicalrecord.jpacontroller.MedicalRecordJpaController;
 import com.jtk.medicalrecord.jpacontroller.PemeriksaanFisikJpaController;
 import com.jtk.medicalrecord.jpacontroller.PemeriksaanPendukungJpaController;
-import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
 import com.jtk.medicalrecord.view.dialog.SearchPasienDialog;
@@ -43,26 +42,63 @@ public class InputMedrec extends javax.swing.JPanel {
     private final PemeriksaanPendukungJpaController pemeriksaanPendukungJpaController = new PemeriksaanPendukungJpaController();
     private final DosisJpaController dosisJpaController = new DosisJpaController();
     private Pasien pasien;
-    private final MedicalRecord medicalRecord = new MedicalRecord();
+    private MedicalRecord medicalRecord = new MedicalRecord();
     private final Diagnosis diagnosis = new Diagnosis();
     private final Anamnesa anamnesa = new Anamnesa();
     private final PemeriksaanFisik pemeriksaanFisik = new PemeriksaanFisik();
     private final boolean view;
 
+    public InputMedrec() {
+        this.view = false;
+        initComponents();
+    }
+
     /**
      * Creates new form InputMedrec
      *
      * @param view
+     * @param medicalRecord1
      */
-    public InputMedrec(boolean view) {
+    public InputMedrec(boolean view, MedicalRecord medicalRecord1) {
         initComponents();
         this.view = view;
+        medicalRecord = medicalRecord1;
         if (view) {
             pnlAnamnesa.viewState();
             pnlDiagnosa.viewState();
             pnlPemeriksaanFisik.viewState();
             pnlPemeriksaanPendukung.viewState();
+            lblTitle.setText("Detail Rekam Medis");
+            txtPasien.setEditable(false);
+            btnCari.setVisible(false);
+            btnSubmit.setVisible(false);
         }
+    }
+
+    public void initView() {
+        txtPasien.setText(medicalRecord.getPasien().getPasNama());
+
+        pnlAnamnesa.getTxtAnamnesaKhusus().setText(medicalRecord.getAnamnesa().getAnKhusus());
+        pnlAnamnesa.getTxtKeluhanUtama().setText(medicalRecord.getAnamnesa().getAnKeluhan());
+        pnlAnamnesa.getTxtRiwayatPenyakitDahulu().setText(medicalRecord.getAnamnesa().getAnRiwayat());
+        pnlAnamnesa.getTxtRiwayatPenyakitKeluarga().setText(medicalRecord.getAnamnesa().getAnRiwayatKel());
+
+        pnlPemeriksaanFisik.getTxtKesadaran().setText(medicalRecord.getPemeriksaanFisik().getPfKesadaran());
+        pnlPemeriksaanFisik.getTxtLain().setText(medicalRecord.getPemeriksaanFisik().getPfLainLain());
+        pnlPemeriksaanFisik.getTxtLajuNadi().setText(medicalRecord.getPemeriksaanFisik().getPfLajuNadi());
+        pnlPemeriksaanFisik.getTxtLajuNafas().setText(medicalRecord.getPemeriksaanFisik().getPfLajuNafas());
+        pnlPemeriksaanFisik.getTxtSuhuTubuh().setText(medicalRecord.getPemeriksaanFisik().getPfSuhu());
+        pnlPemeriksaanFisik.getTxtTekananDarah().setText(medicalRecord.getPemeriksaanFisik().getPfTekananDarah());
+
+        pnlPemeriksaanPendukung.getPemeriksaanPendukungs().addAll(medicalRecord.getPemeriksaanPendukungList());
+        pnlPemeriksaanPendukung.createTableValue();
+
+        pnlDiagnosa.getTxtDiagnosisBanding().setText(medicalRecord.getDiagnosis().getDgBanding());
+        pnlDiagnosa.getTxtDiagnosisKerja().setText(medicalRecord.getDiagnosis().getDgKerja());
+        pnlDiagnosa.getTxtPengobatan().setText(medicalRecord.getDiagnosis().getDgPengobatan());
+        pnlDiagnosa.getTxtPrognosis().setText(medicalRecord.getDiagnosis().getDgPrognosis());
+        pnlDiagnosa.getDosises().addAll(medicalRecord.getDiagnosis().getDosisList());
+        pnlDiagnosa.createTableValue();
     }
 
     public void preparation() {
@@ -72,6 +108,7 @@ public class InputMedrec extends javax.swing.JPanel {
         pnlPemeriksaanPendukung.clear();
         pasien = null;
         txtPasien.setText("");
+        medicalRecord = new MedicalRecord();
     }
 
     private void createMedrec() {
@@ -165,7 +202,7 @@ public class InputMedrec extends javax.swing.JPanel {
     private void initComponents() {
 
         btnKembali = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblPasien = new javax.swing.JLabel();
         txtPasien = new javax.swing.JTextField();
         btnCari = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
@@ -173,7 +210,7 @@ public class InputMedrec extends javax.swing.JPanel {
         pnlDiagnosa = new com.jtk.medicalrecord.view.panel.InputMedrecDiagnosa();
         pnlPemeriksaanFisik = new com.jtk.medicalrecord.view.panel.InputMedrecPemeriksaanfisik();
         pnlPemeriksaanPendukung = new com.jtk.medicalrecord.view.panel.InputMedrecPemeriksaanpendukung();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1024, 700));
@@ -190,8 +227,8 @@ public class InputMedrec extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel2.setText("Pasien");
+        lblPasien.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblPasien.setText("Pasien");
 
         txtPasien.setPreferredSize(new java.awt.Dimension(200, 23));
 
@@ -219,8 +256,8 @@ public class InputMedrec extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Input Rekam Medis");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTitle.setText("Input Rekam Medis");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -232,7 +269,7 @@ public class InputMedrec extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(327, 327, 327)
-                        .addComponent(jLabel1))
+                        .addComponent(lblTitle))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlAnamnesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -246,7 +283,7 @@ public class InputMedrec extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(lblPasien)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtPasien, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -256,14 +293,13 @@ public class InputMedrec extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                    .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitle))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblPasien)
                     .addComponent(txtPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -298,7 +334,11 @@ public class InputMedrec extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
-        MainFrame.instance.showMainMenu();
+        if (view) {
+            MainFrame.instance.showLihatMedrec();
+        } else {
+            MainFrame.instance.showMainMenu();
+        }
     }//GEN-LAST:event_btnKembaliActionPerformed
 
 
@@ -306,8 +346,8 @@ public class InputMedrec extends javax.swing.JPanel {
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblPasien;
+    private javax.swing.JLabel lblTitle;
     private com.jtk.medicalrecord.view.panel.InputMedrecAnamnesa pnlAnamnesa;
     private com.jtk.medicalrecord.view.panel.InputMedrecDiagnosa pnlDiagnosa;
     private com.jtk.medicalrecord.view.panel.InputMedrecPemeriksaanfisik pnlPemeriksaanFisik;

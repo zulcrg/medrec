@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.entity;
 
 import java.io.Serializable;
@@ -40,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "MedicalRecord.findByMedId", query = "SELECT m FROM MedicalRecord m WHERE m.medicalRecordPK.medId = :medId"),
     @NamedQuery(name = "MedicalRecord.findByMedTanggal", query = "SELECT m FROM MedicalRecord m WHERE m.medTanggal = :medTanggal")})
 public class MedicalRecord implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected MedicalRecordPK medicalRecordPK;
@@ -167,5 +167,5 @@ public class MedicalRecord implements Serializable {
     public String toString() {
         return "com.jtk.medicalrecord.entity.MedicalRecord[ medicalRecordPK=" + medicalRecordPK + " ]";
     }
-    
+
 }

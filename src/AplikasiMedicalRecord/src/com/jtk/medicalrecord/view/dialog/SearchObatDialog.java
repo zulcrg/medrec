@@ -8,6 +8,7 @@ package com.jtk.medicalrecord.view.dialog;
 import com.jtk.medicalrecord.entity.Obat;
 import com.jtk.medicalrecord.jpacontroller.ObatJpaController;
 import com.jtk.medicalrecord.util.CommonHelper;
+import com.jtk.medicalrecord.util.MessageHelper;
 import com.zlib.util.ZClass;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -63,9 +64,13 @@ public class SearchObatDialog extends javax.swing.JDialog {
     }
 
     private void select() {
-        Obat o = obats.get(tblObat.getSelectedRow());
-        ZClass.copyClass(o, obat);
-        this.dispose();
+        if (tblObat.isRowSelected(tblObat.getSelectedRow())) {
+            Obat o = obats.get(tblObat.getSelectedRow());
+            ZClass.copyClass(o, obat);
+            this.dispose();
+        } else {
+            MessageHelper.addWarnMessage("Perhatian", "Harap pilih obat terlebih dahulu");
+        }
     }
 
     /**

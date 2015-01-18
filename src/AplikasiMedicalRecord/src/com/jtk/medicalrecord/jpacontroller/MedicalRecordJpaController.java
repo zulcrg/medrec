@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.jpacontroller;
 
 import java.io.Serializable;
@@ -24,6 +23,7 @@ import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
 import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
 import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
 import com.jtk.medicalrecord.jpacontroller.exceptions.PreexistingEntityException;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -37,10 +37,12 @@ public class MedicalRecordJpaController implements Serializable {
     public MedicalRecordJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("AplikasiMedicalRecordPU");
+
+    ;
 
     public MedicalRecordJpaController() {
-        
+
     }
 
     public EntityManager getEntityManager() {
@@ -425,5 +427,31 @@ public class MedicalRecordJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public List<MedicalRecord> findByPasNameNikOrTanggal(String search, Date dari, Date sampai) {
+        if(search.equals("Cari berdasarkan NIK atau Nama Pasien")){
+            search = "";
+        }
+        StringBuilder q = new StringBuilder();
+        q.append("SELECT m FROM MedicalRecord m JOIN m.pasien p WHERE (p.pasId LIKE :pasId OR p.pasNama LIKE :pasNama) ");
+        if (dari != null) {
+            q.append("AND m.medTanggal >= :dari ");
+        }
+
+        if (sampai != null) {
+            q.append("AND m.medTanggal <= :sampai ");
+        }
+
+        Query query = getEntityManager().createQuery(q.toString());
+        query.setParameter("pasId", "%" + search + "%");
+        query.setParameter("pasNama", "%" + search + "%");
+        if (dari != null) {
+            query.setParameter("dari", dari);
+        }
+        if (sampai != null) {
+            query.setParameter("sampai", sampai);
+        }
+        return query.getResultList();
+    }
+
 }

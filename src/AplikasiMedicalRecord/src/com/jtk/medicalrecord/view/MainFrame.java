@@ -5,6 +5,7 @@
  */
 package com.jtk.medicalrecord.view;
 
+import com.jtk.medicalrecord.entity.MedicalRecord;
 import com.jtk.medicalrecord.util.CardLayoutEnum;
 import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.view.panel.InputMedrec;
@@ -33,7 +34,7 @@ public class MainFrame extends javax.swing.JFrame {
     private final LoginPanel2 loginPanel2 = new LoginPanel2();
     private final RegistrasiAkun registrasiAkun = new RegistrasiAkun();
     private final MainMenu mainMenu = new MainMenu();
-    private final InputMedrec inputMedrec = new InputMedrec(false);
+    private final InputMedrec inputMedrec = new InputMedrec();
     private final LihatMedrec lihatMedrec = new LihatMedrec();
     private final Pengaturan pengaturan = new Pengaturan();
     private final PengaturanAkun pengaturanAkun = new PengaturanAkun();
@@ -87,6 +88,13 @@ public class MainFrame extends javax.swing.JFrame {
             showLoginPanel2();
         }
 
+    }
+
+    public void showViewMedrec(MedicalRecord medicalRecord) {
+        InputMedrec viewMedrec = new InputMedrec(true, medicalRecord);
+        viewMedrec.initView();
+        cardPanel.add(viewMedrec, CardLayoutEnum.VIEW_MEDREC.toString());
+        cardLayout.show(cardPanel, CardLayoutEnum.VIEW_MEDREC.toString());
     }
 
     public void showRegistrasiAkun() {

@@ -8,6 +8,7 @@ package com.jtk.medicalrecord.view.panel;
 import com.jtk.medicalrecord.entity.PemeriksaanPendukung;
 import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
+import com.zlib.io.ZIo;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,8 +29,9 @@ import org.apache.commons.io.IOUtils;
  * @author M Haska Ash Shiddiq
  */
 public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
-    
+
     private final List<PemeriksaanPendukung> pemeriksaanPendukungs = new ArrayList<>();
+    private boolean view = false;
 
     /**
      * Creates new form InputMedrecPemeriksaanpendukung
@@ -37,20 +39,21 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
     public InputMedrecPemeriksaanpendukung() {
         initComponents();
     }
-    
+
     public void viewState() {
         btnHapus.setVisible(false);
         btnTambah.setText("Download");
+        view = true;
     }
-    
-    public void clear(){
+
+    public void clear() {
         pemeriksaanPendukungs.removeAll(pemeriksaanPendukungs);
         createTableValue();
     }
-    
-    private void createTableValue() {
+
+    public void createTableValue() {
         Object[] columnsName = {"Nama File", "Tipe File"};
-        
+
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -61,15 +64,23 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
             Object[] o = new Object[2];
             o[0] = p.getPemNmFile();
             o[1] = p.getPemTipeFile();
-            
+
             dtm.addRow(o);
         }
         tblFile.setModel(dtm);
         CommonHelper.resizeColumnWidth(tblFile);
     }
-    
+
     public List<PemeriksaanPendukung> getPemeriksaanPendukungs() {
         return pemeriksaanPendukungs;
+    }
+
+    private void download() {
+        if (tblFile.isRowSelected(tblFile.getSelectedRow())) {
+            ZIo.saveAsFile(pemeriksaanPendukungs.get(tblFile.getSelectedRow()).getPemFile(), pemeriksaanPendukungs.get(tblFile.getSelectedRow()).getPemTipeFile());
+        } else {
+            MessageHelper.addWarnMessage("Perhatian", "Harap pilih file terlebih dahulu");
+        }
     }
 
     /**
@@ -170,30 +181,34 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            String url = fileChooser.getSelectedFile().getAbsolutePath();
-            try {
-                InputStream is = new FileInputStream(new File(url));
-                String tipeFile = FilenameUtils.getExtension(url);
-                String namaFile = FilenameUtils.getBaseName(url);
-                
-                PemeriksaanPendukung pp = new PemeriksaanPendukung();
-                pp.setPemId(UUID.randomUUID().toString().replace("-", ""));
-                pp.setPemNmFile(namaFile);
-                pp.setPemTipeFile(tipeFile);
-                pp.setPemFile(IOUtils.toByteArray(is));
-                
-                pemeriksaanPendukungs.add(pp);
-                
-                createTableValue();
-            } catch (FileNotFoundException ex) {
-                MessageHelper.addErrorMessage("Error add file", ex.getMessage());
-                Logger.getLogger(InputMedrecPemeriksaanpendukung.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                MessageHelper.addErrorMessage("Error add file", ex.getMessage());
-                Logger.getLogger(InputMedrecPemeriksaanpendukung.class.getName()).log(Level.SEVERE, null, ex);
+        if (view) {
+            download();
+        } else {
+            JFileChooser fileChooser = new JFileChooser();
+            int result = fileChooser.showOpenDialog(null);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                String url = fileChooser.getSelectedFile().getAbsolutePath();
+                try {
+                    InputStream is = new FileInputStream(new File(url));
+                    String tipeFile = FilenameUtils.getExtension(url);
+                    String namaFile = FilenameUtils.getBaseName(url);
+
+                    PemeriksaanPendukung pp = new PemeriksaanPendukung();
+                    pp.setPemId(UUID.randomUUID().toString().replace("-", ""));
+                    pp.setPemNmFile(namaFile);
+                    pp.setPemTipeFile(tipeFile);
+                    pp.setPemFile(IOUtils.toByteArray(is));
+
+                    pemeriksaanPendukungs.add(pp);
+
+                    createTableValue();
+                } catch (FileNotFoundException ex) {
+                    MessageHelper.addErrorMessage("Error add file", ex.getMessage());
+                    Logger.getLogger(InputMedrecPemeriksaanpendukung.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    MessageHelper.addErrorMessage("Error add file", ex.getMessage());
+                    Logger.getLogger(InputMedrecPemeriksaanpendukung.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_btnTambahActionPerformed
