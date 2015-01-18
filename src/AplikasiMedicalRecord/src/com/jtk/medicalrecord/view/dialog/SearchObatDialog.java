@@ -6,9 +6,12 @@
 package com.jtk.medicalrecord.view.dialog;
 
 import com.jtk.medicalrecord.entity.Obat;
+import com.jtk.medicalrecord.entity.Pasien;
 import com.jtk.medicalrecord.jpacontroller.ObatJpaController;
+import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
+import com.jtk.medicalrecord.util.TextHelper;
 import com.zlib.util.ZClass;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -36,10 +39,20 @@ public class SearchObatDialog extends javax.swing.JDialog {
     public SearchObatDialog(java.awt.Frame parent, boolean modal, Obat obat) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
         this.obat = obat;
-        obats = obatJpaController.findObatEntities();
-        createTableValue();
+        setLocationRelativeTo(null);
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                obats = obatJpaController.findObatEntities();
+                createTableValue();
+            }
+        }, null, true);
+        dialog.start();
     }
 
     private void createTableValue() {
@@ -65,8 +78,18 @@ public class SearchObatDialog extends javax.swing.JDialog {
 
     private void select() {
         if (tblObat.isRowSelected(tblObat.getSelectedRow())) {
-            Obat o = obats.get(tblObat.getSelectedRow());
-            ZClass.copyClass(o, obat);
+            LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                @Override
+                public void done() {
+                }
+
+                @Override
+                public void doInBackground() throws Exception {
+                    Obat o = obats.get(tblObat.getSelectedRow());
+                    ZClass.copyClass(o, obat);
+                }
+            }, null, true);
+            dialog.start();
             this.dispose();
         } else {
             MessageHelper.addWarnMessage("Perhatian", "Harap pilih obat terlebih dahulu");
@@ -200,8 +223,17 @@ public class SearchObatDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtSearchFocusLost
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        obats = obatJpaController.findObatEntitiesByIdOrNamaOrJenis(txtSearch.getText());
-        createTableValue();
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+            @Override
+            public void doInBackground() throws Exception {
+                obats = obatJpaController.findObatEntitiesByIdOrNamaOrJenis(txtSearch.getText());
+                createTableValue();
+            }
+        }, null, true);
+        dialog.start();
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void txtPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPilihActionPerformed

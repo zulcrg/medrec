@@ -82,8 +82,18 @@ public class SearchPasienDialog extends javax.swing.JDialog {
 
     private void select() {
         if (tblPasien.isRowSelected(tblPasien.getSelectedRow())) {
-            Pasien p = pasiens.get(tblPasien.getSelectedRow());
-            ZClass.copyClass(p, pasien);
+            LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                @Override
+                public void done() {
+                }
+
+                @Override
+                public void doInBackground() throws Exception {
+                    Pasien p = pasiens.get(tblPasien.getSelectedRow());
+                    ZClass.copyClass(p, pasien);
+                }
+            }, null, true);
+            dialog.start();
             this.dispose();
         } else {
             MessageHelper.addWarnMessage("Perhatian", "Harap pilih pasien terlebih dahulu");
@@ -258,15 +268,35 @@ public class SearchPasienDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_textSearchFocusLost
 
     private void textSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textSearchKeyReleased
-        pasiens = pasienJpaController.findPasienByNikOrName(textSearch.getText());
-        createTableValue();
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                pasiens = pasienJpaController.findPasienByNikOrName(textSearch.getText());
+                createTableValue();
+            }
+        }, null, true);
+        dialog.start();
     }//GEN-LAST:event_textSearchKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        InputPasienDialog dialog = new InputPasienDialog(null, true);
-        dialog.show();
-        pasiens = pasienJpaController.findPasienEntities();
-        createTableValue();
+        InputPasienDialog dialog1 = new InputPasienDialog(null, true);
+        dialog1.show();
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                pasiens = pasienJpaController.findPasienEntities();
+                createTableValue();
+            }
+        }, null, true);
+        dialog.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPilihActionPerformed

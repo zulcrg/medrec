@@ -8,6 +8,7 @@ package com.jtk.medicalrecord.view.dialog;
 import com.jtk.medicalrecord.entity.Dosis;
 import com.jtk.medicalrecord.entity.DosisPK;
 import com.jtk.medicalrecord.entity.Obat;
+import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.MessageHelper;
 
 /**
@@ -171,13 +172,22 @@ public class ObatDialog extends javax.swing.JDialog {
             } else if (txtObat.getText().isEmpty()) {
                 MessageHelper.addWarnMessage("Perhatian", "Harap isi per hari");
             } else {
-                DosisPK dosisPK = new DosisPK();
-                dosisPK.setObatId(obat.getObatId());
+                LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                    @Override
+                    public void done() {
+                    }
 
-                dosis.setDosisPK(dosisPK);
-                dosis.setObat(obat);
-                dosis.setObatDosis(txtDosis.getText() + "x" + txtHari.getText());
+                    @Override
+                    public void doInBackground() throws Exception {
+                        DosisPK dosisPK = new DosisPK();
+                        dosisPK.setObatId(obat.getObatId());
 
+                        dosis.setDosisPK(dosisPK);
+                        dosis.setObat(obat);
+                        dosis.setObatDosis(txtDosis.getText() + "x" + txtHari.getText());
+                    }
+                }, null, true);
+                dialog.start();
                 this.dispose();
             }
         } else {

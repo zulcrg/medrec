@@ -17,10 +17,12 @@ import com.jtk.medicalrecord.jpacontroller.PemeriksaanPendukungJpaController;
 import com.jtk.medicalrecord.jpacontroller.exceptions.IllegalOrphanException;
 import com.jtk.medicalrecord.jpacontroller.exceptions.NonexistentEntityException;
 import com.jtk.medicalrecord.model.ConfigModel;
+import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.ConfigHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
+import com.jtk.medicalrecord.view.dialog.LoadingDialog;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -52,9 +54,19 @@ public class LihatMedrec extends javax.swing.JPanel {
      */
     public LihatMedrec() {
         initComponents();
-        medicalRecords = medicalRecordJpaController.findMedicalRecordEntities();
-        createTableValue();
         addDateListener();
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                medicalRecords = medicalRecordJpaController.findMedicalRecordEntities();
+                createTableValue();
+            }
+        }, null, true);
+        dialog.start();
     }
 
     private void addDateListener() {
@@ -63,8 +75,18 @@ public class LihatMedrec extends javax.swing.JPanel {
                     @Override
                     public void propertyChange(PropertyChangeEvent e) {
                         if ("date".equals(e.getPropertyName())) {
-                            medicalRecords = medicalRecordJpaController.findByPasNameNikOrTanggal(txtSearch.getText(), dateDari.getDate(), dateSampai.getDate());
-                            createTableValue();
+                            LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                                @Override
+                                public void done() {
+                                }
+
+                                @Override
+                                public void doInBackground() throws Exception {
+                                    medicalRecords = medicalRecordJpaController.findByPasNameNikOrTanggal(txtSearch.getText(), dateDari.getDate(), dateSampai.getDate());
+                                    createTableValue();
+                                }
+                            }, null, true);
+                            dialog.start();
                         }
                     }
                 });
@@ -73,8 +95,18 @@ public class LihatMedrec extends javax.swing.JPanel {
                     @Override
                     public void propertyChange(PropertyChangeEvent e) {
                         if ("date".equals(e.getPropertyName())) {
-                            medicalRecords = medicalRecordJpaController.findByPasNameNikOrTanggal(txtSearch.getText(), dateDari.getDate(), dateSampai.getDate());
-                            createTableValue();
+                            LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                                @Override
+                                public void done() {
+                                }
+
+                                @Override
+                                public void doInBackground() throws Exception {
+                                    medicalRecords = medicalRecordJpaController.findByPasNameNikOrTanggal(txtSearch.getText(), dateDari.getDate(), dateSampai.getDate());
+                                    createTableValue();
+                                }
+                            }, null, true);
+                            dialog.start();
                         }
                     }
                 });
@@ -349,8 +381,18 @@ public class LihatMedrec extends javax.swing.JPanel {
     }//GEN-LAST:event_tblPasienMouseClicked
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        medicalRecords = medicalRecordJpaController.findByPasNameNikOrTanggal(txtSearch.getText(), dateDari.getDate(), dateSampai.getDate());
-        createTableValue();
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
+
+            @Override
+            public void doInBackground() throws Exception {
+                medicalRecords = medicalRecordJpaController.findByPasNameNikOrTanggal(txtSearch.getText(), dateDari.getDate(), dateSampai.getDate());
+                createTableValue();
+            }
+        }, null, true);
+        dialog.start();
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnLihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatActionPerformed
@@ -359,34 +401,39 @@ public class LihatMedrec extends javax.swing.JPanel {
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         if (MessageHelper.addConfimationMessage("Perhatian", "Apakah anda yakin akan menghapus data ini ?")) {
-            try {
-                MedicalRecord medicalRecord = medicalRecords.get(tblPasien.getSelectedRow());
-                if (medicalRecord.getDiagnosis() != null) {
-                    for (Dosis d : medicalRecord.getDiagnosis().getDosisList()) {
-                        dosisJpaController.destroy(d.getDosisPK());
+            LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                @Override
+                public void done() {
+                }
+
+                @Override
+                public void doInBackground() throws Exception {
+                    MedicalRecord medicalRecord = medicalRecords.get(tblPasien.getSelectedRow());
+                    if (medicalRecord.getDiagnosis() != null) {
+                        for (Dosis d : medicalRecord.getDiagnosis().getDosisList()) {
+                            dosisJpaController.destroy(d.getDosisPK());
+                        }
+                        diagnosisJpaController.destroy(medicalRecord.getDiagnosis().getDiagnosisPK());
                     }
-                    diagnosisJpaController.destroy(medicalRecord.getDiagnosis().getDiagnosisPK());
-                }
 
-                for (PemeriksaanPendukung p : medicalRecord.getPemeriksaanPendukungList()) {
-                    pemeriksaanPendukungJpaController.destroy(p.getPemId());
-                }
+                    for (PemeriksaanPendukung p : medicalRecord.getPemeriksaanPendukungList()) {
+                        pemeriksaanPendukungJpaController.destroy(p.getPemId());
+                    }
 
-                if (medicalRecord.getPemeriksaanFisik() != null) {
-                    pemeriksaanFisikJpaController.destroy(medicalRecord.getPemeriksaanFisik().getPemeriksaanFisikPK());
-                }
-                if (medicalRecord.getAnamnesa() != null) {
-                    anamnesaJpaController.destroy(medicalRecord.getAnamnesa().getAnamnesaPK());
-                }
-                medicalRecordJpaController.destroy(medicalRecord.getMedicalRecordPK());
+                    if (medicalRecord.getPemeriksaanFisik() != null) {
+                        pemeriksaanFisikJpaController.destroy(medicalRecord.getPemeriksaanFisik().getPemeriksaanFisikPK());
+                    }
+                    if (medicalRecord.getAnamnesa() != null) {
+                        anamnesaJpaController.destroy(medicalRecord.getAnamnesa().getAnamnesaPK());
+                    }
+                    medicalRecordJpaController.destroy(medicalRecord.getMedicalRecordPK());
 
-                medicalRecords.remove(medicalRecord);
-                createTableValue();
-                MessageHelper.addInfoMessage("Informasi", "Data berhasil di hapus");
-            } catch (IllegalOrphanException | NonexistentEntityException ex) {
-                MessageHelper.addErrorMessage("Error", ex.getMessage());
-                Logger.getLogger(LihatMedrec.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                    medicalRecords.remove(medicalRecord);
+                    createTableValue();
+                }
+            }, null, true);
+            dialog.start();
+            MessageHelper.addInfoMessage("Informasi", "Data berhasil di hapus");
         }
     }//GEN-LAST:event_btnHapusActionPerformed
 

@@ -7,6 +7,7 @@ package com.jtk.medicalrecord.view.dialog;
 
 import com.jtk.medicalrecord.entity.Pasien;
 import com.jtk.medicalrecord.jpacontroller.PasienJpaController;
+import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.util.TextHelper;
 import java.util.logging.Level;
@@ -79,18 +80,27 @@ public class InputPasienDialog extends javax.swing.JDialog {
 
     private void register() {
         try {
-            Pasien pasien = new Pasien();
-            pasien.setPasId(txtNik.getText());
-            pasien.setPasNama(txtNama.getText());
-            pasien.setPasTmpLhr(txtTmpLahir.getText());
-            pasien.setPasTglLhr(dateTglLahir.getDate());
-            pasien.setPasAlamat(txtAlamat.getText());
-            pasien.setPasGolDarah(cboGloDar.getSelectedItem().toString());
-            pasien.setPasPekerjaan(txtPekerjaan.getText());
-            pasien.setPasGender(TextHelper.genderBooleanToSimpleString(radLaki.isSelected()));
-            pasien.setPasLainLain(txtLain.getText());
+            LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                @Override
+                public void done() {
+                }
+                @Override
+                public void doInBackground() throws Exception {
+                    Pasien pasien = new Pasien();
+                    pasien.setPasId(txtNik.getText());
+                    pasien.setPasNama(txtNama.getText());
+                    pasien.setPasTmpLhr(txtTmpLahir.getText());
+                    pasien.setPasTglLhr(dateTglLahir.getDate());
+                    pasien.setPasAlamat(txtAlamat.getText());
+                    pasien.setPasGolDarah(cboGloDar.getSelectedItem().toString());
+                    pasien.setPasPekerjaan(txtPekerjaan.getText());
+                    pasien.setPasGender(TextHelper.genderBooleanToSimpleString(radLaki.isSelected()));
+                    pasien.setPasLainLain(txtLain.getText());
 
-            pasienJpaController.create(pasien);
+                    pasienJpaController.create(pasien);
+                }
+            }, null, true);
+            dialog.start();
             MessageHelper.addInfoMessage("Informasi", "Data pasien berhasil ditambahkan");
             this.dispose();
         } catch (Exception ex) {

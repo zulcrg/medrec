@@ -22,8 +22,10 @@ import com.jtk.medicalrecord.jpacontroller.DosisJpaController;
 import com.jtk.medicalrecord.jpacontroller.MedicalRecordJpaController;
 import com.jtk.medicalrecord.jpacontroller.PemeriksaanFisikJpaController;
 import com.jtk.medicalrecord.jpacontroller.PemeriksaanPendukungJpaController;
+import com.jtk.medicalrecord.util.AsyncProgress;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.MainFrame;
+import com.jtk.medicalrecord.view.dialog.LoadingDialog;
 import com.jtk.medicalrecord.view.dialog.SearchPasienDialog;
 import java.util.Date;
 import java.util.logging.Level;
@@ -76,29 +78,39 @@ public class InputMedrec extends javax.swing.JPanel {
     }
 
     public void initView() {
-        txtPasien.setText(medicalRecord.getPasien().getPasNama());
+        LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+            @Override
+            public void done() {
+            }
 
-        pnlAnamnesa.getTxtAnamnesaKhusus().setText(medicalRecord.getAnamnesa().getAnKhusus());
-        pnlAnamnesa.getTxtKeluhanUtama().setText(medicalRecord.getAnamnesa().getAnKeluhan());
-        pnlAnamnesa.getTxtRiwayatPenyakitDahulu().setText(medicalRecord.getAnamnesa().getAnRiwayat());
-        pnlAnamnesa.getTxtRiwayatPenyakitKeluarga().setText(medicalRecord.getAnamnesa().getAnRiwayatKel());
+            @Override
+            public void doInBackground() throws Exception {
+                txtPasien.setText(medicalRecord.getPasien().getPasNama());
 
-        pnlPemeriksaanFisik.getTxtKesadaran().setText(medicalRecord.getPemeriksaanFisik().getPfKesadaran());
-        pnlPemeriksaanFisik.getTxtLain().setText(medicalRecord.getPemeriksaanFisik().getPfLainLain());
-        pnlPemeriksaanFisik.getTxtLajuNadi().setText(medicalRecord.getPemeriksaanFisik().getPfLajuNadi());
-        pnlPemeriksaanFisik.getTxtLajuNafas().setText(medicalRecord.getPemeriksaanFisik().getPfLajuNafas());
-        pnlPemeriksaanFisik.getTxtSuhuTubuh().setText(medicalRecord.getPemeriksaanFisik().getPfSuhu());
-        pnlPemeriksaanFisik.getTxtTekananDarah().setText(medicalRecord.getPemeriksaanFisik().getPfTekananDarah());
+                pnlAnamnesa.getTxtAnamnesaKhusus().setText(medicalRecord.getAnamnesa().getAnKhusus());
+                pnlAnamnesa.getTxtKeluhanUtama().setText(medicalRecord.getAnamnesa().getAnKeluhan());
+                pnlAnamnesa.getTxtRiwayatPenyakitDahulu().setText(medicalRecord.getAnamnesa().getAnRiwayat());
+                pnlAnamnesa.getTxtRiwayatPenyakitKeluarga().setText(medicalRecord.getAnamnesa().getAnRiwayatKel());
 
-        pnlPemeriksaanPendukung.getPemeriksaanPendukungs().addAll(medicalRecord.getPemeriksaanPendukungList());
-        pnlPemeriksaanPendukung.createTableValue();
+                pnlPemeriksaanFisik.getTxtKesadaran().setText(medicalRecord.getPemeriksaanFisik().getPfKesadaran());
+                pnlPemeriksaanFisik.getTxtLain().setText(medicalRecord.getPemeriksaanFisik().getPfLainLain());
+                pnlPemeriksaanFisik.getTxtLajuNadi().setText(medicalRecord.getPemeriksaanFisik().getPfLajuNadi());
+                pnlPemeriksaanFisik.getTxtLajuNafas().setText(medicalRecord.getPemeriksaanFisik().getPfLajuNafas());
+                pnlPemeriksaanFisik.getTxtSuhuTubuh().setText(medicalRecord.getPemeriksaanFisik().getPfSuhu());
+                pnlPemeriksaanFisik.getTxtTekananDarah().setText(medicalRecord.getPemeriksaanFisik().getPfTekananDarah());
 
-        pnlDiagnosa.getTxtDiagnosisBanding().setText(medicalRecord.getDiagnosis().getDgBanding());
-        pnlDiagnosa.getTxtDiagnosisKerja().setText(medicalRecord.getDiagnosis().getDgKerja());
-        pnlDiagnosa.getTxtPengobatan().setText(medicalRecord.getDiagnosis().getDgPengobatan());
-        pnlDiagnosa.getTxtPrognosis().setText(medicalRecord.getDiagnosis().getDgPrognosis());
-        pnlDiagnosa.getDosises().addAll(medicalRecord.getDiagnosis().getDosisList());
-        pnlDiagnosa.createTableValue();
+                pnlPemeriksaanPendukung.getPemeriksaanPendukungs().addAll(medicalRecord.getPemeriksaanPendukungList());
+                pnlPemeriksaanPendukung.createTableValue();
+
+                pnlDiagnosa.getTxtDiagnosisBanding().setText(medicalRecord.getDiagnosis().getDgBanding());
+                pnlDiagnosa.getTxtDiagnosisKerja().setText(medicalRecord.getDiagnosis().getDgKerja());
+                pnlDiagnosa.getTxtPengobatan().setText(medicalRecord.getDiagnosis().getDgPengobatan());
+                pnlDiagnosa.getTxtPrognosis().setText(medicalRecord.getDiagnosis().getDgPrognosis());
+                pnlDiagnosa.getDosises().addAll(medicalRecord.getDiagnosis().getDosisList());
+                pnlDiagnosa.createTableValue();
+            }
+        }, null, true);
+        dialog.start();
     }
 
     public void preparation() {
@@ -116,32 +128,42 @@ public class InputMedrec extends javax.swing.JPanel {
             MessageHelper.addWarnMessage("Perhatian", "Harap pilih pasien terlebih dahulu");
         } else {
             try {
-                MedicalRecordPK medicalRecordPK = new MedicalRecordPK();
-                medicalRecordPK.setMedId(new Date().getTime());
-                medicalRecordPK.setPasId(pasien.getPasId());
-                medicalRecord.setMedicalRecordPK(medicalRecordPK);
+                LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
+                    @Override
+                    public void done() {
+                    }
 
-                constructAnamnesa();
-                constructPemFisik();
-                constructDiagnosis();
+                    @Override
+                    public void doInBackground() throws Exception {
+                        MedicalRecordPK medicalRecordPK = new MedicalRecordPK();
+                        medicalRecordPK.setMedId(new Date().getTime());
+                        medicalRecordPK.setPasId(pasien.getPasId());
+                        medicalRecord.setMedicalRecordPK(medicalRecordPK);
 
-                medicalRecord.setMedTanggal(new Date(medicalRecordPK.getMedId()));
-                medicalRecord.setPasien(pasien);
+                        constructAnamnesa();
+                        constructPemFisik();
+                        constructDiagnosis();
 
-                medicalRecordJpaController.create(medicalRecord);
-                anamnesaJpaController.create(anamnesa);
-                pemeriksaanFisikJpaController.create(pemeriksaanFisik);
-                diagnosisJpaController.create(diagnosis);
-                for (PemeriksaanPendukung object : pnlPemeriksaanPendukung.getPemeriksaanPendukungs()) {
-                    object.setMedicalRecord(medicalRecord);
-                    pemeriksaanPendukungJpaController.create(object);
-                }
-                for (Dosis object : pnlDiagnosa.getDosises()) {
-                    object.getDosisPK().setMedId(medicalRecordPK.getMedId());
-                    object.getDosisPK().setPasId(pasien.getPasId());
-                    object.setDiagnosis(diagnosis);
-                    dosisJpaController.create(object);
-                }
+                        medicalRecord.setMedTanggal(new Date(medicalRecordPK.getMedId()));
+                        medicalRecord.setPasien(pasien);
+
+                        medicalRecordJpaController.create(medicalRecord);
+                        anamnesaJpaController.create(anamnesa);
+                        pemeriksaanFisikJpaController.create(pemeriksaanFisik);
+                        diagnosisJpaController.create(diagnosis);
+                        for (PemeriksaanPendukung object : pnlPemeriksaanPendukung.getPemeriksaanPendukungs()) {
+                            object.setMedicalRecord(medicalRecord);
+                            pemeriksaanPendukungJpaController.create(object);
+                        }
+                        for (Dosis object : pnlDiagnosa.getDosises()) {
+                            object.getDosisPK().setMedId(medicalRecordPK.getMedId());
+                            object.getDosisPK().setPasId(pasien.getPasId());
+                            object.setDiagnosis(diagnosis);
+                            dosisJpaController.create(object);
+                        }
+                    }
+                }, null, true);
+                dialog.start();
                 MessageHelper.addInfoMessage("Informasi", "Data medical record berhasil ditambahkan");
                 preparation();
             } catch (Exception ex) {
