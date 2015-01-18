@@ -124,9 +124,7 @@ public class InputMedrec extends javax.swing.JPanel {
     }
 
     private void createMedrec() {
-        if (pasien == null) {
-            MessageHelper.addWarnMessage("Perhatian", "Harap pilih pasien terlebih dahulu");
-        } else {
+        if (pasien != null && pasien.getPasId() != null && !pasien.getPasId().isEmpty()) {
             try {
                 LoadingDialog dialog = new LoadingDialog(new AsyncProgress() {
                     @Override
@@ -170,6 +168,8 @@ public class InputMedrec extends javax.swing.JPanel {
                 MessageHelper.addErrorMessage("Error create Medrec", ex.getMessage());
                 Logger.getLogger(InputMedrec.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            MessageHelper.addWarnMessage("Perhatian", "Harap pilih pasien terlebih dahulu");
         }
     }
 
