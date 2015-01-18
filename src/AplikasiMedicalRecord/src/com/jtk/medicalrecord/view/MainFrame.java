@@ -33,7 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
     private final LoginPanel2 loginPanel2 = new LoginPanel2();
     private final RegistrasiAkun registrasiAkun = new RegistrasiAkun();
     private final MainMenu mainMenu = new MainMenu();
-    private final InputMedrec inputMedrec = new InputMedrec();
+    private final InputMedrec inputMedrec = new InputMedrec(false);
     private final LihatMedrec lihatMedrec = new LihatMedrec();
     private final Pengaturan pengaturan = new Pengaturan();
     private final PengaturanAkun pengaturanAkun = new PengaturanAkun();

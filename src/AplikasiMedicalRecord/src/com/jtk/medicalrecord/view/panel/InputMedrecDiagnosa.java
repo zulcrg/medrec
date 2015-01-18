@@ -6,15 +6,11 @@
 package com.jtk.medicalrecord.view.panel;
 
 import com.jtk.medicalrecord.entity.Dosis;
-import com.jtk.medicalrecord.entity.Pasien;
 import com.jtk.medicalrecord.util.CommonHelper;
 import com.jtk.medicalrecord.util.MessageHelper;
 import com.jtk.medicalrecord.view.dialog.ObatDialog;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InputMedrecDiagnosa extends javax.swing.JPanel {
 
-    private List<Dosis> dosises = new ArrayList<>();
+    private final List<Dosis> dosises = new ArrayList<>();
 
     /**
      * Creates new form InputMedrecDiagnosa
@@ -33,7 +29,26 @@ public class InputMedrecDiagnosa extends javax.swing.JPanel {
         initComponents();
     }
 
-    private void createTableValue() {
+    public void viewState() {
+        txtDiagnosisBanding.setEditable(false);
+        txtDiagnosisKerja.setEditable(false);
+        txtPengobatan.setEditable(false);
+        txtPrognosis.setEditable(false);
+        btnHapus.setVisible(false);
+        btnTambah.setText("Download");
+    }
+    
+    public void clear(){
+        txtDiagnosisBanding.setText("");
+        txtDiagnosisKerja.setText("");
+        txtPengobatan.setText("");
+        txtPrognosis.setText("");
+        btnHapus.setText("");
+        dosises.removeAll(dosises);
+        createTableValue();
+    }
+
+    public void createTableValue() {
         Object[] columnsName = {"Nama Obat", "Dosis"};
 
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {

@@ -47,19 +47,29 @@ public class InputMedrec extends javax.swing.JPanel {
     private final Diagnosis diagnosis = new Diagnosis();
     private final Anamnesa anamnesa = new Anamnesa();
     private final PemeriksaanFisik pemeriksaanFisik = new PemeriksaanFisik();
+    private final boolean view;
 
     /**
      * Creates new form InputMedrec
+     *
+     * @param view
      */
-    public InputMedrec() {
+    public InputMedrec(boolean view) {
         initComponents();
+        this.view = view;
+        if (view) {
+            pnlAnamnesa.viewState();
+            pnlDiagnosa.viewState();
+            pnlPemeriksaanFisik.viewState();
+            pnlPemeriksaanPendukung.viewState();
+        }
     }
 
     public void preparation() {
-//        pnlAnamnesa = new InputMedrecAnamnesa();
-//        pnlDiagnosa = new InputMedrecDiagnosa();
-//        pnlPemeriksaanFisik = new InputMedrecPemeriksaanfisik();
-//        pnlPemeriksaanPendukung = new InputMedrecPemeriksaanpendukung();
+        pnlAnamnesa.clear();
+        pnlDiagnosa.clear();
+        pnlPemeriksaanFisik.clear();
+        pnlPemeriksaanPendukung.clear();
         pasien = null;
         txtPasien.setText("");
     }
@@ -96,6 +106,7 @@ public class InputMedrec extends javax.swing.JPanel {
                     dosisJpaController.create(object);
                 }
                 MessageHelper.addInfoMessage("Informasi", "Data medical record berhasil ditambahkan");
+                preparation();
             } catch (Exception ex) {
                 MessageHelper.addErrorMessage("Error create Medrec", ex.getMessage());
                 Logger.getLogger(InputMedrec.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,7 +121,6 @@ public class InputMedrec extends javax.swing.JPanel {
 
         anamnesa.setAnamnesaPK(anamnesaPK);
         anamnesa.setAnKeluhan(pnlAnamnesa.getTxtKeluhanUtama().getText());
-        System.out.println("MASUK "+pnlAnamnesa.getTxtKeluhanUtama().getText());
         anamnesa.setAnKhusus(pnlAnamnesa.getTxtAnamnesaKhusus().getText());
         anamnesa.setAnRiwayat(pnlAnamnesa.getTxtRiwayatPenyakitDahulu().getText());
         anamnesa.setAnRiwayatKel(pnlAnamnesa.getTxtRiwayatPenyakitKeluarga().getText());

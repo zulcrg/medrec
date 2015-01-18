@@ -21,6 +21,24 @@ public class InputMedrecPemeriksaanfisik extends javax.swing.JPanel {
     public InputMedrecPemeriksaanfisik() {
         initComponents();
     }
+    
+    public void viewState(){
+        txtKesadaran.setEditable(false);
+        txtLain.setEditable(false);
+        txtLajuNadi.setEditable(false);
+        txtLajuNafas.setEditable(false);
+        txtSuhuTubuh.setEditable(false);
+        txtTekananDarah.setEditable(false);
+    }
+    
+    public void clear(){
+        txtKesadaran.setText("");
+        txtLain.setText("");
+        txtLajuNadi.setText("");
+        txtLajuNafas.setText("");
+        txtSuhuTubuh.setText("");
+        txtTekananDarah.setText("");
+    }
 
     public JTextField getTxtKesadaran() {
         return txtKesadaran;

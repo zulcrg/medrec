@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.jtk.medicalrecord.view.panel;
 
 import javax.swing.JTextArea;
@@ -19,6 +18,20 @@ public class InputMedrecAnamnesa extends javax.swing.JPanel {
      */
     public InputMedrecAnamnesa() {
         initComponents();
+    }
+
+    public void viewState() {
+        txtAnamnesaKhusus.setEditable(false);
+        txtKeluhanUtama.setEditable(false);
+        txtRiwayatPenyakitDahulu.setEditable(false);
+        txtRiwayatPenyakitKeluarga.setEditable(false);
+    }
+
+    public void clear() {
+        txtAnamnesaKhusus.setText("");
+        txtKeluhanUtama.setText("");
+        txtRiwayatPenyakitDahulu.setText("");
+        txtRiwayatPenyakitKeluarga.setText("");
     }
 
     public JTextArea getTxtAnamnesaKhusus() {

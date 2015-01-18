@@ -242,7 +242,7 @@ public class SearchPasienDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_textSearchKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        inputPasienDialog dialog = new inputPasienDialog(null, true);
+        InputPasienDialog dialog = new InputPasienDialog(null, true);
         dialog.show();
         pasiens = pasienJpaController.findPasienEntities();
         createTableValue();

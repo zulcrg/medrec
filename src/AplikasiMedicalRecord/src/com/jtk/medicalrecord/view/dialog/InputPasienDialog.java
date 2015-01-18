@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Zulkhair Abdullah D
  */
-public class inputPasienDialog extends javax.swing.JDialog {
+public class InputPasienDialog extends javax.swing.JDialog {
 
     private final PasienJpaController pasienJpaController = new PasienJpaController();
 
@@ -26,7 +26,7 @@ public class inputPasienDialog extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public inputPasienDialog(java.awt.Frame parent, boolean modal) {
+    public InputPasienDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -95,7 +95,7 @@ public class inputPasienDialog extends javax.swing.JDialog {
             this.dispose();
         } catch (Exception ex) {
             MessageHelper.addErrorMessage("Error create pasien", ex.getMessage());
-            Logger.getLogger(inputPasienDialog.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InputPasienDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

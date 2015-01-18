@@ -28,7 +28,7 @@ import org.apache.commons.io.IOUtils;
  * @author M Haska Ash Shiddiq
  */
 public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
-
+    
     private final List<PemeriksaanPendukung> pemeriksaanPendukungs = new ArrayList<>();
 
     /**
@@ -37,10 +37,20 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
     public InputMedrecPemeriksaanpendukung() {
         initComponents();
     }
-
+    
+    public void viewState() {
+        btnHapus.setVisible(false);
+        btnTambah.setText("Download");
+    }
+    
+    public void clear(){
+        pemeriksaanPendukungs.removeAll(pemeriksaanPendukungs);
+        createTableValue();
+    }
+    
     private void createTableValue() {
         Object[] columnsName = {"Nama File", "Tipe File"};
-
+        
         DefaultTableModel dtm = new DefaultTableModel(null, columnsName) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -51,13 +61,13 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
             Object[] o = new Object[2];
             o[0] = p.getPemNmFile();
             o[1] = p.getPemTipeFile();
-
+            
             dtm.addRow(o);
         }
         tblFile.setModel(dtm);
         CommonHelper.resizeColumnWidth(tblFile);
     }
-
+    
     public List<PemeriksaanPendukung> getPemeriksaanPendukungs() {
         return pemeriksaanPendukungs;
     }
@@ -168,15 +178,15 @@ public class InputMedrecPemeriksaanpendukung extends javax.swing.JPanel {
                 InputStream is = new FileInputStream(new File(url));
                 String tipeFile = FilenameUtils.getExtension(url);
                 String namaFile = FilenameUtils.getBaseName(url);
-
+                
                 PemeriksaanPendukung pp = new PemeriksaanPendukung();
                 pp.setPemId(UUID.randomUUID().toString().replace("-", ""));
                 pp.setPemNmFile(namaFile);
                 pp.setPemTipeFile(tipeFile);
                 pp.setPemFile(IOUtils.toByteArray(is));
-
+                
                 pemeriksaanPendukungs.add(pp);
-
+                
                 createTableValue();
             } catch (FileNotFoundException ex) {
                 MessageHelper.addErrorMessage("Error add file", ex.getMessage());
