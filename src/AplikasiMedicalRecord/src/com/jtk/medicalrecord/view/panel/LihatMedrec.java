@@ -212,12 +212,13 @@ public class LihatMedrec extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Sampai");
 
+        tblPasien.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         tblPasien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Pasien", "Tanggal Perika", "Keluah Utama"
+                "Pasien", "Tanggal Periksa", "Keluhan Utama"
             }
         ));
         tblPasien.addMouseListener(new java.awt.event.MouseAdapter() {
